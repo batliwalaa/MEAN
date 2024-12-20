@@ -1,0 +1,377 @@
+[
+    {
+        "name": "homepage",
+        "layout": "row",
+        "sections": [
+            {
+                "backgroundImageUrl": "",
+                "widgets": [
+                    {
+                        "title": "Grocery Essentials",
+                        "footer": "See More",
+                        "items": [
+                            {
+                                "title": "Cooking essentials",
+                                "imageUrl": "/assets/images/homepage/cookingessentials.jpg",
+                                "url": ""
+                            },
+                            {
+                                "title": "Breakfast essentials",
+                                "imageUrl": "/assets/images/homepage/breakfastessentials.jpg",
+                                "url": ""
+                            },
+                            {
+                                "title": "Ready to eat",
+                                "imageUrl": "/assets/images/homepage/readytoeat.jpg",
+                                "url": ""
+                            },
+                            {
+                                "title": "All grocery",
+                                "imageUrl": "/assets/images/homepage/allgrocery.jpg",
+                                "url": ""
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "backgroundImageUrl": "",
+                "widgets": [
+                    {
+                        "title": "Tea coffee & beverages",
+                        "footer": "See More",
+                        "items": [
+                            {
+                                "title": "Tea",
+                                "imageUrl": "/assets/images/homepage/tea.jpg",
+                                "url": ""
+                            },
+                            {
+                                "title": "Coffee",
+                                "imageUrl": "/assets/images/homepage/coffee.jpg",
+                                "url": ""
+                            },
+                            {
+                                "title": "Juices & squashes",
+                                "imageUrl": "/assets/images/homepage/juices&squashes.jpg",
+                                "url": ""
+                            },
+                            {
+                                "title": "Beverages",
+                                "imageUrl": "/assets/images/homepage/beveragehampers.jpg",
+                                "url": ""
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "backgroundImageUrl": "",
+                "widgets": [
+                    {
+                        "title": "Home Cleaning & Personal Care",
+                        "footer": "See More",
+                        "items": [
+                            {
+                                "title": "Laundary essentials",
+                                "imageUrl": "/assets/images/homepage/laundryessentials.jpg",
+                                "url": ""
+                            },
+                            {
+                                "title": "Cleaners",
+                                "imageUrl": "/assets/images/homepage/cleaners.jpg",
+                                "url": ""
+                            },
+                            {
+                                "title": "Skin, hair & body care",
+                                "imageUrl": "/assets/images/homepage/skinhairbodycare.jpg",
+                                "url": ""
+                            },
+                            {
+                                "title": "Toiletry supplies",
+                                "imageUrl": "/assets/images/homepage/toiletrysupplies.jpg",
+                                "url": ""
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "backgroundImageUrl": "",
+                "widgets": [
+                    {
+                        "title": "Health & fitness",
+                        "footer": "See More",
+                        "items": [
+                            {
+                                "title": "Health care devices",
+                                "imageUrl": "/assets/images/homepage/healthcaredevices.jpg",
+                                "url": ""
+                            },
+                            {
+                                "title": "Family nutrition",
+                                "imageUrl": "/assets/images/homepage/familynutrition.jpg",
+                                "url": ""
+                            },
+                            {
+                                "title": "Health supplements",
+                                "imageUrl": "/assets/images/homepage/healthsupplements.jpg",
+                                "url": ""
+                            },
+                            {
+                                "title": "Sports nutrition",
+                                "imageUrl": "/assets/images/homepage/sportsnutrition.jpg",
+                                "url": ""
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "name": "pantry-homepage",
+        "layout": "flex",
+        "sections": [
+            {
+                "widgets": [
+                    {
+                        "itemsPerRow": 1,
+                        "items": [
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/header.jpg"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "widgets": [
+                    {
+                        "title": "Daily Essentials",
+                        "itemsPerRow": 4,
+                        "items": [
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/cookingoil.jpg",
+                                "query": "{\"lob\":\"pantry\",\"types\":[\"cooking oil\"]}"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/attaandrice.jpg",
+                                "query": "{\"lob\":\"pantry\",\"types\":[\"atta\",\"rice\"]}"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/sugarsaltandspices.jpg",
+                                "query": "{\"lob\":\"pantry\",\"types\":[\"sugar\",\"salt\",\"spices\"]}"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/pulses.jpg"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/snacksandbeverages.jpg"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/handwashandsanitizers.jpg"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/householdessentials.jpg"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/personalcare.jpg"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "controlType": "carousel",
+                "widgets": [
+                    {
+                        "itemsPerRow": 1,
+                        "items": [
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/pantry_dailyessentials.jpg"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/pantry_coolsummer.jpg"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/pantry_newlaunches.jpg"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "widgets": [
+                    {
+                        "itemsPerRow": 4,
+                        "title": "Offers on Groceries",
+                        "items": [
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/offers_cookingoil.jpg"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/offers_attaandflour.jpg"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/offers_healthdrinks.jpg"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/offers_noodles.jpg"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/offers_rice.jpg"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/offers_pulses.jpg"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/offers_breakfastfood.jpg"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/offers_biscuitsandsnacks.jpg"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/offers_teaandcoffee.jpg"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/offers_spicesandmasala.jpg"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/offers_organicstaples.jpg"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/offers_saucesandspreads.jpg"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "widgets": [
+                    {
+                        "itemsPerRow": 4,
+                        "title": "Offers on Personal Care and Household Supplies",
+                        "items": [
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/offers_detergents.jpg"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/offers_oralcare.jpg"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/offers_kitchenessentials.jpg"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/offers_householdcleaners.jpg"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/offers_handwash.jpg"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/offers_femininehygiene.jpg"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/offers_tissuesandfreshners.jpg"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/offers_babycare.jpg"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "widgets": [
+                    {
+                        "itemsPerRow": 4,
+                        "title": "Offers on Beauty",
+                        "items": [
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/offers_soaps.jpg"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/offers_bodywash.jpg"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/offers_shampoo.jpg"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/offers_deodorants.jpg"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/offers_hairoil.png"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/offers_facecleaning.jpg"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/offers_facecreamsandmakeup.jpg"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/offers_bodylotion.jpg"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "widgets": [
+                    {
+                        "itemsPerRow": 2,
+                        "items": [
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/savebigonessentials.jpg"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/greatdeals.jpg"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/bestselling.jpg"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/supervalueoffer.jpg"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/saffola.jpg"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/tatasampann.jpg"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/dabur.jpg"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/kohinoor.png"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/horlicks.jpg"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/vedaka.jpg"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/colgate.png"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/godrej.jpg"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/cadbury.jpg"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/scotchbrite.jpg"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/whiskas.jpg"
+                            },
+                            {
+                                "imageUrl": "/assets/images/pantry/pantry-homepage/fortifiedfoodsstore.jpg"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

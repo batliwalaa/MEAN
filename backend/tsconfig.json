@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "esModuleInterop": true,
+        "target": "es2017",
+        "lib": ["ES2017", "ESNext.AsyncIterable"],
+        "typeRoots": ["./node_modules/@types", "./src/typings"],
+        "allowSyntheticDefaultImports": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "forceConsistentCasingInFileNames": true,
+        "allowJs": true,
+        "noEmit": false,
+        "noImplicitAny": true,
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "outDir": "./dist",
+        "watch": false,
+        
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules", "tests"]
+}

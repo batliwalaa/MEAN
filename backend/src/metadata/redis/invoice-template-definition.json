@@ -1,0 +1,371 @@
+{
+    "key": "InvoiceTemplate",
+    "documentOptions": { "layout": "portrait", "margin": 0, "bufferPages": true, "autoFirstPage": false },
+    "sections": [
+        {
+            "ordinalPosition": 0,
+            "key": "header",
+            "value": {
+                "rect": { "x": 0, "y": 0, "w": "PageWidth", "h": 60, "fillColor": "#589b08" },
+                "textItems": [
+                    { "fontSize": 30, "bold": true, "fillColor": "#9b2a08", "value": "Amreet", "x": 50, "y": 10, "options": { "align": "left" } },
+                    { "fontSize": 15, "bold": true, "fillColor": "#fff", "value": "bazaar", "x": 105, "y": 35, "options": { "align": "left" } },
+                    { "fontSize": 12, "bold": true, "fillColor": "#ddd", "value": "Tax Invoice/Bill of Supply/Cash Memo", "x": 250, "y": 20, "options": { "align": "right" } },
+                    { "fontSize": 10, "fillColor": "#fff", "value": "(Recipient Original)", "x": 250, "y": 35, "options": { "align": "right" } }
+                ]
+            }
+        },
+        {
+            "ordinalPosition": 1,
+            "key": "signature",
+            "value": {
+                "textItems": [
+                    { "fontSize": 7, "fillColor": "#444", "key": "{{templateData.seller.name}}", "value": "Digitally Signed by {{templateData.seller.name}}", "x": 50, "y": 65, "options": { "align": "left" } },
+                    { "fontSize": 7, "fillColor": "#444", "key": "[DATE_UTC]", "value": "Date: [DATE_UTC] UTC", "x": 50, "y": 75, "options": { "align": "left" } },
+                    { "fontSize": 7, "fillColor": "#444", "value": "Reason: Invoice", "x": 50, "y": 75, "options": { "align": "left" } }
+                ]
+            }
+        },
+        {
+            "ordinalPosition": 2,
+            "key": "soldByAndBillingAddress",
+            "value": {
+                "textItems": [
+                    [
+                        { "moveDown": true, "fontSize": 10, "bold": true, "fillColor": "#444", "value": "Sold By:", "x": 50, "options": { "align": "left" } },
+                        { "moveUp": true, "fontSize": 10, "bold": true, "fillColor": "#444", "value": "Billing Address:", "x": 50, "options": { "align": "right" } }
+                    ],
+                    [
+                        { "fontSize": 10, "fillColor": "#444", "key": "{{templateData.seller.name}}", "value": "{{templateData.seller.name}}", "x": 50, "options": { "align": "left" } },
+                        { "moveUp": true, "fontSize": 10, "fillColor": "#444", "key": "{{customerName}}", "value": "{{customerName}}", "x": 50, "options": { "align": "right" } }
+                    ],
+                    [
+                        { "fontSize": 10, "fillColor": "#444", "key": "{{templateData.seller.address}}", "value": "{{templateData.seller.address}}", "x": 50, "options": { "align": "left" } },
+                        { "moveUp": true, "fontSize": 10, "fillColor": "#444", "key": "{{templateData.billing}}", "value": "{{templateData.billing}}", "x": 50, "options": { "align": "right" } }
+                    ]
+                ]
+            }
+        },
+        {
+            "ordinalPosition": 3,
+            "key": "regDetailsAndShippingAddress",
+            "value": {
+                "textItems": [
+                    [
+                        { 
+                            "column": 1, "moveDown": true, "fontSize": 10, "fillColor": "#444", "items": [
+                                { "bold": true, "value": "PAN No: "},
+                                { "x": 45, "key": "{{templateData.seller.pan.Value}}", "value": "{{templateData.seller.pan.Value}}"}
+                            ], "x": 50, "options": { "align": "left" } 
+                        },
+                        { "column": 2, "moveUp": true, "fontSize": 10, "bold": true, "fillColor": "#444", "value": "Shipping Address:", "x": 50, "options": { "align": "right" } }
+                    ],
+                    [
+                        { 
+                            "column": 1, "moveDown": true, "fontSize": 10, "fillColor": "#444", "items": [
+                                { "bold": true, "value": "GST: "},
+                                { "x": 30, "key": "{{templateData.seller.gst.Value}}", "value": "{{templateData.seller.gst.Value}}"}
+                            ], "x": 50, "options": { "align": "left" } 
+                        },
+                        { "column": 2, "moveUp": true, "fontSize": 10, "fillColor": "#444","key": "{{customerName}}", "value": "{{customerName}}", "x": 50, "options": { "align": "right" } }
+                    ],
+                    [
+                        { "column": 1, "fontSize": 10, "fillColor": "#444", "value": "NULL", "x": 50, "options": { "align": "left" } },
+                        { "column": 2, "moveUp": true, "fontSize": 10, "fillColor": "#444", "key": "{{templateData.shipping}}", "value": "{{templateData.shipping}}", "x": 50, "options": { "align": "right" } }
+                    ]
+                ]
+            }
+        },
+        {
+            "ordinalPosition": 4,
+            "key": "orderAndInvoiceDetails",
+            "value": {
+                "textItems": [
+                    [
+                        { 
+                            "column": 1, "moveDown": true, "fontSize": 10, "fillColor": "#444", "items": [
+                                { "bold": true, "value": "Order Number: "},
+                                { "x": 75, "key": "{{templateData.orderNumber}}", "value": "{{templateData.orderNumber}}"}
+                            ], "x": 50, "options": { "align": "left" } 
+                        },
+                        { 
+                            "column": 2, "moveUp": true, "fontSize": 10, "fillColor": "#444", "items": [
+                                { "bold": true, "value": "Invoice Number: "},
+                                { "x": 0, "key": "{{templateData.number}}", "value": "{{templateData.number}}"}
+                            ], "x": 0, "options": { "align": "right" } 
+                        }
+                    ],
+                    [
+                        { 
+                            "column": 1, "moveDown": true, "fontSize": 10, "fillColor": "#444", "items": [
+                                { "bold": true, "value": "Order Date: "},
+                                { "x": 60, "formatter": "date", "format": "DD/MM/YYYY", "key": "{{templateData.orderDate}}", "value": "{{templateData.orderDate}}"}
+                            ], "x": 50, "options": { "align": "left" } 
+                        },
+                        { 
+                            "column": 2, "moveUp": true, "fontSize": 10, "fillColor": "#444", "items": [
+                                { "bold": true, "value": "Invoice Date: "},
+                                { "x": 0, "formatter": "date", "format": "DD/MM/YYYY",  "key": "{{templateData.date}}", "value": "{{templateData.date}}"}
+                            ], "x": 0, "options": { "align": "right" } 
+                        }
+                    ]
+                ]
+            }
+        },
+        {
+            "ordinalPosition": 5,
+            "key": "taxMessage",
+            "value": {
+                "textItems": [
+                    { "fontSize": 6, "bold": true, "fillColor": "#444", "value": "Invoice unit price inclusive of all taxes", "x": 50, "y": 65, "options": { "align": "left" } }
+                ]
+            }
+        },
+        {
+            "ordinalPosition": 6,
+            "key": "lineSeparator",
+            "moveDown": false,
+            "value": {
+                "lineItems": [
+                    { "x1": 50, "strokeOpacity": 0.7, "lineWidth": 1, "strokeColor": "#999"  }
+                ]
+            }
+        },
+        {
+            "ordinalPosition": 7,
+            "key": "tableHeader",
+            "value": {
+                "textItems": [
+                    { 
+                        "fontSize": 8, "fillColor": "#000", "items": [
+                            { "x": 52, "bold": true, "value": "No"},
+                            { "x": 72, "bold": true, "value": "Description" },
+                            { "x": 272, "bold": true, "value": "Unit Price" },
+                            { "x": 322, "bold": true, "value": "Qty" },
+                            { "x": 347, "bold": true, "value": "Amount" },
+                            { "x": 397, "bold": true, "value": "Tax Rate" },
+                            { "x": 435, "bold": true, "value": "Tax Type" },
+                            { "x": 473, "bold": true, "value": "Tax Amt" },
+                            { "x": 511, "bold": true, "value": "Total" }
+                        ], "options": { "align": "left" } 
+                    }
+                ]
+            }
+        },
+        {
+            "ordinalPosition": 8,
+            "key": "lineSeparator",
+            "value": {
+                "lineItems": [
+                    { "x1": 50, "strokeOpacity": 0.7, "lineWidth": 1, "strokeColor": "#999"  }
+                ]
+            }
+        },
+        {
+            "ordinalPosition": 9,
+            "key": "tableBody",
+            "forLoop": "{{templateData.items}}",
+            "value": {
+                "textItems": [
+                    { 
+                        "fontSize": 8, "fillColor": "#000", "items": [
+                            { "x": 52, "key": "{{loopIndex}}", "value": "{{loopIndex}}"},
+                            { "x": 72, "width": "200",
+                                "key": [
+                                    "{{brand}}",
+                                    "{{description}}"
+                                ],
+                                "value": "{{brand}} - {{description}}" },
+                            { "x": 272, "width": "50", "formatter": "currency", "key": "{{price}}", "value": "{{price}}" },
+                            { "x": 322, "key": "{{quantity}}", "value": "{{quantity}}" },
+                            { "x": 347, "width": "50", "formatter": "currency", "key": "{{amount}}", "value": "{{amount}}" },
+                            { "x": 397, "value": "0%" },
+                            { "x": 435, "value": "IGST" },
+                            { "x": 473, "width": "38", "formatter": "currency", "value": "0.00" },
+                            { "x": 511, "width": "60", "formatter": "currency", "key": "{{amount}}", "value": "{{amount}}" }
+                        ], "options": { "align": "left" }
+                    },
+                    { 
+                        "fontSize": 8, "fillColor": "#000", "items": [
+                            { "x": 52, "value": "NULL"},
+                            { "x": 72, "value": "NULL" },
+                            { "x": 272, "value": "NULL" },
+                            { "x": 322, "value": "NULL" },
+                            { "x": 347, "value": "NULL" },
+                            { "x": 397, "value": "0%" },
+                            { "x": 435, "value": "CGST" },
+                            { "x": 473, "width": "38", "formatter": "currency", "value": "0.00" },
+                            { "x": 511, "value": "NULL" }
+                        ], "options": { "align": "left" }
+                    },
+                    { 
+                        "fontSize": 8, "fillColor": "#000", "items": [
+                            { "x": 52, "value": "NULL"},
+                            { "x": 72, "value": "NULL" },
+                            { "x": 272, "value": "NULL" },
+                            { "x": 322, "value": "NULL" },
+                            { "x": 347, "value": "NULL" },
+                            { "x": 397, "value": "0%" },
+                            { "x": 435, "value": "SGST" },
+                            { "x": 473, "width": "38", "formatter": "currency", "value": "0.00" },
+                            { "x": 511, "value": "NULL" }
+                        ], "options": { "align": "left" }
+                    }
+                ]
+            }            
+        },
+        {
+            "ordinalPosition": 10,
+            "key": "lineSeparator",
+            "value": {
+                "lineItems": [
+                    { "x1": 50, "strokeOpacity": 0.7, "lineWidth": 1, "strokeColor": "#999"  }
+                ]
+            }
+        },
+        {
+            "ordinalPosition": 11,
+            "key": "tableFooter",
+            "value": {
+                "textItems": [
+                    { 
+                        "fontSize": 9, "fillColor": "#000", "items": [
+                            { "x": 52, "bold": true, "value": "TOTAL:"},
+                            { "x": 473, "bold": true, "width": "38", "formatter": "currency", "value": "0.00" },
+                            { "x": 511, "bold": true, "width": "60", "formatter": "currency", "key": "{{templateData.orderAmount}}", "value": "{{templateData.orderAmount}}" }
+                        ], "options": { "align": "left" } 
+                    }
+                ]
+            }
+        },
+        {
+            "ordinalPosition": 12,
+            "key": "lineSeparator",
+            "moveDown": true,
+            "value": {
+                "lineItems": [
+                    { "x1": 50, "strokeOpacity": 0.7, "lineWidth": 1, "strokeColor": "#999"  }
+                ]
+            }
+        },
+        {
+            "ordinalPosition": 13,
+            "key": "tableFooter",
+            "value": {
+                "textItems": [
+                    { 
+                        "fontSize": 8, "fillColor": "#000", "x": 52, "bold": true,
+                        "value": "Amount In Words:",
+                        "options": { "align": "left" } 
+                    }
+                ]
+            }
+        },
+        {
+            "ordinalPosition": 14,
+            "key": "tableFooter",
+            "value": {
+                "textItems": [
+                    { 
+                        "fontSize": 8, "fillColor": "#000", "x": 52, "bold": true, "formatter": "amountToWords",
+                        "key": "{{templateData.orderAmount}}", "value": "{{templateData.orderAmount}}",
+                        "options": { "align": "left" } 
+                    }
+                ]
+            }
+        },
+        {
+            "ordinalPosition": 15,
+            "key": "lineSeparator",
+            "moveDown": true,
+            "value": {
+                "lineItems": [
+                    { "x1": 50, "strokeOpacity": 0.7, "lineWidth": 1, "strokeColor": "#999"  }
+                ]
+            }
+        },
+        {
+            "ordinalPosition": 16,
+            "key": "space",
+            "moveDown": true,
+            "value": {
+            }
+        },
+        {
+            "ordinalPosition": 17,
+            "key": "space",
+            "moveDown": true,
+            "value": {
+            }
+        },
+        {
+            "ordinalPosition": 18,
+            "key": "company",
+            "value": {
+                "textItems": [
+                    { "fontSize": 8, "bold": true, "fillColor": "#000", "key": "{{templateData.seller.name}}", "value": "{{templateData.seller.name}}", "x": 50, "options": { "align": "right" } }
+                ]
+            }
+        },
+        {
+            "ordinalPosition": 19,
+            "key": "space",
+            "moveDown": true,
+            "value": {
+            }
+        },
+        {
+            "ordinalPosition": 20,
+            "key": "space",
+            "moveDown": true,
+            "value": {
+            }
+        },
+        {
+            "ordinalPosition": 21,
+            "key": "company",
+            "value": {
+                "textItems": [
+                    { "fontSize": 8, "bold": true, "fillColor": "#000", "value": "Authorized Signatory", "x": 50, "options": { "align": "right" } }
+                ]
+            }
+        },
+        {
+            "ordinalPosition": 22,
+            "key": "space",
+            "moveDown": true,
+            "value": {
+            }
+        },
+        {
+            "ordinalPosition": 23,
+            "key": "lineSeparator",
+            "moveDown": true,
+            "value": {
+                "lineItems": [
+                    { "x1": 50, "strokeOpacity": 0.7, "lineWidth": 1, "strokeColor": "#999"  }
+                ]
+            }
+        },
+        {
+            "ordinalPosition": 24,
+            "key": "reverseCharge",
+            "value": {
+                "textItems": [
+                    { "fontSize": 6, "bold": true, "fillColor": "#000", "value": "Zero tax payable under reverse charge.", "x": 50, "options": { "align": "left" } }
+                ]
+            }
+        },
+        {
+            "ordinalPosition": 99,
+            "key": "footer",
+            "value": {
+                "rect": { "x": 0, "y": 0, "w": "PageWidth", "h": 50, "fillColor": "#e1e1e1" },
+                "textItems": [
+                    { "fontSize": 7, "fillColor": "#999", "value": "This invoice is not a demand for payment.", "x": 0, "y": 35, "options": { "lineBreak": false } },
+                    { "fontSize": 7, "fillColor": "#999", "value": "[PAGE_NUMBER]", "x": 0, "y": 20, "options": { "lineBreak": false } }
+                ]
+            }
+        }
+    ]
+}

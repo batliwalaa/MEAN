@@ -1,0 +1,43 @@
+import { DeliverySlotType } from './enums/delivery-slot-type';
+import { OrderLocation } from './enums/order-location';
+import { OrderPaymentStatus } from './enums/order-payment-status';
+import { OrderStatus } from './enums/order-status';
+import { OrderItem } from './order-item';
+import { OrderRouteDetail } from './order-route-detail';
+
+export interface Order {
+    _id: any;
+    orderNumber: string;
+    userID: string;
+    sessionID?: string;
+    sellerID?: string;
+    orderPaymentStatus: OrderPaymentStatus;
+    orderLocation: OrderLocation;
+    routeDetail?: OrderRouteDetail;
+    addressID: string;
+    items: Array<OrderItem>;
+    dateCreated: Date;
+    status: OrderStatus;
+    internalComments?: Array<string>;
+    userComments?: Array<string>;
+    modifiedDate: Date;
+    modifiedBy: string;
+    test?: boolean;
+    slotId: string;
+    slotType: DeliverySlotType;
+    amount?: number;
+    paymentID?: string;
+    shoppingCartID?: string;
+    statusHistory?: Array<{ status: OrderStatus, statusDate: Date}>;
+    isMultiOrder: boolean;
+    multiOrderHeaderID?: string;
+    selectedForInvoicing?: boolean;
+    invoice?: string;
+    invoiceNumber?: string;
+    invoiceDate?: Date;
+    selectedForCreditNote?: boolean;
+    creditNote?: string;
+    creditNoteNumber?: string;
+    creditNoteDate?: Date;
+    totalDiscountAmount?: number;
+}

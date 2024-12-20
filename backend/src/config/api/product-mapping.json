@@ -1,0 +1,80 @@
+[
+    {
+        "key": "category",
+        "value": "daily essentials",
+        "map": {
+            "key": "type",
+            "values": [
+                "atta flours & sooji",
+                "dals & pulses",
+                "rice & rice products",
+                "edible oils & ghee",
+                "masalas & spices",
+                "Dry Fruits and Nuts"
+            ]
+        }
+    },
+    {
+        "key": "category",
+        "value": "dairy & dairy products",
+        "map": {
+            "key": "type",
+            "values": [
+            ]
+        }
+    },
+    {
+        "key": "category",
+        "value": "bakery",
+        "map": {
+            "key": "type",
+            "values": [
+            ]
+        }
+    },
+    {
+        "key": "category",
+        "value": "Beverages",
+        "map": {
+            "key": "type",
+            "values": [
+            ]
+        }
+    },
+    {
+        "key": "category",
+        "value": "snacks & branded foods",
+        "map": {
+            "key": "type",
+            "values": [
+            ]
+        }
+    },
+    {
+        "key": "category",
+        "value": "personal",
+        "map": {
+            "key": "type",
+            "values": [
+            ]
+        }
+    },
+    {
+        "key": "category",
+        "value": "baby",
+        "map": {
+            "key": "type",
+            "values": [
+            ]
+        }
+    },
+    {
+        "key": "category",
+        "value": "home",
+        "map": {
+            "key": "type",
+            "values": [
+            ]
+        }
+    }
+]

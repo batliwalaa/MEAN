@@ -1,0 +1,44 @@
+{
+    "myBasket": {
+        "label": "My shopping bag"
+    },
+    "disclaimer": {
+        "label": "The price and availability of items at Amreet Bazaar are subject to change. Your shopping basket is a temporary storage and reflects the price and availability at the time of adding items to the basket."
+    },
+    "emptyCart": {
+        "label": "Your shopping basket is empty. Please add items to basket before proceeding to buy!"
+    },
+    "countryOfOrigin": {
+        "label": "country of origin"
+    },
+    "bestSeller": {
+        "label": "Best Seller"
+    },
+    "savings": {
+        "label": "savings"
+    },
+    "qty": {
+        "label": "Qty",
+        "min": 1,
+        "max": 20
+    },
+    "increment": {
+        "action": "shoppingcartitemqtyincrement"
+    },
+    "decrement": {
+        "action": "shoppingcartitemqtydecrement"
+    },
+    "delete": {
+        "label": "delete",
+        "action": "shoppingcartdeleteitem"
+    },
+    "proceedToBuy": {
+        "label": "Proceed to buy now"
+    },
+    "itemsTotal": {
+        "label": "Items total"
+    },
+    "items": {
+        "label": "items"
+    }
+}

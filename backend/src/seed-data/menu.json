@@ -1,0 +1,911 @@
+[
+    {
+        "key": "MainMenu",
+        "menuItems": [
+            {
+                "label": "Best Sellers",
+                "itemType": "Text",
+                "url": "bestsellers",
+                "sideBarKeys": [
+                    {
+                        "key": "Departments",
+                        "controlType": "Link"
+                    }
+                ]
+            },
+            {
+                "label": "Deals",
+                "itemType": "Text",
+                "url": "deals",
+                "sideBarKeys": [
+                    {
+                        "key": "Department",
+                        "filter": true,
+                        "controlType": "Checkbox"
+                    },
+                    {
+                        "key": "Pricing",
+                        "filter": true,
+                        "controlType": "Link"
+                    },
+                    {
+                        "key": "Discount",
+                        "filter": true,
+                        "controlType": "Link"
+                    }
+                ]
+            },
+            {
+                "label": "Home & Garden",
+                "url": "home&garden",
+                "itemType": "Text"
+            },
+            {
+                "label": "New Releases",
+                "url": "newreleases",
+                "itemType": "Text",
+                "sideBarKeys": [
+                    {
+                        "key": "Department",
+                        "controlType": "Link"
+                    }
+                ]
+            },
+            {
+                "label": "Pantry",
+                "url": "pantry",
+                "itemType": "Text"
+            },
+            {
+                "label": "Electronics",
+                "url": "electronics",
+                "itemType": "Text"
+            },
+            {
+                "label": "Gifts",
+                "url": "gifts",
+                "itemType": "Text"
+            },
+            {
+                "label": "Groceries",
+                "url": "groceries",
+                "itemType": "Text"
+            },
+            {
+                "label": "Clothings",
+                "url": "clothings",
+                "itemType": "Text"
+            },
+            {
+                "label": "Help",
+                "url": "help",
+                "itemType": "Text"
+            }
+        ]
+    },
+    {
+        "key": "SideBar",
+        "menuItems": [
+            {
+                "key": "Department",
+                "itemType": "List",
+                "menuItems": [
+                    {
+                        "label": "Home & Garden",
+                        "state": "home&garden",
+                        "itemType": "Text"
+                    },
+                    {
+                        "label": "Electronics",
+                        "state": "electronics",
+                        "itemType": "Text"
+                    },
+                    {
+                        "label": "Gifts",
+                        "state": "gifts",
+                        "itemType": "Text"
+                    },
+                    {
+                        "label": "Groceries",
+                        "state": "groceries",
+                        "itemType": "Text"
+                    },
+                    {
+                        "label": "Clothings",
+                        "state": "clothings",
+                        "itemType": "Text"
+                    }
+                ]
+            },
+            {
+                "key": "Pricing",
+                "itemType": "List",
+                "menuItems": [
+                    {
+                        "label": "Under £15",
+                        "state": "0-15",
+                        "itemType": "Text"
+                    },
+                    {
+                        "label": "£15 - £30",
+                        "state": "15-30",
+                        "itemType": "Text"
+                    },
+                    {
+                        "label": "£30 - £100",
+                        "state": "30-100",
+                        "itemType": "Text"
+                    },
+                    {
+                        "label": "£100 - £200",
+                        "state": "100-200",
+                        "itemType": "Text"
+                    },
+                    {
+                        "label": "£200 and above",
+                        "state": "200-above",
+                        "itemType": "Text"
+                    }
+                ]
+            },
+            {
+                "key": "Discount",
+                "itemType": "List",
+                "menuItems": [
+                    {
+                        "label": "10% off or more",
+                        "state": "10%-above",
+                        "itemType": "Text"
+                    },
+                    {
+                        "label": "25% off or more",
+                        "state": "25%-above",
+                        "itemType": "Text"
+                    },
+                    {
+                        "label": "50% off or more",
+                        "state": "50%-above",
+                        "itemType": "Text"
+                    },
+                    {
+                        "label": "70% off or more",
+                        "state": "70%-above",
+                        "itemType": "Text"
+                    }
+                ]
+            },
+            {
+                "key": "Home & Garden",
+                "menuItems": [
+                    {
+                        "label": "Deals & Offers",
+                        "url": "http://localhost:5208/deals/home&garden",
+                        "itemType": "Text"
+                    },
+                    {
+                        "label": "Shop by Room",
+                        "itemType": "List",
+                        "menuItems": [
+                            {
+                                "label": "Bedroom",
+                                "url": "bedroom",
+                                "itemType": "Text"
+                            },
+                            {
+                                "label": "Bathroom",
+                                "url": "bathroom",
+                                "itemType": "Text"
+                            },
+                            {
+                                "label": "Living Room",
+                                "url": "living",
+                                "itemType": "Text"
+                            },
+                            {
+                                "label": "Dining Room",
+                                "url": "dining",
+                                "itemType": "Text"
+                            },
+                            {
+                                "label": "Kitchen",
+                                "url": "kitchen",
+                                "itemType": "Text"
+                            },
+                            {
+                                "label": "Utility Room",
+                                "url": "utility",
+                                "itemType": "Text"
+                            },
+                            {
+                                "label": "Office",
+                                "url": "office",
+                                "itemType": "Text"
+                            },
+                            {
+                                "label": "Children's Room",
+                                "url": "children",
+                                "itemType": "Text"
+                            },
+                            {
+                                "label": "Garden",
+                                "url": "garden",
+                                "itemType": "Text"
+                            },
+                            {
+                                "label": "Shop all Rooms",
+                                "url": "all",
+                                "itemType": "More"
+                            }
+                        ]
+                    },
+                    {
+                        "label": "Cooking & Dining",
+                        "itemType": "List",
+                        "menuItems": [
+                            {
+                                "label": "Cookware",
+                                "url": "cookware",
+                                "itemType": "Text"
+                            },
+                            {
+                                "label": "Bakeware",
+                                "url": "bakeware",
+                                "itemType": "Text"
+                            },
+                            {
+                                "label": "Tableware",
+                                "url": "tableware",
+                                "itemType": "Text"
+                            },
+                            {
+                                "label": "Kitchen Storage",
+                                "url": "kitchenstorage",
+                                "itemType": "Text"
+                            },
+                            {
+                                "label": "Kitchen Tools & Gadgets",
+                                "url": "kitchentools&gadgets",
+                                "itemType": "Text"
+                            },
+                            {
+                                "label": "Coffee, Tea & Espresso",
+                                "url": "coffee&tea&espresso",
+                                "itemType": "Text"
+                            },
+                            {
+                                "label": "Water Coolers & Filters",
+                                "url": "watercoolers&filters",
+                                "itemType": "Text"
+                            },
+                            {
+                                "label": "All Cooking & Dining",
+                                "url": "all",
+                                "itemType": "More"
+                            }
+                        ]
+                    },
+                    {
+                        "label": "Appliances",
+                        "itemType": "List",
+                        "menuItems": [
+                            {
+                                "label": "Coffee Machines",
+                                "url": "cofeemachines",
+                                "itemType": "Text"
+                            },
+                            {
+                                "label": "Food Processors",
+                                "url": "foodprocessors",
+                                "itemType": "Text"
+                            },
+                            {
+                                "label": "Food Mixers",
+                                "url": "foodmixers",
+                                "itemType": "Text"
+                            },
+                            {
+                                "label": "Blenders",
+                                "url": "blenders",
+                                "itemType": "Text"
+                            },
+                            {
+                                "label": "Juicers",
+                                "url": "juicers",
+                                "itemType": "Text"
+                            },
+                            {
+                                "label": "Microwaves",
+                                "url": "microwaves",
+                                "itemType": "Text"
+                            },
+                            {
+                                "label": "Slow Cookers",
+                                "url": "slowcookers",
+                                "itemType": "Text"
+                            },
+                            {
+                                "label": "All Appliances",
+                                "url": "all",
+                                "itemType": "More"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "key": "Home & Garden",
+        "sideBarKeys": [
+            {
+                "key": "Home & Garden",
+                "controlType": "Link"
+            },
+            {
+                "key": "Pricing",
+                "filter": true,
+                "controlType": "Link"
+            },
+            {
+                "key": "Discount",
+                "filter": true,
+                "controlType": "Link"
+            }
+        ],
+        "menuItems": [
+            {
+                "label": "Shop by Room",
+                "url": "shopyByRoom",
+                "itemType": "Text",
+                "childItems": [
+                    {
+                        "label": "Bedroom",
+                        "url": "bedroom",
+                        "itemType": "Image",
+                        "imageUrl": "https://placehold.it/90x110"
+                    },
+                    {
+                        "label": "Bathroom",
+                        "url": "bathroom",
+                        "itemType": "Image",
+                        "imageUrl": "https://placehold.it/90x110"
+                    },
+                    {
+                        "label": "Living Room",
+                        "url": "living",
+                        "itemType": "Image",
+                        "imageUrl": "https://placehold.it/90x110"
+                    },
+                    {
+                        "label": "Dining Room",
+                        "url": "dining",
+                        "itemType": "Image",
+                        "imageUrl": "https://placehold.it/90x110"
+                    },
+                    {
+                        "label": "Kitchen",
+                        "url": "kitchen",
+                        "itemType": "Image",
+                        "imageUrl": "https://placehold.it/90x110"
+                    }
+                ]
+            },
+            {
+                "label": "Appliances",
+                "url": "appliances",
+                "itemType": "Text",
+                "childItems": [
+                    {
+                        "label": "Small Kitchen Appliances",
+                        "url": "smallkitchen",
+                        "itemType": "Image",
+                        "imageUrl": "https://placehold.it/90x110"
+                    },
+                    {
+                        "label": "Coffee Machine",
+                        "url": "coffeemachine",
+                        "itemType": "Image",
+                        "imageUrl": "https://placehold.it/90x110"
+                    },
+                    {
+                        "label": "Large Appliances",
+                        "url": "largeappliances",
+                        "itemType": "Image",
+                        "imageUrl": "https://placehold.it/90x110"
+                    }
+                ]
+            },
+            {
+                "label": "Cooking & Dining",
+                "url": "cooking&dining",
+                "itemType": "Text",
+                "childItems": []
+            },
+            {
+                "label": "Laundary & Storage",
+                "url": "laundary&storage",
+                "itemType": "Text",
+                "childItems": []
+            },
+            {
+                "label": "Garden & Doutdoors",
+                "url": "garden&outdoors",
+                "itemType": "Text",
+                "childItems": []
+            },
+            {
+                "label": "Furniture",
+                "url": "furniture",
+                "itemType": "Text",
+                "childItems": []
+            },
+            {
+                "label": "Home Accessories",
+                "url": "accessories",
+                "itemType": "Text",
+                "childItems": []
+            },
+            {
+                "label": "Bedding & Linens",
+                "url": "bedding&linens",
+                "itemType": "Text",
+                "childItems": []
+            }
+        ]
+    },
+    {
+        "key": "Pantry",
+        "menuItems": [
+            {
+                "label": "Cooking Essentials",
+                "url": "cookingessentials",
+                "itemType": "Text",
+                "childItems": [
+                    {
+                        "label": "Dals",
+                        "url": "dals",
+                        "itemType": "Image",
+                        "imageUrl": "/assets/images/pantry/dals.jpg"
+                    },
+                    {
+                        "label": "Atta & Flours",
+                        "url": "atta&flours",
+                        "itemType": "Image",
+                        "imageUrl": "/assets/images/pantry/attaandflours.jpg"
+                    },
+                    {
+                        "label": "Oil & Ghee",
+                        "url": "oil&ghee",
+                        "itemType": "Image",
+                        "imageUrl": "/assets/images/pantry/oilandghee.jpg"
+                    },
+                    {
+                        "label": "Sugar",
+                        "url": "sugar",
+                        "itemType": "Image",
+                        "imageUrl": "/assets/images/pantry/sugar.jpg"
+                    },
+                    {
+                        "label": "Rice",
+                        "url": "rice",
+                        "itemType": "Image",
+                        "imageUrl": "/assets/images/pantry/rice.jpg"
+                    },
+                    {
+                        "label": "Salt, Spices & Masala",
+                        "url": "salt&spices&masala",
+                        "itemType": "Image",
+                        "imageUrl": "/assets/images/pantry/saltspicesandmasala.jpg"
+                    },
+                    {
+                        "label": "Nuts & Dry Fruits",
+                        "url": "nuts&dryfruits",
+                        "itemType": "Image",
+                        "imageUrl": "/assets/images/pantry/nutsanddryfruits.jpg"
+                    }
+                ]
+            },
+            {
+                "label": "Snacks & Beverages",
+                "url": "snacks&beverages",
+                "itemType": "Text",
+                "childItems": [
+                    {
+                        "label": "Biscuits",
+                        "url": "biscuits",
+                        "itemType": "Image",
+                        "imageUrl": "/assets/images/pantry/biscuits.jpg"
+                    },
+                    {
+                        "label": "Snacks",
+                        "url": "snacks",
+                        "itemType": "Image",
+                        "imageUrl": "/assets/images/pantry/snacks.jpg"
+                    },
+                    {
+                        "label": "Tea & Coffee",
+                        "url": "Tea&Coffee",
+                        "itemType": "Image",
+                        "imageUrl": "/assets/images/pantry/teaandcoffee.jpg"
+                    },
+                    {
+                        "label": "Beverages",
+                        "url": "beverages",
+                        "itemType": "Image",
+                        "imageUrl": "/assets/images/pantry/beverages.jpg"
+                    },
+                    {
+                        "label": "Health Drinks",
+                        "url": "healthdrinks",
+                        "itemType": "Image",
+                        "imageUrl": "/assets/images/pantry/healthdrinks.jpg"
+                    }
+                ]
+            },
+            {
+                "label": "Packaged Foods",
+                "url": "packagefoods",
+                "itemType": "Text",
+                "childItems": [
+                    {
+                        "label": "Breakfast Foods",
+                        "url": "breakfastfoods",
+                        "itemType": "Image",
+                        "imageUrl": "/assets/images/pantry/breakfastfoods.jpg"
+                    },
+                    {
+                        "label": "Sauces and Spreads",
+                        "url": "sauces&spreads",
+                        "itemType": "Image",
+                        "imageUrl": "/assets/images/pantry/saucesandspreads.jpg"
+                    },
+                    {
+                        "label": "Ready Meals & Mixes",
+                        "url": "readymeals&mixes",
+                        "itemType": "Image",
+                        "imageUrl": "/assets/images/pantry/readymealsandmixes.jpg"
+                    },
+                    {
+                        "label": "Noodles & Pasta",
+                        "url": "noodles&pasta",
+                        "itemType": "Image",
+                        "imageUrl": "/assets/images/pantry/noodlesandpasta.jpg"
+                    },
+                    {
+                        "label": "Sweets & Chocolates",
+                        "url": "sweets&chocolates",
+                        "itemType": "Image",
+                        "imageUrl": "/assets/images/pantry/sweetsandchocolates.jpg"
+                    }
+                ]
+            },
+            {
+                "label": "Household & Pets",
+                "url": "household&pets",
+                "itemType": "Text",
+                "childItems": [
+                    {
+                        "label": "Laundry",
+                        "url": "laundry",
+                        "itemType": "Image",
+                        "imageUrl": "/assets/images/pantry/laundry.jpg"
+                    },
+                    {
+                        "label": "Kitchen Cleaning",
+                        "url": "kitchencleaning",
+                        "itemType": "Image",
+                        "imageUrl": "/assets/images/pantry/kitchencleaning.jpg"
+                    },
+                    {
+                        "label": "Household Cleaners",
+                        "url": "householdcleaners",
+                        "itemType": "Image",
+                        "imageUrl": "/assets/images/pantry/householdcleaners.jpg"
+                    },
+                    {
+                        "label": "Cleaning Tools",
+                        "url": "cleaningtools",
+                        "itemType": "Image",
+                        "imageUrl": "/assets/images/pantry/cleaningtools.jpg"
+                    },
+                    {
+                        "label": "Pets Care",
+                        "url": "petscare",
+                        "itemType": "Image",
+                        "imageUrl": "/assets/images/pantry/petscare.jpg"
+                    },
+                    {
+                        "label": "Other Home Needs",
+                        "url": "otherhomeneeds",
+                        "itemType": "Image",
+                        "imageUrl": "/assets/images/pantry/otherhomeneeds.jpg"
+                    }
+                ]
+            },
+            {
+                "label": "Personal Care & Baby",
+                "url": "personalcare&baby",
+                "itemType": "Text",
+                "childItems": [
+                    {
+                        "label": "Hair Care",
+                        "url": "haircare",
+                        "itemType": "Image",
+                        "imageUrl": "/assets/images/pantry/haircare.jpg"
+                    },
+                    {
+                        "label": "Body Cleansing",
+                        "url": "bodycleansing",
+                        "itemType": "Image",
+                        "imageUrl": "/assets/images/pantry/bodycleansing.jpg"
+                    },
+                    {
+                        "label": "Shaving & Hair Removal",
+                        "url": "shaving&hairremoval",
+                        "itemType": "Image",
+                        "imageUrl": "/assets/images/pantry/shavingandhairremoval.jpg"
+                    },
+                    {
+                        "label": "Feminine Hygiene",
+                        "url": "femininehygiene",
+                        "itemType": "Image",
+                        "imageUrl": "/assets/images/pantry/femininehygiene.jpg"
+                    },
+                    {
+                        "label": "Oral Care",
+                        "url": "oralcare",
+                        "itemType": "Image",
+                        "imageUrl": "/assets/images/pantry/oralcare.jpg"
+                    },
+                    {
+                        "label": "Baby Care",
+                        "url": "babycare",
+                        "itemType": "Image",
+                        "imageUrl": "/assets/images/pantry/babycare.jpg"
+                    }
+                ]
+            },
+            {
+                "label": "Skin Care",
+                "url": "skincare",
+                "itemType": "Text",
+                "childItems": [
+                    {
+                        "label": "Body Care",
+                        "url": "bodycare",
+                        "itemType": "Image",
+                        "imageUrl": "/assets/images/pantry/bodycare.jpg"
+                    },
+                    {
+                        "label": "Face Care",
+                        "url": "facecare",
+                        "itemType": "Image",
+                        "imageUrl": "/assets/images/pantry/facecare.jpg"
+                    },
+                    {
+                        "label": "Deodorants & Fragrances",
+                        "url": "deodorants&fragrances",
+                        "itemType": "Image",
+                        "imageUrl": "/assets/images/pantry/deodorantsandfragrances.jpg"
+                    },
+                    {
+                        "label": "Make Up",
+                        "url": "makeup",
+                        "itemType": "Image",
+                        "imageUrl": "/assets/images/pantry/makeup.jpg"
+                    }
+                ]
+            },
+            {
+                "label": "Offers",
+                "url": "offers",
+                "itemType": "Text",
+                "childItems": []
+            },
+            {
+                "label": "Past Purchases",
+                "url": "pastpuchases",
+                "itemType": "Text",
+                "childItems": []
+            }
+        ]
+    },
+    {
+        "key": "Burger Menu",
+        "device": "*",
+        "section": "*",
+        "menuItems": [
+            {
+                "label": "Shop by Category",
+                "itemType": "List",
+                "childItems": [
+                    {
+                        "label": "Books & Audible",
+                        "url": "books&audible",
+                        "itemType": "Text"
+                    },
+                    {
+                        "label": "Films, TV, Music & Games",
+                        "url": "films&tv&music&games",
+                        "itemType": "Text",
+                        "childItems": [
+                            {
+                                "label": "DVD & Blue-ray",
+                                "url": "dvd&blueray",
+                                "itemType": "Text"
+                            },
+                            {
+                                "label": "CDs & Vinyl",
+                                "url": "cds&vinyl",
+                                "itemType": "Text"
+                            },
+                            {
+                                "label": "PC & Video Games",
+                                "url": "pc&videogames",
+                                "itemType": "Text"
+                            },
+                            {
+                                "label": "Musical Instruments & DJ",
+                                "url": "musicalinstruments&dj",
+                                "itemType": "Text"
+                            }
+                        ]
+                    },
+                    {
+                        "label": "Electronics & Computers",
+                        "url": "electronics&computers",
+                        "itemType": "Text",
+                        "childItems": [
+                            {
+                                "label": "Electronics",
+                                "url": "electronis",
+                                "itemType": "List",
+                                "childItems": [
+                                    {
+                                        "label": "Camera & Photo",
+                                        "url": "camera&photo",
+                                        "itemType": "Text"
+                                    },
+                                    {
+                                        "label": "TV & Home Cinema",
+                                        "url": "tv&homecinema",
+                                        "itemType": "Text"
+                                    },
+                                    {
+                                        "label": "Audio & HiFi",
+                                        "url": "audio&hifi",
+                                        "itemType": "Text"
+                                    },
+                                    {
+                                        "label": "Headphones",
+                                        "url": "headphones",
+                                        "itemType": "Text"
+                                    },
+                                    {
+                                        "label": "Sat Nav & Car Electronics",
+                                        "url": "satnav&carelectronics",
+                                        "itemType": "Text"
+                                    },
+                                    {
+                                        "label": "Phones & Accessories",
+                                        "url": "phones&accessories",
+                                        "itemType": "Text"
+                                    },
+                                    {
+                                        "label": "Electronics & Accessories",
+                                        "url": "electronics&accessories",
+                                        "itemType": "Text"
+                                    },
+                                    {
+                                        "label": "All Electronics",
+                                        "url": "all",
+                                        "itemType": "Text"
+                                    }
+                                ]
+                            },
+                            {
+                                "label": "Computers & Office",
+                                "url": "compuers&office",
+                                "itemType": "List",
+                                "childItems": [
+                                    {
+                                        "label": "Laptop",
+                                        "url": "laptop",
+                                        "itemType": "Text"
+                                    },
+                                    {
+                                        "label": "Tablets",
+                                        "url": "tablets",
+                                        "itemType": "Text"
+                                    },
+                                    {
+                                        "label": "Desktops",
+                                        "url": "desktops",
+                                        "itemType": "Text"
+                                    },
+                                    {
+                                        "label": "Monitors",
+                                        "url": "monitors",
+                                        "itemType": "Text"
+                                    },
+                                    {
+                                        "label": "Memory & Storage",
+                                        "url": "memory&storage",
+                                        "itemType": "Text"
+                                    },
+                                    {
+                                        "label": "Networking Devices",
+                                        "url": "networkingdevices",
+                                        "itemType": "Text"
+                                    },
+                                    {
+                                        "label": "Computer Accessories",
+                                        "url": "computeraccessories",
+                                        "itemType": "Text"
+                                    },
+                                    {
+                                        "label": "Printers & Ink",
+                                        "url": "printers&ink",
+                                        "itemType": "Text"
+                                    },
+                                    {
+                                        "label": "All Computers & Accessories",
+                                        "url": "all",
+                                        "itemType": "Text"
+                                    }
+                                ]
+                            }
+                        ]
+                    },
+                    {
+                        "label": "Home, Garden, Pets & DIY",
+                        "url": "home&garden&pets&diy",
+                        "itemType": "Text",
+                        "childItems": []
+                    },
+                    {
+                        "label": "Clothes, Shoes & Watches",
+                        "url": "clothes&shoes&watches",
+                        "itemType": "Text",
+                        "childItems": []
+                    },
+                    {
+                        "label": "Sports & Outdoors",
+                        "url": "sports&outdoors",
+                        "itemType": "Text",
+                        "childItems": []
+                    },
+                    {
+                        "label": "Food & Grocery",
+                        "url": "food&grocery",
+                        "itemType": "Text",
+                        "childItems": []
+                    },
+                    {
+                        "label": "Health & Beauty",
+                        "url": "health&beauty",
+                        "itemType": "Text",
+                        "childItems": []
+                    },
+                    {
+                        "label": "Car & Motorbike",
+                        "url": "car&motorbike",
+                        "itemType": "Text",
+                        "childItems": []
+                    },
+                    {
+                        "label": "Gift Cards & Top Up",
+                        "url": "giftcards&topup",
+                        "itemType": "Text",
+                        "childItems": []
+                    },
+                    {
+                        "label": "Shop Directory",
+                        "url": "shopdirectory",
+                        "itemType": "Text"
+                    }
+                ]
+            }
+        ]
+    }
+]

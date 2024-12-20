@@ -1,0 +1,1 @@
+export type ProfileChangeProperty = 'Email' | 'Mobile';

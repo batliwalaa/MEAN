@@ -1,0 +1,117 @@
+<html>
+    <style>
+        body {
+            width: 100%;
+        }
+        h1 {
+            width: 100%;
+            text-align: center;
+        }
+        .footer {
+            margin-top: 40px;
+        }
+
+        .footer div {
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        .container {
+            width: 70%;
+            margin: 0 auto;
+            padding: 22px;
+            border: 1px solid darkgoldenrod;
+        }
+
+        .header {
+            float: right;
+        }
+
+        .header span {
+            font-size: 11pt;
+            font-weight: normal;
+            display: block;
+        }
+
+        .header span:first-child {
+            font-size: 14pt;
+            font-weight: 550;
+        }
+
+        .order-info {
+            border: 1px solid transparent;
+            background-color: #fafafa;
+            padding: 20px;
+            padding-top: 5px;
+        }
+
+        .order-info span {
+            color: #777;
+            display: block;
+            line-height: 18px;
+        }
+
+        .order-info span.order-info-item {
+            margin-top: 15px;
+        }
+
+        .order-summary {
+            margin-top: 20px;
+            font-size: 11pt;
+        }
+
+        .order-summary span {
+            display: block;
+            margin-bottom: 5px;
+        }
+    </style>
+    <body>
+        <h1></h1>
+        <div class="container">
+            <div class="header">
+                <span>Order Confirmation</span>
+                <span>Order # [order_number]</span>
+            </div>
+            <div class="content">
+                <p>Dear [firstname],</p>
+                <p>
+                    Thanks for your order, we will let you know when your order is dispatched. Your delivery date and
+                    time is shown below. You can view your order by visiting
+                    <a href="[site_domain_url]">[site_domain]</a>
+                </p>
+                <div class="order-info">
+                    <span class="order-info-item">Delivery Slot</span>
+                    <span>[delivery_slot]</span>
+                    <span class="order-info-item">Delivery address</span>
+                    <span>[delivery_address]</span>
+                </div>
+                <div class="order-summary">
+                    <span>Order # [order_number]</span>
+                    <span>Placed on [order_date]</span>
+                    <span><b>Total: [order_amount]</b></span>
+                    <span>Selected payment method: [payment_method]</span>
+                </div>
+            </div>
+            <div class="footer">
+                We hope to see you soon.
+
+                <div>AmreetBazaar Team</div>
+                <a href="[site_domain_url]">[site_domain]</a>
+            </div>
+            <div>
+                <p>
+                    This e-mail is only an acknowledgement of receipt of your order. Your contract to purchase these
+                    items is not complete until we send you an e-mail notifying you that the items have been dispatched.
+                </p>
+            </div>
+            <div>
+                <p>Note: This is a system generated e-mail, please do not reply to it.</p>
+                <p>
+                    *** This message is intended only for the person or entity to which it is addressed and may contain
+                    confidential and/or privileged information. If you have received this message in error, please
+                    notify the sender immediately and delete this message from your system ***
+                </p>
+            </div>
+        </div>
+    </body>
+</html>

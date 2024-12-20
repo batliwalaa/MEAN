@@ -1,0 +1,17 @@
+{
+    "freeDeliveryMinOrderValue": 499,
+    "slotsInAdvance": 28,
+
+    "vehicleSlotStartTime": 9,
+    "vehicleSlotEndTime": 21,
+    "vehicleSlotSize": 2,
+    "vehicleDeliveryPerSlot": 2,
+
+    "panchshilDeliveryResourcePerSlot": 2,
+    "panchshilDeliveryPerSlot": 4,
+    "panchshilSlotStartTime": 9,
+    "panchshilSlotEndTime": 21,
+    "panchshilSlotSize": 2,
+
+    "deliverySlotsUnavailableInHours": 12
+}

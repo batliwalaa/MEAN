@@ -1,0 +1,41 @@
+[
+    {
+        "label": "Help",
+        "url": "",
+        "order": 0,
+        "childItems": [
+            { "label": "Faqs", "url": "" },
+            { "label": "Contact Us", "url": "" },
+            { "label": "Delivery", "url": "" },
+            { "label": "Returns", "url": "" },
+            { "label": "Sizing Guides", "url": "" },
+            { "label": "Our Shirt Multibuy", "url": "" }
+        ]
+    },
+    {
+        "label": "Legal",
+        "url": "",
+        "order": 1,
+        "childItems": [
+            { "label": "Terms & Conditions", "url": "" },
+            { "label": "Privacy Policy", "url": "" },
+            { "label": "Our Cookie Policy", "url": "" },
+            { "label": "Ethical Trading Policy", "url": "" },
+            { "label": "Modern Slavery Statement", "url": "" },
+            { "label": "Tax Strategy", "url": "" }
+        ]
+    },
+    { "label": "About Us", "order": 2, "url": "" },
+    {
+        "label": "More",
+        "url": "",
+        "order": 3,
+        "childItems": [
+            { "label": "Style Hints & Tips", "url": "" },
+            { "label": "Request a Catalogue", "url": "" },
+            { "label": "Refer a Friend", "url": "" },
+            { "label": "Gift Vouchers", "url": "" },
+            { "label": "Discounts", "url": "" }
+        ]
+    }
+]
