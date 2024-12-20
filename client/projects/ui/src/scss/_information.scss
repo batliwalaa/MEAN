@@ -1,0 +1,81 @@
+.control-row {
+    .control {
+        .information-icon {
+            display: none;
+
+            &:after {
+                content: 'i';
+                text-align: center;
+                position: absolute;
+                font-size: 1em;
+                font-style: italic;
+                border: $border;
+                width: 18px;
+                height: 18px;
+                border-radius: 50%;
+                right: 5px;
+                top: 16px;
+            }
+
+            &:hover,
+            &:focus {
+                color: $indicator-color;
+                cursor: pointer;
+
+                &:after {
+                    border-color: $indicator-color;
+                }
+            }
+        }
+
+        &[information='true'] .information-icon {
+            display: block;
+        }
+    }
+
+    .information {
+        position: absolute;
+        position: absolute;
+        left: -1px;
+        border: 1px solid $indicator-color;
+        padding: 7px 11px;
+        width: calc(100% + 2px);
+        z-index: 2;
+        background-color: #ecfce5;
+
+        &:after,
+        &:before {
+            content: ' ';
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-style: solid;
+            border-width: 0 7px 7px;
+        }
+
+        &:before {
+            border-color: transparent transparent $indicator-color;
+            right: 6px;
+            top: -8px;
+        }
+
+        &:after {
+            right: 6px;
+            top: -7px;
+            border-color: transparent transparent #ecfce5;
+        }
+
+        div {
+            margin-bottom: 4px;
+            padding: 0;
+            line-height: 1.2em;
+            text-indent: 1em;
+            color: #545454;
+            font-size: 0.85em;
+
+            &:first-child {
+                text-indent: unset;
+            }
+        }
+    }
+}

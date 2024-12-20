@@ -1,0 +1,184 @@
+@import '../../../../../ui/src/scss/variables';
+
+.main-container {
+    .widget-row {
+        position: relative;
+        background-color: lightgoldenrodyellow;
+        margin-bottom: 40px;
+        padding: 20px;
+        color: $text-color;
+        display: flex;
+        flex-direction: column;
+
+        .widget-title {
+            font-size: 11pt;
+            font-weight: 500;
+            margin-bottom: 10px;
+        }
+
+        .widget-item-container {
+            display: flex;
+            flex-wrap: wrap;
+            flex-direction: row;
+            justify-content: center;
+
+            .widget-item {
+                flex-basis: 50%;
+                margin-top: 20px;
+
+                &.item-link {
+                    cursor: pointer;
+                }
+
+                figure {
+                    cursor: pointer;
+                    text-align: center;
+                    margin: auto;
+
+                    img {
+                        margin: auto;
+                    }
+                }
+
+                .widget-item-title {
+                    font-size: 10pt;
+                    text-align: center;
+                    margin-bottom: 5px;
+                }
+            }
+        }
+
+        .widget-footer {
+            font-size: 10pt;
+            margin-top: 10px;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    .widget-flex {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+        .widget-title {
+            font-size: 11pt;
+            font-weight: 500;
+            text-align: center;
+            margin-top: 20px;
+            margin-bottom: 2px;
+        }
+
+        &:first-child {
+            .widget-title {
+                margin-top: unset;
+                margin-bottom: unset;
+            }
+        }
+
+        .widget-item-container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+
+            .widget-item {
+                width: 100%;
+                padding: 2.5px;
+
+                &.item-link {
+                    cursor: pointer;
+                }
+
+                figure {
+                    margin: 0;
+
+                    img {
+                        max-width: 100%;
+                        height: auto;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: $tablet-min-width) {
+    .main-container {
+        margin: 0 20px;
+    }
+}
+
+@media only screen and (min-width: 992px) {
+    .main-container {
+        margin: 0 auto;
+        width: 90%;
+
+        .widget-row {
+            display: flex;
+            flex-direction: column;
+
+            &::after {
+                content: ' ';
+                position: absolute;
+                right: 1%;
+                border-top: 2px solid;
+                top: calc(50% - 15px);
+                border-right: 2px solid;
+                width: 30px;
+                height: 30px;
+                background: transparent;
+                transform: rotate(45deg);
+                cursor: pointer;
+            }
+
+            .widget-item-container {
+                flex-wrap: unset;
+
+                .widget-item {
+                    flex-basis: auto;
+                    flex-grow: 1;
+
+                    figure {
+                        margin: unset;
+                    }
+                }
+            }
+        }
+
+        .widget-flex {
+            .widget-title {
+                font-size: 15pt;
+                margin-top: 50px;
+                margin-bottom: 5px;
+            }
+
+            .widget-item-container {
+                .widget-item {
+                    padding: 5px;
+                }
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: 1152px) {
+    .main-container {
+        margin: 0 auto;
+        width: 85%;
+    }
+}
+
+@media only screen and (min-width: 1252px) {
+    .main-container {
+        margin: 0 auto;
+        width: 80%;
+
+        .widget-row {
+            &::after {
+                right: 1.5%;
+            }
+        }
+    }
+}

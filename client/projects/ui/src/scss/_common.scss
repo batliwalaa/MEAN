@@ -1,0 +1,130 @@
+html {
+    font-size: 14.5px;
+}
+body {
+    margin: 0;
+    width: 100vw;
+    font-family: "Poppins", "Open Sans", 'Helvetica Neue', sans-serif;
+    overflow-x: hidden;
+}
+li,
+a {
+    cursor: pointer;
+}
+
+*:focus {
+    outline: none;
+}
+
+a:hover,
+a:active {
+    text-decoration: none;
+}
+
+.icon {
+    font-size: $mobile-icon-size;
+}
+
+.regular-text {
+    font-size: $font-size;
+}
+
+.medium-text {
+    font-size: $font-size;
+    color: $text-color;
+}
+
+.small-text {
+    font-size: $font-size;
+    color: $text-color;
+}
+
+input,
+select {
+    height: $mobile-input-height;
+    padding: 3px 6px;
+}
+
+.footer {
+    li.footer-item a {
+        color: #555;
+        font-weight: 500;
+        font-size: 1.25rem;
+    }
+}
+
+li {
+    a {
+        color: $menu-color;
+    }
+
+    &.list-header {
+        color: $bright-green;
+    }
+}
+
+figure {
+    display: flex;
+    flex-direction: column;
+}
+
+.company-logo,
+.company-logo-small {
+    color: $bright-green;
+    font-family: "Poppins", "Open Sans", 'Helvetica Neue', sans-serif;    
+    // border-bottom: 3px solid goldenrod;
+    font-size: 1.8em;
+}
+
+.grecaptcha-badge {
+    opacity: 0;
+}
+
+.currency-symbol {
+    font-size: $font-size;
+}
+
+.hidden {
+    display: none!important;
+}
+
+@media only screen and (min-width: $tablet-min-width) {
+    html,
+    body {
+        margin-left: 0;
+        margin-right: 0;
+        width: 100vw;
+    }
+
+    * {
+        &.icon {
+            font-size: $tablet-icon-size;
+        }
+
+        &.regular-text {
+            font-size: $font-size;
+        }
+
+        &.medium-text {
+            color: $text-color;
+            font-size: $font-size;
+        }
+
+        &.small-text {
+            color: $text-color;
+            font-size: $font-size;
+        }
+    }
+
+    input,
+    select {
+        height: $tablet-input-height;
+        padding: 3px 6px;
+    }
+}
+
+@media only screen and (min-width: $desktop-min-width) {
+    .checkout-container {
+        max-width: 55rem !important;
+    }
+}

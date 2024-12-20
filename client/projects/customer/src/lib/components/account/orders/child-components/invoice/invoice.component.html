@@ -1,0 +1,15 @@
+<a 
+    class="down-arrow"
+    (click)="onInvoiceClick()"
+    (outsideClick)="show = false"
+>
+    {{metadata && metadata.documents && metadata.documents.label}}
+    <div *ngIf="show" class="invoice-dropdown">
+        <ul>
+            <li (click)="onInvoiceViewClick($event)">{{metadata && metadata.invoice && metadata.invoice.label}}</li>
+            <ng-container *ngIf="showCreditNote">
+                <li (click)="onCreditNoteClick($event)">{{metadata && metadata.creditNote && metadata.creditNote.label}}</li>
+            </ng-container>
+        </ul>
+    </div>
+</a>

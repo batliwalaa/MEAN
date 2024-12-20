@@ -1,0 +1,15 @@
+@import '../../../../../../../ui/src/scss/variables';
+
+.group-label {
+    display: none;
+    color: $highlight;
+    font-weight: 450;
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
+.item-container:not(:first-child) {
+    margin-top: 20px;
+    border-top: 1px solid whitesmoke;
+    padding-top: 20px;
+}

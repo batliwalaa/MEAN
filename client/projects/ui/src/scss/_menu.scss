@@ -1,0 +1,11 @@
+ui-hamburger-menu {
+    .child-container {
+        background-color: $hamburger-menu-background-color;
+        color: $hamburger-menu-color;
+        height: calc(100% - 55px);
+
+        .child-toolbar {
+            color: $highlight;
+        }
+    }
+}

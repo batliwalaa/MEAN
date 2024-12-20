@@ -1,0 +1,5 @@
+<div class="add-to-basket-container">   
+    <ui-add-to-shoppingcart [metadata]="metadata" [item]="item" [quantity]="quantity" (addToBasket)="onAddToBasket()"></ui-add-to-shoppingcart>
+
+    <div [hidden]='!disable' class="overlay"></div>
+</div>

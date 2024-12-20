@@ -1,0 +1,24 @@
+<div class="tab-mobile">
+    <div class="month">{{ month }}</div>
+    <div class="week-container">
+        <span [hidden]="selectedTabItemIndex === 0" class="navigation" (click)="onNavigateClick('l')"
+            ><i class="material-icons left">chevron_left</i></span
+        >
+        <span [hidden]="selectedTabItemIndex !== 0" class="navigation"></span>
+        <div class="week-day">
+            <div class="week-item" *ngFor="let currentDay of tabs[selectedTabItemIndex].days">
+                <span class="week-item-weekday">{{ currentDay.weekday }}</span>
+                <span
+                    [ngClass]="selectedOrCurrentDayClass(currentDay)"
+                    (click)="onDayClick(currentDay)"
+                    class="week-item-date"
+                    >{{ currentDay.day }}</span
+                >
+            </div>
+        </div>
+        <span [hidden]="selectedTabItemIndex === tabs.length - 1" class="navigation" (click)="onNavigateClick('r')"
+            ><i class="material-icons right">chevron_right</i></span
+        >
+        <span [hidden]="selectedTabItemIndex !== tabs.length - 1" class="navigation"></span>
+    </div>
+</div>

@@ -1,0 +1,31 @@
+@import '../../../../../../../ui/src/scss/variables';
+
+.radio-container {
+    position: relative;
+    height: 100%;
+
+    .control-row {
+        margin-top: unset;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: -15px;
+    }
+}
+
+.control-row .control {
+    border: $border-transparent;
+
+    &.disabled {
+        div.radio-small,
+        div.radio {
+            border: $disabled-border;
+        }
+
+        span.radio-small,
+        span.radio {
+            border: $disabled-border;
+            background-color: $disabled-color;
+        }
+    }
+}

@@ -1,0 +1,195 @@
+@import '../../../../../../ui/src/scss/variables';
+
+.container {
+    margin-bottom: 40px;
+
+    .error {
+        margin-bottom: 20px;
+    }
+
+    .value {
+        color: #aa1b04;
+        font-weight: normal;
+    }
+
+    .title {
+        margin: 16px 0;
+        color: #555;
+        font-size: 1.5em;
+        font-weight: 600;
+    }
+
+    .section-title {
+        font-size: 1.1em;
+        font-weight: bold;
+        margin-bottom: 7px;
+        color: $text-color;        
+    }
+
+    .address-slot-section {
+        display: grid;
+        grid-auto-flow: row;
+        justify-content: stretch;
+        justify-items: stretch;
+        align-items: stretch;
+        row-gap: 20px;
+        margin-bottom: 20px;
+
+        .item {
+            font-size: 1rem;
+            line-height: 1.2rem;
+            color: #777;
+        }
+
+        .free {
+            color: $success-text-color;
+        }
+    }
+
+    .order-items-section {
+        margin-bottom: 20px;
+
+        ul {
+            font-size: small;
+            color: #777;
+
+            li {
+                display: grid;
+                grid-auto-flow: column;
+                grid-template-columns: 50px auto;
+                column-gap: 10px;
+                border: 1px solid transparent;
+                border-top: 1px solid #f1f1f1;
+                padding: 10px;
+
+                &:first-child {
+                    border-top: 1px solid transparent;
+                }
+
+                div {
+                    justify-self: left;
+                    align-self: center;
+
+                    &.item-description {
+                        font-size: 0.9rem;;
+                    }
+
+                    img {
+                        width: 50px;
+                    }
+    
+                    span {
+                        display: block;
+                        line-height: 17px;
+                    }
+                }                
+            }
+        }
+    }
+
+    .order-loyalty-section {        
+        margin-bottom: 20px;
+        border: 1px solid transparent;
+        border-top: 1px solid #c0c0c0;
+        border-bottom: 1px solid #c0c0c0;
+        padding: 11px;
+        display: grid;
+        grid-auto-flow: row;
+        row-gap: 20px;
+
+        .order-total-section {
+            text-align: right;
+            display: grid;
+            grid-auto-flow: row;
+            grid-template-columns: auto 80px;
+
+            div:last-child,
+            div.total {
+                margin-top: 10px;
+            }
+        }
+
+        .loyalty-gained-section {
+            color: #777;
+
+            .points-gain {
+                span {
+                    color: $success-text-color;
+                }
+            }
+        }
+
+        div {
+            font-size: 0.85em;
+            line-height: 17px;
+
+            &.delivery-charge,
+            &.points-to-redeem,
+            &.total,
+            &.sub-total {
+                font-weight: bold;
+                color: #777;
+            }
+
+            &.points-to-redeem {
+                input {
+                    border: 1px solid #c0c0c0;
+                    height: 20px;
+                    width: 45px;
+                    font-size: 1em;
+                }
+            }
+        }
+
+    }
+
+    .change {
+        margin: 20px;
+        font-size: 0.9em;
+        font-weight: 500;
+        color: $text-color;
+        cursor: pointer;
+        color: blue;
+
+        a:hover {
+            text-decoration: underline;
+        }
+    }
+
+    .btn {
+        margin-bottom: 40px;
+    }
+
+    .acceptance {
+        margin-top: 20px;
+        font-size: 0.8em;
+        padding-top: 10px;
+        border-top: 3px solid #f1f1f1;
+    }
+}
+
+@media only screen and (min-width: $tablet-min-width) {
+    .address-slot-section {
+        grid-auto-flow: column;
+        row-gap: unset;
+        grid-template-columns: 1fr 1fr;
+        
+        ui-address-preview-component {
+            .address {
+                ::ng-deep & {
+                    justify-self: left;
+                }                
+            }
+        }
+
+        .slot {
+            justify-self: end;
+        }
+    }
+
+    .order-loyalty-section {
+        grid-auto-flow: column;
+        row-gap: unset;
+        grid-template-columns: auto 200px;
+    }
+}

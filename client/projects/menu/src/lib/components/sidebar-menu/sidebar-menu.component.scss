@@ -1,0 +1,90 @@
+@import '../../../../../ui/src/scss/variables';
+
+.container {
+    display: none;
+}
+
+@media only screen and (min-width: $tablet-min-width) {
+    .container {
+        margin: 10px 20px;
+        font-size: $font-size;
+        display: block;
+
+        .previous {
+            cursor: pointer;
+            color: $highlight;
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        ul {
+            list-style: none;
+
+            li {
+                color: $text-color;
+
+                &.list-header {
+                    font-weight: 500;
+                    margin-bottom: 7px;
+                    cursor: default;
+                    text-transform: capitalize;
+                    color: $bright-green;
+                    font-size: 0.9rem;
+                }
+
+                &.sub-list-header {
+                    font-weight: 500;
+                    margin-left: 10px;
+                    margin-top: 10px;
+                    margin-bottom: 3px;
+                    cursor: default;
+
+                    a {
+                        cursor: default;
+                    }
+                }
+
+                &.nav-item {
+                    margin-left: 10px;
+                    padding: 2px;
+
+                    &:hover a {
+                        color: $highlight;
+                    }
+
+                    &.checkbox {
+                        margin-left: 15px;
+                        line-height: 18px;
+                    }
+
+                    &.list-item {
+                        margin-left: 17px;
+                    }
+                }
+
+                &.clear {
+                    color: $highlight;
+                    font-weight: 500;
+                    margin-left: 0;
+                    margin-top: -8px;
+                }
+
+                &.selected a {
+                    color: $highlight;
+                }
+                a {
+                    color: $text-color;
+                    position: relative;
+                    font-size: 0.8rem;
+
+                    &.checkbox i {
+                        position: absolute;
+                        font-size: 15px;
+                        left: -20px;
+                        top: 2px;
+                    }
+                }
+            }
+        }
+    }
+}

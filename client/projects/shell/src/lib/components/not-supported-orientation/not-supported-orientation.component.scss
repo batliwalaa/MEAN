@@ -1,0 +1,26 @@
+@import '../../../../../ui/src/scss/variables';
+
+.container {
+    background-color: $quaternary-color;
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+
+    img,
+    div {
+        left: 50%;
+        position: absolute;
+        top: calc(50% - 50px);
+    }
+
+    div {
+        font-weight: 500;
+        font-size: 1rem;
+        transform: translate(-50%, -50%);
+    }
+
+    img {
+        width: 80px;
+        transform: translate(-50%, -175%);
+    }
+}

@@ -1,0 +1,56 @@
+@if (show)
+{
+    <div class="control-row">
+        <div
+            uiRecaptcha
+            [action]="metadata && metadata.decrement && metadata.decrement.action"
+            class="button-minus"
+            (execute)="onDecrement()"
+        >
+            <i class="material-icons">remove</i>
+        </div>
+        <div class="control" [attr.information]="metadata && metadata.information && metadata.information.length > 0">
+            <input
+                uiCheckIsValid
+                [type]="type"
+                readonly
+                #inputControl
+                [id]="id"
+                #model="ngModel"
+                [(ngModel)]="data"
+                [ngClass]="'has-value'"
+                autocomplete="nope"
+                [min]="min"
+                [max]="max"
+            />
+            <label [ngClass]="ignoreMediaQueries ? 'ignore' : ''">
+                {{ metadata && metadata.label }}
+                @if (metadata && metadata.validators && metadata.validators.required === '')
+                {
+                    <span>*</span>
+                }                
+            </label>
+            <div class=""></div>
+            <span class="optional-text">{{ metadata && metadata.optionalText }}</span>
+            <a class="information-icon" (click)="onShowInfoIconClick()" (outsideClick)="showInfo = false"></a>
+    
+            <div class="information" [hidden]="!showInfo">
+                @for (text of metadata && metadata.information; track text;)
+                {
+                    <div>{{ text }}</div>
+                }
+            </div>
+            <div class="background"></div>
+            <div class="inner-text">{{ metadata && metadata.qty && metadata.qty.label }}</div>
+        </div>
+        <div
+            uiRecaptcha
+            [action]="metadata && metadata.increment && metadata.increment.action"
+            class="button-add"
+            (execute)="onIncrement()"
+        >
+            <i class="material-icons">add</i>
+        </div>
+    </div>
+}
+

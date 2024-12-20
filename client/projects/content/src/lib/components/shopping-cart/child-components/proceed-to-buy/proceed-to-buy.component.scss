@@ -1,0 +1,39 @@
+@import '../../../../../../../ui/src/scss/variables';
+
+.container {
+    .basket-total {
+        color: $price-color;
+
+        .currency-symbol {
+            vertical-align: baseline;
+            font-weight: 500;
+        }
+
+        span:first-child {
+            color: $text-color;
+        }
+    }
+
+    .btn {
+        margin-top: 7px;
+        font-size: 1em;
+    }
+}
+
+@media only screen and (min-width: 450px) {
+    .container {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+
+        .basket-total {
+            padding-top: 8px;
+        }
+
+        .btn {
+            width: 190px;
+            align-self: flex-end;
+            margin-left: 10px;
+        }
+    }
+}

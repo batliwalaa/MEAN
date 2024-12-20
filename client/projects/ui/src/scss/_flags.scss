@@ -1,0 +1,41 @@
+@import './mixins';
+
+.flag-container {
+    width: 60px;
+    height: 40px;
+    padding: 8px 15px;
+    padding-left: 5px;
+    margin-top: 3px;
+    border: 1px solid transparent;
+    position: relative;
+
+    &:hover {
+        border: 1px solid #f1f1f1;
+    }
+
+    &:after {
+        @include down-arrow(5px, 12px);
+    }
+
+    .flag {
+        position: relative;
+        width: 30px;
+        height: 19px;
+        background-repeat: no-repeat;
+        background-size: contain;
+
+        &.india {
+            background-image: url("/assets/images/flags/india.png");
+        }
+
+        &.uk {
+            background-image: url("/assets/images/flags/uk.png");
+        }
+    }
+
+    ui-language-selector-component {
+        position: absolute;
+        left: -1px;
+        top: 38px;
+    }
+}

@@ -1,0 +1,67 @@
+<div class="item-wrapper">
+    <div class="item-container" #itemContainer >
+        @if (item.bestSeller) 
+        {
+            <div class="best-seller">
+                <span>{{ metadata && metadata.bestSeller && metadata.bestSeller.label }}</span>
+            </div>
+        }
+
+        <figure (click)="onItemClick()">
+            <img [src]="imageUrl" />
+        </figure>
+        <div (click)="onItemClick()" class="description">{{getBrand()}}{{item.title}}</div>
+
+        @if (hasSizePack(item.details)) 
+        {
+            <div class="size">{{ getSizePack(item.details) }}</div>
+        }
+        @else 
+        {
+            <div class="size">
+                <span class="info">{{metadata && metadata.sizeNotAvailable && metadata.sizeNotAvailable.label}}</span>
+            </div>
+        }
+
+        <ui-pricing-component [metadata]="metadata" [pricing]="item.pricing"></ui-pricing-component>
+
+        @for(detail of item.details; track $index) 
+        {
+            @if (isSpeciality(detail.title))
+            {
+                <div class="speciality">
+                    @if (detail.value === 'Vegetarian')
+                    {
+                        <span class="veg-symbol">V</span>
+                        <span class="pre-text" >{{metadata && metadata.suitableFor && metadata.suitableFor.label}}</span>
+                    }
+                    <span class="text">{{ detail.value }}</span>
+                </div>
+            }
+        }
+        
+        @if (showCountryOfOrigin) 
+        {
+            <div class="country-container">
+                {{ metadata && metadata.countryOfOrigin && metadata.countryOfOrigin.label }}:
+                <span class="country">{{ item.country }}</span>
+            </div>
+        }
+
+        @if (item.reviewSummary) 
+        {
+            @if (showReviews)
+            {
+                <ui-rating-review-component (reviewClick)="showReviewSummary = !showReviewSummary" [reviewSummary]="item.reviewSummary" [metadata]="metadata && metadata.starReview"></ui-rating-review-component>
+            }
+            @if (item && item.reviewSummary && showReviewSummary)
+            {
+                <div class="review-summary">                
+                    <ui-review-summary-component [reviewSummary]="item.reviewSummary" [metadata]="metadata && metadata.reviewSummary"></ui-review-summary-component>
+                </div>
+            }            
+        }
+    </div>
+
+    <ui-add-to-shoppingcart-quantity [metadata]="metadata" [item]="item"></ui-add-to-shoppingcart-quantity>
+</div>

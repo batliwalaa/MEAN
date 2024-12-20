@@ -1,0 +1,49 @@
+@import '../../../../../../ui//src/scss/variables';
+
+.container {
+    position: relative;
+    background-color: #fff;
+    padding: 11px;
+    font-size: 0.85em;
+
+    .number-of-reviews,
+    .average-rating {
+        margin-bottom: 11px;
+    }
+
+    .rating-summary {
+        padding: 5px;
+        width: 100%;
+
+        .summary-line {
+            margin-bottom: 5px;
+            width: 100%;
+            display: grid;
+            grid-auto-flow: row;
+            grid-template-columns: 30% 45% 15%;
+            column-gap: 5%;
+            align-items: center;
+
+            .percent {
+                border: 1px inset #f1f1f1;
+                height: 10px;
+                background: linear-gradient(90deg, #fc0 var(--percent), #fff var(--percent));
+            }
+        }
+    }
+
+    .all-reviews {
+        border-top: 1px solid #f1f1f1;
+        margin-top: 10px;
+        padding: 11px;
+        text-align: center;
+        background-color: #fafafa;
+        color: #777;
+        font-size: 1rem;
+        cursor: pointer;
+
+        &:hover {
+            background-color: #f1f1f1;
+        }
+    }
+}

@@ -1,0 +1,105 @@
+@if (showBack)
+{
+    <div class="go-back" >
+        <button class="btn btn-light btn-text-left" [routerLink]="backLink">
+            {{ metadata && metadata.back && metadata.back.label }}
+        </button>
+        <i class="material-icons">chevron_left</i>
+    </div>
+}
+<div [uiCheckAllInputsValid]="inputValidatorInitialiser" class="address-container">
+    <div class="title">{{metadata && metadata.address && metadata.address.section }}</div>
+
+    @if (hasErrors)
+    {
+        <div class="error">
+            <span>{{ metadata && metadata.errorHeader && metadata.errorHeader.label }}</span>
+            
+            @for(e of errors; track e;)
+            {
+                <span>{{ e.key | titlecase }}: {{ e.error }}</span>
+            }
+        </div>
+    }
+
+    <div class="section-container">
+        <ui-address-entry
+            [address]="address"
+            [metadata]="metadata.address"
+            [states]="states"
+            (addressChange)="onAddressChange($event)"
+        ></ui-address-entry>
+    </div>
+    @if (metadata && metadata.additionalDeliveryInstructions)
+    {
+        <ng-container *ngTemplateOutlet="additionalInstructionsTemplate"></ng-container>
+    }
+        
+    @if (metadata && metadata.accessCode)
+    {
+        <ng-container *ngTemplateOutlet="accessCodeTemplate"></ng-container>
+    }
+
+    @if (metadata && metadata.setDefaultAddress)
+    {
+        <ng-container *ngTemplateOutlet="defaultAddressTemplate"></ng-container>
+    }
+
+    <div class="section-container">
+        <button
+            uiRecaptcha
+            [action]="metadata && metadata.continue && metadata.continue.action"
+            class="btn btn-primary"
+            [disabled]="!isValid"
+            (execute)="onSubmitClick()"
+        >
+            {{ metadata && metadata.continue && metadata.continue.label }}
+        </button>
+    </div>
+
+    @if (acceptance && acceptance.statement)
+    {
+        <div class="acceptance">
+            <ng-container *ngTemplateOutlet="statementTemplate; context: acceptance"></ng-container>
+        </div>
+    }
+</div>
+
+<ng-template #statementTemplate let-statement="statement">
+    <ui-statement-component [metadata]="statement"></ui-statement-component>
+</ng-template>
+
+<ng-template #additionalInstructionsTemplate>
+    <div class="section-container">
+        <div class="section-title">
+            {{ metadata.additionalDeliveryInstructions.label }}
+        </div>
+        <div class="text">{{ metadata.additionalDeliveryInstructions.text }}</div>
+        <ui-textarea-component
+            name="instructions"
+            [metadata]="metadata.additionalDeliveryInstructions.instructions"
+            (valueChange)="onValueChange($event)"
+        ></ui-textarea-component>
+    </div>
+</ng-template>
+
+<ng-template #accessCodeTemplate>
+    <div class="section-container">
+        <div class="section-title">{{ metadata.accessCode.label }}</div>
+        <ui-textbox-component
+            name="code"
+            [metadata]="metadata.accessCode.code"
+            (valueChange)="onValueChange($event)"
+        ></ui-textbox-component>
+    </div>
+</ng-template>
+
+<ng-template #defaultAddressTemplate>
+    <div class="section-container">
+        <ui-checkbox-component
+            [metadata]="metadata.setDefaultAddress"
+            name="isDefaultAddress"
+            (valueChange)="onValueChange($event)"
+        ></ui-checkbox-component>
+    </div>
+</ng-template>

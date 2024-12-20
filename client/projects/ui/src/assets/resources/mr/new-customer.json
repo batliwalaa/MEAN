@@ -1,0 +1,155 @@
+{
+    "header": {
+        "label": "Create Account"
+    },
+    "errorHeader": {
+        "label": "Please resolve the issues and continue."
+    },
+    "firstName": {
+        "label": "First name",
+        "pattern": "^[0-9\\ \\u00B4\\u0041-\\u005A\\u005F\\u0061-\\u007A\\u00C0-\\u0233\\u0250-\\u02AD\\u1E00-\\u1EF9\\uFB00-\\uFB06\\uFF20-\\uFF2A\\uFF41-\\uFF4A\\u002D\\u002E]*$",
+        "maxLength": "100",
+        "optionalText": "max 100 characters",
+        "validators": {
+            "required": "",
+            "pattern": ""
+        },
+        "error": {
+            "required": "First name is required",
+            "pleaseEnterValidCharacters": "Please enter valid characters."
+        }
+    },
+    "lastName": {
+        "label": "Last name",
+        "pattern": "^[0-9\\ \\u00B4\\u0041-\\u005A\\u005F\\u0061-\\u007A\\u00C0-\\u0233\\u0250-\\u02AD\\u1E00-\\u1EF9\\uFB00-\\uFB06\\uFF20-\\uFF2A\\uFF41-\\uFF4A\\u002D\\u002E]*$",
+        "maxLength": "250",
+        "optionalText": "max 250 characters",
+        "validators": {
+            "required": "",
+            "pattern": ""
+        },
+        "error": {
+            "required": "Last name is required",
+            "pleaseEnterValidCharacters": "Please enter valid characters."
+        }
+    },
+    "email": {
+        "label": "Email Address",
+        "pattern": "(?:[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*|&#34;(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21\\x23-\\x5b\\x5d-\\x7f]|\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])*&#34;)@(?:(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?|\\[(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?|[a-z0-9-]*[a-z0-9]:(?:[\\x01-\\x08\\x0b\\x0c\\x0e-\\x1f\\x21-\\x5a\\x53-\\x7f]|\\\\[\\x01-\\x09\\x0b\\x0c\\x0e-\\x7f])+)\\])",
+        "maxLength": "100",
+        "optionalText": "max 100 characters",
+        "validators": {
+            "pattern": ""
+        },
+        "error": {
+            "pleaseEnterValidCharacters": "Please enter valid email address."
+        }
+    },
+    "isoNumberOptions": {
+        "options": {
+            "defaultValue": "+44"
+        }
+    },
+    "mobile": {
+        "label": "Mobile number",
+        "pattern": "[0-9]+",
+        "minLength": "10",
+        "maxLength": "10",
+        "optionalText": "10 characters",
+        "validators": {
+            "required": "",
+            "pattern": "",
+            "maxLength": "",
+            "minLength": ""
+        },
+        "error": {
+            "required": "Mobile number is required",
+            "pleaseEnterValidCharacters": "Please enter valid mobile number.",
+            "minLength": "Please enter valid mobile number.",
+            "maxLength": "Please enter valid mobile number."
+        }
+    },
+    "passwordInformation": [
+        "Strengthen your password by using a mixture of:",
+        "Numbers",
+        "Uppercase letters",
+        "Lowercase letters",
+        "!”#$%&‘()*+,-./:;<=>?_@[\\]^`{|}~"
+    ],
+    "password": {
+        "label": "Password",
+        "pattern": "(?:(?!(^(password|contrasena|passwort|kodeord|losenord|passord|parola|haslo|palavrapasse)$))^[0-9A-Za-z_\\u0021-\\u002F\\u003A-\\u0040\\u005B-\\u005E\\u0060\\u007B-\\u007E]*$)",
+        "maxLength": "32",
+        "minLength": "8",
+        "optionalText": "8-32 characters",
+        "otherControlName": "confirmPassword",
+        "validators": {
+            "required": "",
+            "pattern": "",
+            "maxLength": "",
+            "minLength": ""
+        },
+        "error": {
+            "required": "Password is required",
+            "pleaseEnterValidCharacters": "Please enter valid characters.",
+            "minLength": "Please enter valid characters.",
+            "maxLength": "Please enter valid characters."
+        }
+    },
+    "confirmPassword": {
+        "label": "Confirm password",
+        "validateEqualControl": "password",
+        "validators": {
+            "validateEqual": ""
+        },
+        "error": {
+            "validateEqual": "Password should match"
+        }
+    },
+    "acceptance": {
+        "controlType": "acceptance",
+        "statement": [
+            { "type": "text", "text": "By creating an account you confirm that you agree to amreetbazaar's " },
+            {
+                "type": "link",
+                "text": "Terms & Conditions",
+                "url": "./termsandconditions",
+                "newWindow": true
+            },
+            { "type": "text", "text": ". Please see our " },
+            {
+                "type": "link",
+                "text": "Privacy Policy",
+                "url": "./privacypolicy",
+                "newWindow": true
+            },
+            { "type": "text", "text": " and our " },
+            {
+                "type": "link",
+                "text": "Cookie Policy",
+                "url": "./cookiepolicy",
+                "newWindow": true
+            }
+        ]
+    },
+    "alreadyHaveAccount": {
+        "controlType": "alreadyHaveAccount",
+        "statement": [
+            { "type": "text", "text": "Already have an account? " },
+            {
+                "type": "link",
+                "text": "Sign in",
+                "url": "./signin"
+            }
+        ]
+    },
+    "errorMessages": [
+        {
+            "key": "validateUsername",
+            "text": "account with username already exists."
+        }
+    ],
+    "createYourAccount": {
+        "label": "Create your account"
+    }
+}

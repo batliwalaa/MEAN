@@ -1,0 +1,31 @@
+{
+    "settings": {
+        "label": "Settings"
+    },
+    "language": {
+        "label": "Language",
+        "options": ["English"]
+    },
+    "signOut": {
+        "label": "Sign Out"
+    },
+    "signIn": {
+        "label": "Sign In"
+    },
+    "hello": {
+        "label": "Hello"
+    },    
+    "notRegistered": {
+        "label": "Not Registered"
+    },
+    "createAccount": {
+        "label": "create account"
+    },
+    "accountOptions": [
+        { "label": "My Account", "key": "AccountHome" },
+        { "label": "My Orders", "key": "AccountOrders" },
+        { "label": "My Addresses", "key": "AccountAddresses" },
+        { "label": "My Profile", "key": "AccountProfile" },
+        { "label": "My Loyalty Points", "key": "AccountLoyaltyPoints" }
+    ]
+}

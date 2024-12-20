@@ -1,0 +1,46 @@
+<div class="container address">
+    @if(metadata && metadata.address)
+    {
+        <div class="section-title">{{metadata.address.label}}</div>
+    }
+    @if(deliveryAddress)
+    {
+        @if (!compact)
+        {
+            @if(deliveryAddress.addressLine1)
+            {
+                <div class="item address-item">{{deliveryAddress.addressLine1}}</div>
+            }
+            @if(deliveryAddress.addressLine2)
+            {
+                <div class="item address-item">{{deliveryAddress.addressLine2}}</div>
+            }
+            @if(deliveryAddress.addressLine3)
+            {
+                <div class="item address-item">{{deliveryAddress.addressLine3}}</div>
+            }
+        }
+        @if(compact)
+        {
+            <div class="item address-item">
+                {{deliveryAddress.addressLine1}}{{(deliveryAddress.addressLine2 ? ', ' + deliveryAddress.addressLine2 : '' )}}{{(deliveryAddress.addressLine3 ? ', ' + deliveryAddress.addressLine3 : '' )}}        
+            </div>
+        }
+        @if(deliveryAddress.town)
+        {
+            <div class="item address-item">{{deliveryAddress.town}}</div>
+        }
+        @if(deliveryAddress.state)
+        {
+            <div class="item address-item">{{deliveryAddress.state}}</div>
+        }
+        @if(deliveryAddress.postcode)
+        {
+            <div class="item address-item">{{deliveryAddress.postcode}}</div>
+        }
+        @if(deliveryAddress.country)
+        {
+            <div class="item address-item">{{deliveryAddress.country}}</div>
+        }  
+    }
+</div>

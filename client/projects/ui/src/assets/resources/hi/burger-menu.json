@@ -1,0 +1,36 @@
+{
+    "settings": {
+        "label": "Settings"
+    },
+    "language": {
+        "label": "Language",
+        "options": ["English"]
+    },
+    "signOut": {
+        "label": "Sign Out"
+    },
+    "signIn": {
+        "label": "Sign In"
+    },
+    "hello": {
+        "label": "Hello"
+    },
+    "myAccount": {
+        "label": "My Account"
+    },
+    "myOrders": {
+        "label": "My Orders"
+    },
+    "myLoyaltyPoints": {
+        "label": "My Loyalty Points"
+    },
+    "myProfile": {
+        "label": "My Profile"
+    },
+    "notRegistered": {
+        "label": "Not Registered"
+    },
+    "createAccount": {
+        "label": "create account"
+    }
+}

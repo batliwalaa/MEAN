@@ -1,0 +1,22 @@
+<div class="subMenu"><router-outlet name="submenu"></router-outlet></div>
+<div
+    [ngClass]="{
+        'main-container': showSidebar,
+        'main-nosidebar-container': !showSidebar
+    }"
+>
+    @if (showSidebar)
+    {
+        <div class="sidebar"><router-outlet name="sidebar"></router-outlet></div>
+    }
+
+    @if (items)
+    {
+        <div class="list-items" #listItems>
+            @for (item of items; track item;)
+            {
+                <ui-item-container-component [metadata]="metadata" [query]="query" [item]="item"></ui-item-container-component>
+            }
+        </div>
+    }
+</div>

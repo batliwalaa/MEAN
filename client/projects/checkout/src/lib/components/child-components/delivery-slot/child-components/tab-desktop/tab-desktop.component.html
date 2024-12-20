@@ -1,0 +1,15 @@
+<div class="container">
+    @if (tabs)
+    {
+        <div class="tabs">
+            @for (tab of tabs; track tab; let idx = $index;)
+            {
+                <span
+                    class="tab"
+                    [ngClass]="{ selected: tab.selected }"
+                    (click)="onNavigateClick(idx)"
+                >{{ tab.label }}</span>
+            }
+        </div>
+    }    
+</div>

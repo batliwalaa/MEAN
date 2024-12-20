@@ -1,0 +1,68 @@
+@import '../../../../../../../ui/src/scss/variables';
+@import '../../../../../../../ui/src/scss/mixins';
+
+.container {
+    @include non-content-container;
+    color: $text-color;
+    padding: 0 10px;
+
+    .mobile-container {
+        --order-info-grid-template-columns: 1fr;
+    }
+
+    .desktop-container {
+        --order-info-grid-template-columns: 1fr 2fr 1fr;
+    }
+
+    .header {
+        color: #333;
+        font-weight: 600;
+        font-size: 1.5rem;
+    }
+
+    .order-info {
+        margin-top: 20px;
+        display: grid;
+        grid-auto-flow: row;
+        grid-template-columns: var(--order-info-grid-template-columns);
+        column-gap: 10px;
+        justify-content: stretch;
+        row-gap: 10px;
+     
+        .order-invoice {
+            justify-self: right;
+
+            ui-order-invoice-component {
+                a {
+                    ::ng-deep & {
+                        font-size: 1rem;
+                        font-weight: 500;
+                        padding: 5px 20px 5px 5px;
+                    }  
+                    
+                    &:after {
+                        ::ng-deep & {
+                            right: 5px;
+                            bottom: 8px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .order-date,
+        .order-number {
+            font-size: 0.9rem;
+            color: #555;
+
+            span {
+                font-weight: 500;
+
+                &:not(:first-child) {
+                    margin-left: 10px;
+                    font-weight: normal;
+                }
+            }
+        }
+    }
+}

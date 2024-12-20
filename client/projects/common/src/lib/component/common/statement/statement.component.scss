@@ -1,0 +1,16 @@
+@import '../../../../../../ui//src/scss/variables';
+
+.statement-container {
+    text-align: left;
+    line-height: 15px;
+
+    .statement-link {
+        cursor: pointer;
+        font-size: 0.85em;
+        font-weight: 500;
+
+        a {
+            color: $highlight;
+        }
+    }
+}

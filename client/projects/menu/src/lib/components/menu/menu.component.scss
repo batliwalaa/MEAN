@@ -1,0 +1,158 @@
+@import '../../../../../ui/src/scss/variables';
+
+.desktop-container {
+    display: none;
+
+    --navbar-height: 42px;
+    --navbar-nav-height: 70px;
+    --font-size: $font-size;
+    --nav-item-height: 38px;
+    --nav-item-width: unset;
+    --nav-item-border-radius: 5px;
+    --white-space: nowrap;
+    --navbar-background-color: #709e03;
+    --nav-item-opacity: 1;
+    --nav-item-span-color: #fff;
+    --nav-item-letter-spacing: 0.5px;
+    --nav-item-font-size: 1rem;
+    --nav-item-span-position: static;
+}
+
+.mobile-container {
+    --navbar-height: 80px;
+    --navbar-nav-height: 85px;
+    --font-size: $font-size;
+    --nav-item-height: 68px;
+    --nav-item-width: 68px;
+    --nav-item-border-radius: 34px;
+    --white-space: normal;
+    --navbar-background-color: #fff;
+    --nav-item-opacity: 0.5;
+    --nav-item-span-color: #000;
+    --nav-item-letter-spacing: normal;
+    --nav-item-font-size: 0.75rem;
+    --nav-item-span-position: absolute;
+
+    .navbar {
+        .navbar-nav * {
+            background-color: transparent;
+            color: $menu-color;
+        }
+    }
+
+    .nav-item {
+        &.fruits {
+            background-color: #c0f3c0;            
+        }
+
+        &.dairy {
+            background-color: #f5f3f3;
+        }
+
+        &.bakery {
+            background-color: #c68958;
+        }
+
+        &.daily {
+            background-color: #c9c9f3;
+        }
+
+        &.beverages {
+            background-color: #ffd1d1;
+        }
+
+        &.snacks {
+            background-color: #f7b78b;
+        }
+
+        &.personal {
+            background-color: #f7f7ca;
+        }
+
+        &.home {
+            background-color: #f3dbba;
+        }
+
+        &.baby {
+            background-color: pink;
+        }
+    }
+}
+
+.navbar {
+    overflow-y: hidden;
+    color: #fff;
+    border: 0 solid transparent;
+    font-size: var(--font-size);
+    height: var(--navbar-height);
+
+    .navbar-nav {
+        display: inline-block;
+        justify-content: center;
+        width: 100%;
+        overflow-x: scroll;
+        overflow-y: hidden;
+        white-space: nowrap;
+        border: 1px solid transparent;
+        height: var(--navbar-nav-height);
+        background-color: var(--navbar-background-color);
+        padding-top: 5.5px;;
+    }
+
+    .nav-item {
+        display: inline-block;
+        border: 1px solid transparent;
+        opacity: var(--nav-item-opacity);
+        margin-left: 40px;
+        position: relative;
+        cursor: pointer;
+        border-radius: var(--nav-item-border-radius);
+        height: var(--nav-item-height);
+        width: var(--nav-item-width);
+        cursor: pointer;
+
+        span {
+            position: var(--nav-item-span-position);
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            font-size: var(--nav-item-font-size);
+            font-weight: 600;
+            color: var(--nav-item-span-color);
+            background-color: transparent;
+            white-space: var(--white-space);
+            letter-spacing: var(--nav-item-letter-spacing);
+        }
+
+        &:first-child {
+            margin-left: 10px;
+        }
+
+        &:last-child {
+            margin-right: 10px;
+        }
+    }
+}
+
+@media only screen and (min-width: $tablet-min-width) {
+    .mobile-container {
+        display: none;
+    }
+
+    .desktop-container {
+        display: block;
+    }
+
+    .navbar {
+        .nav-item {
+            padding: 7px 11px;
+            
+            &.selected {
+                opacity: 0.5;
+                border: 2px solid white;
+                cursor: not-allowed;
+            }
+        }
+    }
+}

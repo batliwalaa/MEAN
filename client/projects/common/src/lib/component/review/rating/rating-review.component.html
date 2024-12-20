@@ -1,0 +1,17 @@
+<div class="container">
+    <span class="stars" (click)="onStarClick()" [attr.style]="rating" [ngClass]="{ 'no-reviews': !reviewSummary || reviewSummary.averageRating === 0 }"></span>
+    @if(reviewSummary && reviewSummary.averageRating > 0)
+    {
+        <span
+            class="text-average-rating">
+            {{metadata && metadata.average && metadata.average.label}} {{reviewSummary && reviewSummary.averageRating}} {{metadata && metadata.of && metadata.of.label}} {{reviewSummary && reviewSummary.totalRatings}} {{metadata && metadata.reviews && metadata.reviews.label}}
+        </span>
+    }
+    @if (!reviewSummary || reviewSummary.averageRating === 0)
+    {
+        <span
+            class="text-average-rating">
+            {{metadata && metadata.average && metadata.noreviews.label}}
+        </span>
+    }    
+</div>

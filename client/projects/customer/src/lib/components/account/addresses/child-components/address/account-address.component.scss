@@ -1,0 +1,36 @@
+@import '../../../../../../../../ui/src/scss/variables';
+@import '../../../../../../../../ui/src/scss/mixins';
+
+.container {
+    @include non-content-container;
+    color: $text-color;
+    padding: 0 10px;
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+
+    .title {
+        margin: 16px 0;
+        color: #555;
+        font-size: 1.1em;
+        font-weight: 600;
+    }
+
+    .section-container {
+        margin-top: 20px;
+
+        .section-title {
+            margin: 10px 0;
+            margin-bottom: 5px;
+            color: #555;
+            font-size: 0.9em;
+            font-weight: 600;
+        }
+
+        .text {
+            color: #777;
+            font-size: 0.85em;
+        }
+    }
+}

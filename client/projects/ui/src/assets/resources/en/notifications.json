@@ -1,0 +1,50 @@
+[
+    { 
+        "key": "otpResend",
+        "body": "OTP Sent",
+        "title": "OTP Resend",
+        "type": "Success"
+    },
+    { 
+        "key": "genericError",
+        "body": "There has been an error, please try again or contact support team",
+        "title": "Generic Error",
+        "type": "Error"
+    },
+    {
+        "key": "orderCancellationError",
+        "body": "Error cancelling order, please try again or contact support team",
+        "title": "Order Cancellation Error",
+        "type": "Error"
+    },
+    {
+        "key": "unauthorized",
+        "body": "Redirecting to login page",
+        "title": "Unauthorized",
+        "type": "Warning"
+    },
+    {
+        "key": "shoppingCartAdd",
+        "body": "Successfully added item to cart",
+        "title": "Shopping Cart",
+        "type": "Success"
+    },
+    {
+        "key": "shoppingCartDelete",
+        "body": "Removed item from cart",
+        "title": "Shopping Cart",
+        "type": "Warning"
+    },
+    {
+        "key": "shoppingCartUpdate",
+        "body": "Updated item quantity in cart",
+        "title": "Shopping Cart",
+        "type": "Success"
+    },
+    {
+        "key": "addressdelete",
+        "body": "Address successfully deleted",
+        "title": "My Addresses",
+        "type": "Success"
+    }
+]

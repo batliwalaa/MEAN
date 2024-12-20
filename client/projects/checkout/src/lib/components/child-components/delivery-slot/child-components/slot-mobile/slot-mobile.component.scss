@@ -1,0 +1,32 @@
+@import '../../../../../../../../ui//src/scss/variables';
+
+.slot-container {
+    margin-top: 30px;
+
+    .slot {
+        height: 40px;
+        width: 100%;
+        text-align: center;
+        border: 1px dashed #a1a1a1;
+        padding: 13px 0;
+        margin-bottom: 10px;
+        font-size: 0.85em;
+        color: $text-color;
+
+        &.available {
+            border: 1px solid #a1a1a1;
+        }
+
+        &.selected {
+            background-color: $text-color;
+            color: white;
+        }
+
+        &.not-available {
+            background-color: #fff6f6;
+            font-weight: bold;
+            font-size: 0.8em;
+            color: #555;
+        }
+    }
+}

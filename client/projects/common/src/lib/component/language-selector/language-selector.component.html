@@ -1,0 +1,22 @@
+<div class="container">
+    @if (options)
+    {
+        <ul>
+            @for(o of options; track o;)
+            {
+                <li
+                    [attr.selected]="o === selectedLanguage"
+                    [attr.disabled]="o === selectedLanguage"
+                    (click)="onLanguageChange(o)">
+                    <ui-radio-component
+                        [disabled]="o === selectedLanguage"
+                        [value]="o === selectedLanguage"
+                        (valueChange)="onLanguageChange(o)"
+                        [smallRadio]="true"
+                        [label]="o"
+                    ></ui-radio-component>
+                </li>
+            }
+        </ul>
+    }
+</div>

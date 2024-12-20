@@ -1,0 +1,26 @@
+.container {
+    width: 100%;
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr 1fr;
+    justify-content: stretch;
+    max-width: 200px;
+    column-gap: 15px;
+    
+    a {
+        position: relative;
+        padding: 10px;
+
+        i {
+            color: #999;
+        }
+
+        span {
+            position: absolute;
+            font-size: 0.8rem;
+            right: 0;
+            top: 18px;
+        }
+    }
+    
+}

@@ -1,0 +1,90 @@
+@import '../../../../../../../../ui/src/scss/variables';
+@import '../../../../../../../../ui/src/scss/mixins';
+
+.container {
+    border: $border;
+    border-color: transparent;
+    padding: 20px;
+    padding-top: 7px;
+
+    .mobile-container {
+        --wrapper-grid-template-columns: 1fr;
+        --buttons-margin-top: 20px;
+    }
+
+    .desktop-container {
+        --wrapper-grid-template-columns: 3fr 1fr;
+        --buttons-margin-top: 0;
+    }
+
+    ui-order-status {
+        display: block;
+    }
+
+    .wrapper {
+        display: grid;
+        grid-auto-flow: row;
+        grid-template-columns: var(--wrapper-grid-template-columns);
+        grid-column-gap: 20px;
+        
+        .items-wrapper {
+            margin-top: 10px;
+
+            .item-wrapper {
+                display: grid;
+                grid-auto-flow: column;
+                grid-column-gap: 10px;
+                grid-template-columns: 30% auto;
+                
+                &:not(:first-child) {
+                    margin-top: 20px;
+                }
+
+                .detail {
+                    display: grid;
+                    grid-auto-flow: row;
+                    grid-row-gap: 5px;
+                    align-content: flex-start;
+
+                    .currency {
+                        color: #aa1b04;
+                    }
+
+                    .description {
+                        font-weight: 500;
+                    }
+                }
+
+                figure {
+                    @include small-product-image(60px, 60px);
+                }
+            }
+        }
+    }
+
+    .buttons {
+        display: grid;
+        grid-auto-flow: row;
+        grid-row-gap: 5px;
+        align-content: flex-start;
+        margin-top: var(--buttons-margin-top);
+
+        .btn {
+            font-weight: 500;
+            font-size: 0.85rem;
+            box-shadow: 0 2px 8px #c0c0c0;
+            max-height: 2.2rem;
+
+            &-primary {
+                box-shadow: 0 2px 8px #f5ab95;
+
+                &:hover {
+                    opacity: 0.9;
+                }
+            }
+        }
+    }    
+}
+.mt-40 {
+    margin-top: 40px;
+}

@@ -1,0 +1,70 @@
+{
+    "addToBasket": {
+        "label": "Add to Basket",
+        "action": "addtobasket"
+    },
+    "countryOfOrigin": {
+        "label": "country of origin"
+    },
+    "bestSeller": {
+        "label": "Best Seller"
+    },
+    "suitableFor": {
+        "label": "suitable for "
+    },
+    "savings": {
+        "label": "savings"
+    },
+    "qty": {
+        "label": "Qty",
+        "min": 1,
+        "max": 20
+    },
+    "increment": {
+        "action": "shoppingcartitemqtyincrement"
+    },
+    "decrement": {
+        "action": "shoppingcartitemqtydecrement"
+    },
+    "enableDelay": 2000,
+    "taxesInclusive": {
+        "label": "all taxes included"
+    },
+    "starReview": {
+        "average": {
+            "label": "avg"
+        },
+        "of": {
+            "label": "of"
+        },
+        "reviews": {
+            "label": "reviews"
+        },
+        "noreviews": {
+            "label": "0 reviews"
+        }
+    },
+    "reviewSummary": {
+        "outOf": {
+            "label": "out of 5"
+        },
+        "reviewsOrRatings": {
+            "label": "reviews / ratings"
+        },
+        "viewAll": {
+            "label": "View all Customer Reviews"
+        }
+    },
+    "by": {
+        "label": "by"
+    },
+    "sizeNotAvailable": {
+        "label": "Size information not available"
+    },
+    "was": {
+        "label": "Was"
+    },
+    "now": {
+        "label": "Now"
+    }
+}

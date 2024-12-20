@@ -1,0 +1,86 @@
+@import '../../../../../ui/src/scss/variables';
+@import '../../../../../ui/src/scss/mixins';
+
+.container {
+    @include non-content-container;
+    position: relative;
+    height: 100%;
+    background-color: #fff;
+    margin: 40px auto;
+    
+
+    > * {
+        margin: 0;
+    }
+
+    .verification-failure,
+    .verified,
+    .resend,
+    .expired,
+    .verify {
+        color: $text-color;
+    }
+
+    .acceptance {
+        margin-top: 20px;
+        font-size: 0.8em;
+    }
+
+    .btn,
+    .resend,
+    .verified,
+    .expired,
+    .verification-failure {
+        margin-top: 20px;
+        font-size: 0.9em;
+        line-height: 23px;
+    }
+
+    .verified {
+        .success {
+            color: $success-text-color;
+            font-weight: bold;
+        }
+    }
+
+    .expired {
+        margin-top: 20px;
+        line-height: 23px;
+        color: $error-text-color;
+        font-weight: 600;
+    }
+
+    .verification-failure {
+        .failure {
+            ::ng-deep & {
+                color: $error-text-color;
+                font-weight: bold;
+            }
+        }
+    }
+
+    .resend {
+        .success {
+            ::ng-deep & {
+                color: $success-text-color;
+            }
+        }
+
+        .bold {
+            ::ng-deep & {
+                font-weight: bold;
+            }
+        }
+
+        .statement-container {
+            ::ng-deep & {
+                line-height: 23px;
+            }
+        }
+    }
+
+    .acceptance {
+        border-top: 3px solid #f1f1f1;
+        padding-top: 10px;
+    }
+}

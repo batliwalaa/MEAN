@@ -1,0 +1,49 @@
+@import './variables';
+
+.control-row {
+    .control {
+        .error {
+            font-size: 0.9em;
+            border: 1px solid transparent;
+            border-top: 2px solid $control-error-border-color;
+            background-color: $control-error-background-color;
+            padding: 5px 11px;
+            text-align: left;
+            width: 99%;
+            margin-left: 1px;
+
+            &:before {
+                content: ' ';
+                position: absolute;
+                width: 0;
+                height: 0;
+                left: 10px;
+                top: calc(#{$mobile-control-height} - 4px);
+                border-left: 5px solid transparent;
+                border-right: 5px solid transparent;
+                border-bottom: 5px solid $control-error-up-arrow-indicator-color;
+            }
+
+            > span {
+                color: $control-error-text-color;
+                display: inline-block;
+                font-size: 0.8em;
+            }
+        }
+    }
+}
+
+.error {
+    font-size: 0.9em;
+    border: 1px solid $error-border-color;
+    background-color: $error-background-color;
+    padding: 11px;
+    text-align: left;
+    width: 99%;
+    margin-left: 1px;
+
+    > span {
+        color: $error-text-color;
+        display: inline-block;
+    }
+}

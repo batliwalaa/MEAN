@@ -1,0 +1,13 @@
+<div *ngIf="template === 'LIST'" class="order-wrapper list-order-wrapper">
+    <ui-order-header-component [template]="template" (showDetail)="onShowDetail($event)" [metadata]="metadata && metadata.header" [order]="order"></ui-order-header-component>
+    <ui-order-detail-component [template]="template" [ngClass]="{ 'show': showDetail === true }" [metadata]="metadata && metadata.detail" [order]="order" [slot]="slot"></ui-order-detail-component>
+</div>
+
+<div *ngIf="template === 'DETAIL'" class="order-wrapper detail-order-wrapper">
+    <div class="header-wrapper">
+        <ui-order-header-component [template]="template" (showDetail)="onShowDetail($event)" [metadata]="metadata && metadata.header" [order]="order"></ui-order-header-component>
+    </div>
+    <div class="detail-wrapper">
+        <ui-order-detail-component [template]="template" [ngClass]="{ 'show': showDetail === true }" [metadata]="metadata && metadata.detail" [order]="order"  [slot]="slot"></ui-order-detail-component>
+    </div>
+</div>

@@ -1,0 +1,76 @@
+@import '../../../../../../../ui/src/scss/variables';
+@import '../../../../../../../ui/src/scss/mixins';
+
+$loader-size: 7em;
+$height: $loader-size/2;
+$width: $height/2;
+$left: ($loader-size/6 + $loader-size/12);
+$thickness: 3px;
+$color: $error-text-color;
+
+.container {
+    @include non-content-container;
+    margin-top: 40px;
+    text-align: center;
+
+    .item,
+    .title {
+        margin: 16px 0;
+        color: #555;
+        font-size: 1.1em;
+        font-weight: 600;
+    }
+
+    .failure-circle {
+        i {
+            color: $color;
+            font-size: 7em;
+        }
+    }
+
+    .item {
+        font-size: 1em;
+    }
+
+    .failure-message {
+        text-align: center;
+    }
+
+    .failure-message {
+        .failure {
+            ::ng-deep & {
+                color: $error-text-color;
+                font-weight: bold;
+            }
+        }
+
+        .statement-container {
+            ::ng-deep & {
+                text-align: center!important;
+            }
+        }
+    }
+}
+
+@keyframes checkmark {
+    0% {
+      height: 0;
+      width: 0;
+      opacity: 1;
+    }
+    20% {
+      height: 0;
+      width: $width;
+      opacity: 1;
+    }
+    40% {
+      height: $height;
+      width: $width;
+      opacity: 1;
+    }
+    100% {
+      height: $height;
+      width: $width;
+      opacity: 1;
+    }
+}

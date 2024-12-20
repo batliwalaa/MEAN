@@ -1,0 +1,34 @@
+<a class="nav-top" #navTop></a>
+<ng-container *ngIf="showContentTemplate; else nonContentTemplate">
+    <ng-container *ngTemplateOutlet="contentTemplate"></ng-container>
+</ng-container>
+
+<ng-template #contentTemplate>
+    <div class="wrapper">
+        <ui-header [metadata]="metadata" class="header">Header</ui-header>
+        <div class="content">
+            <router-outlet></router-outlet>
+        </div>
+        <ng-container *ngTemplateOutlet="footerTemplate"></ng-container>
+    </div>
+</ng-template>
+
+<ng-template #nonContentTemplate>
+    <div class="non-content-wrapper">
+        <ui-non-content-header>Header</ui-non-content-header>
+        <div class="content">
+            <router-outlet></router-outlet>
+        </div>
+        <ui-recaptcha-protected *ngIf="recaptchaUse"></ui-recaptcha-protected>
+    </div>
+</ng-template>
+
+<ng-template #footerTemplate>
+    <div class="footer-top">
+        <div class="go-top">
+            <a (click)="scrollTop()"><span class="btn btn-light btn-light-bordered" >Back to top</span></a>
+        </div>
+    </div>
+    <ui-footer class="footer"></ui-footer>
+    <div class="footer-bottom"></div>
+</ng-template>

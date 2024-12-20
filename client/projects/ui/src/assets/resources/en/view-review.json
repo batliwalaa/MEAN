@@ -1,0 +1,61 @@
+{
+    "addToBasket": {
+        "label": "Add to Basket",
+        "action": "addtobasket"
+    },
+    "reviews": {
+        "label": "Reviews"
+    },
+    "customerReviews": {
+        "label": "Customer Reviews"
+    },
+    "reviewSummary": {
+        "outOf": {
+            "label": "out of 5"
+        },
+        "reviewsOrRatings": {
+            "label": "reviews / ratings"
+        }
+    },
+    "suitableFor": {
+        "label": "suitable for "
+    },
+    "savings": {
+        "label": "savings"
+    },
+    "qty": {
+        "label": "Qty",
+        "min": 1,
+        "max": 20
+    },
+    "taxesInclusive": {
+        "label": "all taxes included"
+    },
+    "countryOfOrigin": {
+        "label": "country of origin"
+    },
+    "increment": {
+        "action": "shoppingcartitemqtyincrement"
+    },
+    "decrement": {
+        "action": "shoppingcartitemqtydecrement"
+    },
+    "feature": {
+        "label": "Feature rating"
+    },
+    "votes": {
+        "label": "vote(s)",
+        "likeVote": {
+            "action": "product-review-like-vote"
+        },
+        "dislikeVote": {
+            "action": "product-review-dislike-vote"
+        }
+    },
+    "verifiedPurchaser": {
+        "label": "Only verified purchaser can add product review."
+    },
+    "seeMoreReviews": {
+        "label": "See more reviews"
+    }
+}

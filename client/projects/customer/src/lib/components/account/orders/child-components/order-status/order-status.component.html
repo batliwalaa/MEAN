@@ -1,0 +1,11 @@
+<div  class="display-status" *ngIf="model && model.showDate" [ngClass]="{'failed-text' : showFailedText }">
+    {{ model && model.status | uppercase }}
+    {{ modifiedDate | date: 'd MMM YYYY' }}
+</div>
+<div  class="display-status" *ngIf="model && model.showDeliveryDate && !model.showDate">
+    {{ model && model.status | uppercase }}
+    {{ slot.deliveryDate | date: 'd MMM YYYY' }} {{metadata && metadata.between && metadata.between.label}} {{ slot.startTime }}:00 - {{ slot.endTime }}:00
+</div>
+<div  class="display-status" *ngIf="model && !model.showDate && !model.showDeliveryDate">
+    {{ model && model.status | uppercase }}
+</div>

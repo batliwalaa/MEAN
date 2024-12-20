@@ -1,0 +1,50 @@
+@if (show)
+{
+    <div class="control-row">
+        <div class="control" [ngStyle]="style">
+            <select
+                uiCheckIsValid
+                [id]="id"
+                name="model"
+                #inputControl
+                #model="ngModel"
+                [(ngModel)]="data"
+                [ngModelOptions]="{ updateOn: 'change' }"
+                required
+                (change)="onChange()"
+                [ngClass]="data && data.trim().length != '-1' ? 'has-value' : ''"
+            >
+                @if (metadata && metadata.pleaseSelect)
+                {
+                    <option value="-1">
+                        {{ metadata && metadata.pleaseSelect }}
+                    </option>
+                }
+                @for (i of items; track i;) 
+                {
+                    <option [selected]="i.id === data" [value]="i.id">
+                        {{ i.value }}
+                    </option>
+                }
+            </select>
+            <label [ngClass]="ignoreMediaQueries ? 'ignore' : ''">
+                {{ metadata && metadata.label }}
+                @if (metadata && metadata.validators && metadata.validators.required === '')
+                {
+                    <span>*</span>
+                }
+            </label>
+            @if (!disableValidation && (model.dirty || model.touched) && model.invalid)
+            {
+                <div class="error">
+                    @if (model.errors.required)
+                    {
+                        <span>{{ metadata.error.required }}</span>
+                    }
+                </div>
+            }            
+            <div class="focus-indicator"></div>
+            <div class="background"></div>
+        </div>
+    </div>
+}

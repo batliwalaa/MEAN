@@ -1,0 +1,114 @@
+<div class="signup-container">
+    <div [uiCheckAllInputsValid]="inputValidatorInitialiser" class="signup-form-container">
+        <h4 class="header">
+            {{ metadata && metadata.header && metadata.header.label }}
+        </h4>
+        <div class="error" [hidden]="!hasErrors">
+            <span>{{ metadata && metadata.errorHeader && metadata.errorHeader.label }}</span>
+            <span *ngFor="let e of errors">{{ e.key | titlecase }}: {{ e.error }}</span>
+        </div>
+        <div class="row">
+            <ui-textbox-component
+                (valueChange)="onValueChange($event)"
+                [value]="model && model.firstName"
+                type="text"
+                name="firstName"
+                [ignoreMediaQueries]="ignoreMediaQueries"
+                [metadata]="metadata && metadata.firstName"
+            ></ui-textbox-component>
+        </div>
+        <div class="row">
+            <ui-textbox-component
+                (valueChange)="onValueChange($event)"
+                [value]="model && model.lastName"
+                type="text"
+                name="lastName"
+                [ignoreMediaQueries]="ignoreMediaQueries"
+                [metadata]="metadata && metadata.lastName"
+            ></ui-textbox-component>
+        </div>
+        <div class="row">
+            <ui-textbox-component
+                (valueChange)="onValueChange($event)"
+                [value]="model && model.email"
+                type="text"
+                name="email"
+                [ignoreMediaQueries]="ignoreMediaQueries"
+                [metadata]="metadata && metadata.email"
+            ></ui-textbox-component>
+        </div>
+        <div class="row mobile-number">
+            <ui-dropdown-component
+                (valueChange)="onValueChange($event)"
+                [value]="model && model.isoCode"
+                type="dropdown"
+                name="isoCode"
+                [ignoreMediaQueries]="ignoreMediaQueries"
+                [style]="{
+                    'background-color': '#e1e1e1',
+                    'border-right': '1px solid transparent'
+                }"
+                [metadata]="metadata && metadata.isoNumberOptions.options"
+                [items]="isoNumbers"
+            >
+            </ui-dropdown-component>
+            <ui-textbox-component
+                #mobileControl
+                (valueChange)="onValueChange($event)"
+                [value]="model && model.mobile"
+                type="text"
+                name="mobile"
+                [ignoreMediaQueries]="ignoreMediaQueries"
+                [metadata]="metadata && metadata.mobile"
+            >
+            </ui-textbox-component>
+        </div>
+        <div class="row">
+            <div class="information">
+                <span *ngFor="let i of metadata && metadata.passwordInformation">{{ i }}</span>
+            </div>
+            <ui-textbox-component
+                (valueChange)="onValueChange($event)"
+                [value]="model && model.password"
+                type="password"
+                name="password"
+                [ignoreMediaQueries]="ignoreMediaQueries"
+                [metadata]="metadata && metadata.password"
+            >
+            </ui-textbox-component>
+        </div>
+        <div class="row">
+            <ui-confirm-textbox-component
+                (valueChange)="onValueChange($event)"
+                [value]="model && model.confirmPassword"
+                type="password"
+                name="confirmPassword"
+                [ignoreMediaQueries]="ignoreMediaQueries"
+                [metadata]="metadata && metadata.confirmPassword"
+            >
+            </ui-confirm-textbox-component>
+        </div>
+
+        <button class="btn btn-primary" [disabled]="!isValid" (click)="onCreateAccountClick()">
+            {{ metadata && metadata.createYourAccount && metadata.createYourAccount.label }}
+        </button>
+
+        <ng-container *ngIf="metadata && metadata.acceptance && metadata.acceptance.statement">
+            <div class="acceptance">
+                <ng-container *ngTemplateOutlet="statementTemplate; context: metadata.acceptance"></ng-container>
+            </div>
+        </ng-container>
+
+        <ng-container *ngIf="metadata && metadata.alreadyHaveAccount && metadata.alreadyHaveAccount.statement">
+            <div class="has-account">
+                <ng-container
+                    *ngTemplateOutlet="statementTemplate; context: metadata.alreadyHaveAccount"
+                ></ng-container>
+            </div>
+        </ng-container>
+    </div>
+</div>
+
+<ng-template #statementTemplate let-statement="statement">
+    <ui-statement-component [metadata]="statement"></ui-statement-component>
+</ng-template>

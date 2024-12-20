@@ -1,0 +1,25 @@
+@if (items && items.length > 0)
+{
+    <div class="container">
+        <ul>
+            @for (i of items; track i; let idx = $index;)
+            {
+                <li>
+                    @if (idx > 0)
+                    {
+                        <i class="material-icons">chevron_right</i>
+                    }
+
+                    @if (i.key)
+                    {
+                        <a (click)="onBreadCrumbClick(i.key)">{{i.label}}</a>
+                    }
+                    @else 
+                    {
+                        <span>{{i.label}}</span>
+                    }
+                </li>
+            }
+        </ul>
+    </div>
+}

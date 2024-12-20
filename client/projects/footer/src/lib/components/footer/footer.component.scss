@@ -1,0 +1,132 @@
+@import '../../../../../ui/src/scss/variables';
+
+.footerbar {
+    display: grid;
+    grid-template-columns: 1fr;
+    background-color: $footer-background-color;
+
+    ul {
+        list-style: none;
+        width: 100%;
+
+        &.placeholder-item {
+            display: none;
+        }
+
+        li {
+            text-transform: capitalize;
+            font-size: $footer-size;
+            padding: 9px;
+        }
+
+        &.footerbar-list {
+            min-height: 36px;
+            max-height: 36px;
+            transition: 2s;
+            overflow-y: hidden;
+
+            i.fa-caret-down {
+                display: block;
+            }
+
+            i.fa-caret-up {
+                display: none;
+            }
+
+            &.animate {
+                max-height: 250px;
+
+                .fa-caret-down {
+                    display: none;
+                }
+
+                .fa-caret-up {
+                    display: block;
+                }
+            }
+
+            .footer-item {
+                border: 1px solid transparent;
+                border-bottom: 1px solid $footer-border-color;
+            }
+
+            &.no-border .footer-item {
+                border-bottom: 1px solid transparent;
+            }
+
+            .child-container {
+                font-size: $footer-item-size;
+                color: #111;
+            }
+        }
+
+        .footer-item {
+            position: relative;
+
+            .fa {
+                position: absolute;
+                right: 9px;
+                color: $text-color;
+                font-size: 1.1em;
+                top: 12px;
+            }
+        }
+
+        .footer-child-item li {
+            padding: 4px 18px;
+            margin: 8px 0;
+            
+            &:last-child {
+                padding-bottom: 30px;
+            }
+
+            &.list-item-separator {
+                display: none;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: $tablet-min-width) {
+    .footerbar {
+        grid-template-columns: 5% repeat(4, 1fr) 5%;
+        justify-content: center;
+
+        ul {
+            &.footerbar-list {
+                max-height: unset;
+
+                .footer-item,
+                .footer-item a {
+                    cursor: default;
+                }
+            }
+            text-align: center;
+
+            &.placeholder-item {
+                display: block;
+            }
+        }
+
+        i.fa {
+            display: none !important;
+        }
+
+        .footerbar-list {
+            .footer-item {
+                border: 1px solid transparent !important;
+            }
+
+            &:last-child {
+                border-bottom: 1px solid transparent !important;
+            }
+        }
+
+        li.list-item-separator {
+            display: block !important;
+            height: 1px;
+            padding: 0 !important;
+            cursor: default;
+        }
+    }
+}

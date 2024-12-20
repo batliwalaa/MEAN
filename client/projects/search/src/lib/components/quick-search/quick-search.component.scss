@@ -1,0 +1,40 @@
+@import '../../../../../ui/src/scss/variables';
+
+.search {
+    position: relative;
+
+    span.icon {
+        position: absolute;
+        right: -1px;
+        background-color: $bright-green;
+        top: -1px;
+        width: 50px;
+        height: 39px;
+        box-sizing: border-box;
+        border: 1px solid transparent;
+        border-top-right-radius: $border-radius;
+        border-bottom-right-radius: $border-radius;
+        cursor: pointer;
+        
+        i {
+            background-color: $bright-green;
+            color: white;
+            position: absolute;
+            right: 9px;
+            top: 8px;
+        }
+    }
+
+    .search-textbox {
+        width: 100%;
+        height: 38px;
+        margin-top: -1px;
+        border-radius: 3p;
+    }
+
+    .search-textbox::placeholder {
+        color: $placeholder-color;
+        font-size: $font-size;
+        font-family: "Open Sans";
+    }
+}

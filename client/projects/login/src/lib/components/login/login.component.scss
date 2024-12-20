@@ -1,0 +1,185 @@
+@import '../../../../../ui/src/scss/variables';
+@import '../../../../../ui/src/assets/fonts/material-icons/material-icons.css';
+
+.login-container {
+    position: relative;
+    height: 100%;
+    background: #fff;
+    width: 100%;
+    margin: 0;
+
+    > * {
+        margin: 0;
+    }
+
+    .login-form-container {
+        max-width: 18rem;        
+        margin: auto;
+
+        .error {
+            span:not(:first-child) {
+                color: $text-color;
+                margin-top: 8px;
+            }
+
+            span:first-child {
+                font-weight: 500;
+                font-size: 1.1em;
+            }
+        }
+    }
+
+    .header {
+        color: $text-color;
+        margin-top: 22px;
+        margin-bottom: 10px;
+        font-weight: 500;
+    }
+
+    .login-form {
+        background: $form-background-color;
+        border: 1px solid transparent;
+        border-radius: 2px;
+        text-align: center;
+        padding: 20px 0;
+        margin-top: 10px;
+
+        .section {
+            text-align: left;
+            font-weight: 500;
+            font-size: 0.9em;
+            color: $highlight;
+
+            span {
+                color: $text-color;
+                font-weight: normal;
+                font-size: 0.9em;
+                line-height: 18px;
+
+                &.change {
+                    display: block;
+                    font-weight: 500;
+                    color: $highlight;
+                    margin-top: 2px;
+
+                    button {
+                        margin-left: 2px;
+                        cursor: pointer;
+                        font-weight: normal;
+                        cursor: pointer;
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+
+        .sign-in-options {
+            text-align: left;
+
+            div {
+                display: inline-block;
+                width: 50px;
+
+                &.dropdown {
+                    width: calc(100% - 50px);
+                }
+            }
+        }
+        .password-controls {
+            position: relative;
+            height: $mobile-control-height;
+            margin-top: 3px;
+
+            ui-textbox-component {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+            }
+
+            i {
+                position: absolute;
+                right: 6px;
+                top: 21px;
+                z-index: 999;
+                font-size: 1em;
+                cursor: pointer;
+            }
+        }
+
+        .btn {
+            margin-top: 20px;
+        }
+
+        .forgot-password {
+            margin-top: 10px;
+            cursor: pointer;
+            font-weight: normal;
+            cursor: pointer;
+            text-decoration: underline;
+        }
+
+        .acceptance {
+            margin-top: 20px;
+            font-size: 0.8em;
+        }
+
+        .create-account {
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        .mobile-number {
+            display: grid;
+            grid-template-columns: 80px auto;
+        }
+    }
+
+    .not-verified,
+    .resend {
+        margin-top: 20px;
+        text-align: left;
+        font-size: 0.9em;
+
+        .failure {
+            ::ng-deep & {
+                color: $error-text-color;
+            }
+        }
+
+        .success {
+            ::ng-deep & {
+                color: $success-text-color;
+            }
+        }
+
+        .bold {
+            ::ng-deep & {
+                font-weight: bold;
+            }
+        }
+
+        .statement-container {
+            ::ng-deep & {
+                line-height: 18px;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: $desktop-min-width) {
+    .control-row .control input {
+        + label {
+            background-color: transparent;
+            left: 0;
+            text-align: left;
+            animation: move-label-down 0.5s ease-in-out;
+        }
+        &.has-value,
+        &:focus {
+            + label {
+                animation: move-label-up 0.3s ease-in-out;
+            }
+        }
+    }
+}

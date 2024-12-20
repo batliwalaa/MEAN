@@ -1,0 +1,25 @@
+{
+    "myAccount": {
+        "label": "मेरा खाता"
+    },
+    "options": [
+        {
+            "header": "मेरे आदेश",
+            "description": "ट्रैक करें, वापस लौटें या फिर से खरीदें",
+            "key": "myOrders"
+        }, {
+            "header": "मेरी प्रोफाइल",
+            "description": "लॉगिन, नाम, मोबाइल संपादित करें और पासवर्ड रीसेट करें",
+            "key": "myProfile"
+        }, {
+            "header": "मेरे पते",
+            "description": "ऑर्डर के लिए पते जोड़ें, संपादित करें या हटाएं",
+            "key": "myAddresses"
+        }, {
+            "header": "मेरे वफादारी अंक",
+            "description": "लॉयल्टी अंक संचय करें और भुनाएं",
+            "key": "myLoyaltyPoints",
+            "featureEnabled": false
+        }
+    ]
+}

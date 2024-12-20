@@ -1,0 +1,40 @@
+@import '../../../../../ui/src/scss/variables';
+@import '../../../../../ui/src/scss/mixins';
+
+.container {
+    @include non-content-container;
+    margin: 10px auto 30px auto;
+
+    ul {
+        display: flex;
+        flex-flow: row;
+
+        li {
+            position: relative;
+            padding: 5px;
+            font-weight: 500;
+
+            &:not(:first-child) {
+                padding-left: 30px;
+            }
+
+            &:first-child {
+                padding-left: 10px;
+            }
+
+            i {
+                position: absolute;                
+                left: 1px;
+                top: 2px;
+                color: #555;
+            }
+            
+            a {
+                color: #0000ff;
+            }
+            span {
+                color: $bright-green;
+            }
+        }
+    }
+}

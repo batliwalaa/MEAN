@@ -1,0 +1,18 @@
+<div class="container">
+    <a 
+        uiRecaptcha
+        [action]="metadata && metadata.votes && metadata.votes.likeVote && metadata.votes.likeVote.action"
+        (execute)="onLikeVoteChange()"
+    >
+        <i class="material-icons">thumb_up</i>
+        <span>{{likeVote}} {{metadata && metadata.votes && metadata.votes.label}}</span>
+    </a>
+    <a 
+        uiRecaptcha
+        [action]="metadata && metadata.votes && metadata.votes.dislikeVote && metadata.votes.dislikeVote.action"
+        (execute)="onDislikeVoteChange()"
+    >
+        <i class="material-icons">thumb_down</i>
+        <span>{{dislikeVote}} {{metadata && metadata.votes && metadata.votes.label}}</span>
+    </a>
+</div>

@@ -1,0 +1,16 @@
+@import '../../../../../../../ui/src/scss/variables';
+
+.checkbox {
+    label {
+        z-index: 1;
+    }
+
+    span.haserror {
+        border: 1px solid #d96060 !important;
+        background-color: #eed9d9 !important;
+    }
+}
+
+.control-row .control {
+    border: $border-transparent;
+}

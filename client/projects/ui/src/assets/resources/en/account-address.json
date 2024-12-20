@@ -1,0 +1,25 @@
+{
+    
+    "header": {
+        "label": "My Addresses"
+    },
+    "add": {
+        "label": "Add new address"
+    },
+    "default": {
+        "label": "Default"
+    },
+    "edit": {
+        "label": "Edit address",
+        "action": "deleteadress"
+    },
+    "delete": {
+        "label": "Delete",
+        "action": "deleteaddress"
+    },   
+    "breadcrumb": [
+        { "label": "My Account", "key": "AccountHome" },
+        { "label": "My Addresses" }
+    ]
+    
+}

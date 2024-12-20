@@ -1,0 +1,18 @@
+<div
+    class="small-text menu"
+    (touch)="show = !show"
+    (click)="show = !show"
+    (outsideClick)="show = false"
+>
+    <div>{{metadata && metadata.hello && metadata.hello.label}}{{firstName }}</div>
+
+    <div [hidden]="!show" class="dropdown">
+        <ng-container *ngIf="metadata && metadata.options">
+            <div class="list-header">{{metadata && metadata.accountAndOrders && metadata.accountAndOrders.label}}</div>
+            <ng-container *ngFor="let o of metadata.options">
+                <div (click)="onOptionClick(o.key)">{{o.label}}</div>
+            </ng-container>
+        </ng-container>
+        <div (click)="onSignoutClick()">{{metadata && metadata.signOut && metadata.signOut.label}}</div>
+    </div>
+</div>

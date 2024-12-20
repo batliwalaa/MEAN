@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="title">{{ metadata && metadata.section }}</div>
+
+    <div class="success-circle">
+        <div class="checkmark"></div>
+    </div>
+
+    @if (paymentResponse)
+    {
+        <div class="item">{{metadata && metadata.transactionId && metadata.transactionId.label}}: {{paymentResponse.orderNumber}}</div>
+        <div class="item">{{metadata && metadata.bankRefNumber && metadata.bankRefNumber.label}}: {{paymentResponse.bankReferenceNumber}}</div>
+    }
+</div>

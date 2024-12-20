@@ -1,0 +1,66 @@
+<div class="container">
+    <ng-container *ngIf="deliveredItems && deliveredItems.length > 0">
+        <ng-container *ngIf="currentState">
+            <ui-order-status [metadata]="metadata" [status]="currentState.status" [modifiedDate]="currentState.statusDate" [slot]="slot"></ui-order-status>
+        </ng-container>        
+        <div class="wrapper" [ngClass]="{'mobile-container': isMobile, 'desktop-container': !isMobile }">
+            <div class="items-wrapper">               
+                <ng-container *ngFor="let i of deliveredItems">
+                    <ng-container *ngTemplateOutlet="itemTemplate; context: wrapItem(i)"></ng-container>
+                </ng-container>
+                <ng-container *ngIf="returnedItems && returnedItems.length > 0">
+                    <ui-order-status class="mt-40" [metadata]="metadata" [status]="returnedState.status" [modifiedDate]="returnedState.statusDate" [slot]="slot"></ui-order-status>
+                </ng-container>
+                <ng-container *ngFor="let i of returnedItems">
+                    <ng-container *ngTemplateOutlet="itemTemplate; context: wrapItem(i)"></ng-container>
+                </ng-container>         
+            </div>
+            <div class="buttons">
+                <ng-container *ngTemplateOutlet="buttonsTemplate" ></ng-container>
+            </div>
+        </div>
+    </ng-container>
+</div>
+
+<ng-template #itemTemplate let-item="item">    
+    <div class="item-wrapper">
+        <figure (click)="onItemClick(item)">
+            <img [src]="imageUrl(item)" />
+        </figure>
+        <div class="detail">
+            <div class="description">{{item.description}}</div>
+            <div *ngIf="item.returnableDate" class="returnable">
+                {{metadata && metadata.eligibleForReurn && metadata.eligibleForReurn.label}} {{item.returnableDate | date: 'd MMM YYYY'}}
+            </div>
+            <div class="currency">{{item.pricing.retail | currency: currencyCode }}</div>
+        </div>        
+    </div>
+</ng-template>
+
+<ng-template #buttonsTemplate>
+    <ng-container *ngIf="!hideButtons">
+        <ng-container *ngIf= "!showRedirectToPayment">
+            <button *ngIf="isReviewProductEnabled" class="btn btn-primary" (click)="onWriteProductReview()">
+                {{metadata && metadata.productReview && metadata.productReview.label}}
+            </button>
+            <button *ngIf="isProductSupportEnabled" class="btn btn-light btn-light-bordered" (click)="onGetProductSupport()">
+                {{metadata && metadata.productSupport && metadata.productSupport.label}}
+            </button>    
+            <button *ngIf="isReturnItemsEnabled" class="btn btn-light btn-light-bordered" (click)="onReturnItems()">
+                {{metadata && metadata.returnItems && metadata.returnItems.label}}
+            </button>
+                
+            <button *ngIf="isTrackable" class="btn btn-light btn-light-bordered" (click)="onTrackOrder()">
+                {{metadata && metadata.trackOrder && metadata.trackOrder.label}}
+            </button>
+        </ng-container>
+        <ng-container *ngIf= "showRedirectToPayment">
+            <button  class="btn btn-primary">
+                {{metadata && metadata.redirectToPayment && metadata.redirectToPayment.label}}
+            </button>
+            <button class="btn btn-light btn-light-bordered" (click)="cancelClicked()">
+                {{metadata && metadata.cancelOrder && metadata.cancelOrder.label}}
+            </button>  
+        </ng-container>
+    </ng-container>
+</ng-template>

@@ -1,0 +1,38 @@
+@import '../../../../../ui/src/scss/mixins';
+@import '../../../../../ui/src/scss/variables';
+
+.container {
+    padding: 7px 0;
+    background-color: #fff;
+    width: 240px;
+    border: 1px solid #f1f1f1;
+    padding-top: 20px;
+
+    &:after {
+        @include up-indicator(calc(100% - 60px), #fff, -1, -4px);
+    }
+
+    li {
+        width: 100%;
+        padding: 5px 0;
+        height: 40px;
+        position: relative;
+        padding-left: 45px;
+        padding-top: 13px;
+
+        &:hover {
+            background-color: #f1f1f1;
+        }
+
+        &[disabled] {
+            color: $disabled-color;
+            cursor: default;
+        }
+
+        ui-radio-component {
+            position: absolute;
+            left:25px;
+            top: 20px;
+        }
+    }
+}

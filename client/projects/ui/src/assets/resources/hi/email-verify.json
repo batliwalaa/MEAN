@@ -1,0 +1,67 @@
+{
+    "emailVerify": {
+        "label": "Please wait, verifying email link status"
+    },
+    "resend": {
+        "label": "Resend"
+    },
+    "resendSuccess": {
+        "statement": [
+            { "type": "text", "text": "New link has been emailed to registered email address", "class": "success" },
+            { "type": "text", "text": ", which will expire in" },
+            { "type": "text", "text": " 24", "class": "bold" },
+            { "type": "text", "text": " hours" }
+        ],
+
+        "label": "New link has been emailed to registered email address, which will expire in 24 hours"
+    },
+    "verificationFailure": {
+        "statement": [
+            { "type": "text", "text": "Verification failure", "class": "failure" },
+            { "type": "text", "text": ", please " },
+            {
+                "type": "link",
+                "text": "contact support team",
+                "url": "./contact"
+            },
+            { "type": "text", "text": "." }
+        ]
+    },
+    "emailVerifySuccess": {
+        "label": "The email link has been verified successfully, "
+    },
+    "emailExpired": {
+        "label": "Your current email link has expired, you can request for email resend."
+    },
+    "autoRedirect": {
+        "label": "you will be automatically redirected in",
+        "time": 3,
+        "timeComponent": "secs"
+    },
+    "acceptance": {
+        "controlType": "acceptance",
+        "statement": [
+            { "type": "text", "text": "Please see our " },
+            {
+                "type": "link",
+                "text": "Terms & Conditions",
+                "url": "./termsandconditions",
+                "newWindow": true
+            },
+            { "type": "text", "text": ", our " },
+            {
+                "type": "link",
+                "text": "Privacy Policy",
+                "url": "./privacypolicy",
+                "newWindow": true
+            },
+            { "type": "text", "text": " and our " },
+            {
+                "type": "link",
+                "text": "Cookie Policy",
+                "url": "./cookiepolicy",
+                "newWindow": true
+            }
+        ]
+    }
+}

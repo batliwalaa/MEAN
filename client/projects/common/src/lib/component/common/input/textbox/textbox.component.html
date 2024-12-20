@@ -1,0 +1,83 @@
+@if (show)
+{
+    <div class="control-row">
+        <div class="control" [attr.information]="metadata && metadata.information && metadata.information.length > 0">
+            <input
+                uiCheckIsValid
+                [type]="type"
+                [readonly]="readonly"
+                #inputControl
+                [id]="id"
+                [attr.name]="type === 'password' ? name : ''"
+                #model="ngModel"
+                [(ngModel)]="data"
+                [ngModelOptions]="{ updateOn: 'blur' }"
+                [ngClass]="data && data.trim().length > 0 ? 'has-value' : ''"
+                (change)="onChange()"
+                (keyup)="onKey($event)"
+                autocomplete="nope"
+                [attr.otherControlName]="metadata && metadata.otherControlName"
+                [maxlength]="
+                    metadata && metadata.validators && metadata.validators.maxLength === '' ? metadata.maxLength : null
+                "
+                [minlength]="
+                    metadata && metadata.validators && metadata.validators?.minLength === '' ? metadata.minLength : null
+                "
+                [pattern]="
+                    metadata && metadata.validators && metadata.validators?.pattern === '' ? metadata.pattern : null
+                "
+                [email]="metadata && metadata.validators && metadata.validators?.email === '' ? '' : null"
+                [required]="metadata && metadata.validators && metadata.validators?.required === '' ? '' : null"
+            />
+            <label [ngClass]="ignoreMediaQueries ? 'ignore' : ''">
+                {{ metadata && metadata.label }}
+                @if (metadata && metadata.validators && metadata.validators.required === '')
+                {
+                    <span>*</span>
+                }
+            </label>
+            @if (!disableValidation && model && (model.dirty || model.touched || (model.model && model.model.length)) && model.invalid)
+            {
+                <div class="error">
+                    @if (model.errors.required)
+                    {
+                        <span>{{ metadata.error.required }}</span>
+                    }
+                    @if (model.errors.pattern)
+                    {
+                        <span>{{ metadata.error.pleaseEnterValidCharacters }}</span>
+                    }
+                    @if (model.errors.minlength)
+                    {
+                        <span>{{ metadata.error.minLength }}</span>
+                    }
+                    @if (model.errors.maxlength)
+                    {
+                        <span>{{ metadata.error.maxLength }}</span>
+                    }
+                    @if (model.errors.email)
+                    {
+                        <span>{{ metadata.error.email }}</span>
+                    }
+                </div>
+            }
+            
+            <div class="focus-indicator"></div>
+            <span class="optional-text">{{ metadata && metadata.optionalText }}</span>
+            <a class="information-icon" (click)="onShowInfoIconClick()" (outsideClick)="showInfo = false"></a>
+
+            @if (showInfo)
+            {
+                <div class="information">
+                    @for (text of metadata && metadata.information; track text;)
+                    {
+                        <div>
+                            {{ text }}
+                        </div>
+                    }
+                </div>
+            }
+            <div class="background"></div>
+        </div>
+    </div>
+}

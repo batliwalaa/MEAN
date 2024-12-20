@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="title">{{ metadata && metadata.section }}</div>
+
+    <div class="failure-circle">
+        <i class="material-icons">highlight_off</i>
+    </div>
+
+    @if (paymentResponse)
+    {
+        <div class="item">{{metadata && metadata.transactionId && metadata.transactionId.label}}: {{paymentResponse.orderNumber}}</div>
+    }
+
+    <div class="failure-message">
+        <ng-container *ngTemplateOutlet="statementTemplate; context: metadata.failureMessage"></ng-container>
+    </div>
+</div>
+
+<ng-template #statementTemplate let-statement="statement">
+    <ui-statement-component [metadata]="statement"></ui-statement-component>
+</ng-template>

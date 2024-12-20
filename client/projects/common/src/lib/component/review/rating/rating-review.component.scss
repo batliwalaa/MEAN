@@ -1,0 +1,20 @@
+@import '../../../../../../ui//src/scss/variables';
+:host {
+    margin-top: 20p;
+}
+
+.container {
+    position: relative;
+
+    .text-average-rating {
+        font-size: 0.8em;
+        color: $text-color;
+        position: absolute;
+        left: 105px;
+        top: 9px;
+    }
+
+    .no-reviews {
+        cursor: default;
+    }
+}

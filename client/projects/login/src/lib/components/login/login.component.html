@@ -1,0 +1,142 @@
+<div class="login-container">
+    <div class="login-form-container">
+        <h4 class="header">
+            {{ metadata && metadata.header && metadata.header.label }}
+        </h4>
+        <div class="error" [hidden]="!hasErrors">
+            <span>{{ metadata && metadata.errorHeader && metadata.errorHeader.label }}</span>
+            <span>{{ getErrorMessageIfAny() }}</span>
+        </div>
+        <div class="login-form">
+            <ng-container *ngIf="isStepOne">
+                <ng-container *ngTemplateOutlet="usernameTemplate"></ng-container>
+            </ng-container>
+            <ng-container *ngIf="!isStepOne">
+                <ng-container *ngTemplateOutlet="passwordTemplate"></ng-container>
+            </ng-container>
+        </div>
+    </div>
+</div>
+
+<ng-template #passwordTemplate>
+    <div class="section">
+        {{ metadata && metadata.signIn && metadata.signIn.label }}
+        <span>{{ model.userName }}</span>
+        <span class="change">
+            {{ metadata && metadata.notYou && metadata.notYou.label }}
+            <button (click)="onChangeClick()">
+                {{ metadata && metadata.change && metadata.change.label }}
+            </button>
+        </span>
+    </div>
+    <div class="password-controls">
+        <i
+            class="material-icons"
+            (mousedown)="setShowPasswordText(true)"
+            (press)="setShowPasswordText(true)"
+            (pressup)="setShowPasswordText(false)"
+            (mouseup)="setShowPasswordText(false)"
+            >remove_red_eye</i
+        >
+        <ui-textbox-component
+            #passwordControl
+            [show]="!showPasswordText"
+            type="password"
+            name="password"
+            [ignoreMediaQueries]="ignoreMediaQueries"
+            [metadata]="metadata && metadata.password"
+            (keyboardKeyup)="onKeyup($event)"
+            (valueChange)="onValueChange($event)"
+        >
+        </ui-textbox-component>
+        <ui-textbox-component
+            [show]="showPasswordText"
+            [readonly]="true"
+            type="text"
+            name="showpassword"
+            [value]="passwordAsClearText"
+            [ignoreMediaQueries]="ignoreMediaQueries"
+            [metadata]="metadata && metadata.showPassword"
+        >
+        </ui-textbox-component>
+    </div>
+    <button
+        uiRecaptcha
+        [action]="metadata && metadata.signIn && metadata.signIn.action"
+        class="btn btn-primary"
+        (execute)="onSignInButtonClick()"
+    >
+        {{ metadata && metadata.signIn && metadata.signIn.label }}
+    </button>
+    <button class="forgot-password" (click)="onForgotPasswordClick()">
+        {{ metadata && metadata.forgotPassword && metadata.forgotPassword.label }}
+    </button>
+</ng-template>
+
+<ng-template #usernameTemplate>
+    <ng-container *ngIf="metadata && metadata.createAccount && metadata.createAccount.statement">
+        <div class="create-account">
+            <ng-container *ngTemplateOutlet="statementTemplate; context: metadata.createAccount"></ng-container>
+        </div>
+    </ng-container>
+    <div class="section">
+        {{ metadata && metadata.signInText && metadata.signInText.label }}
+    </div>
+    <ui-textbox-component
+        #userNameControl
+        (valueChange)="onValueChange($event)"
+        [value]="model.userName"
+        type="text"
+        name="emailOrMobile"
+        [ignoreMediaQueries]="ignoreMediaQueries"
+        [metadata]="metadata && metadata.emailOrMobile"
+    >
+    </ui-textbox-component>
+
+    <button
+        uiRecaptcha
+        [action]="metadata && metadata.continue && metadata.continue.action"
+        class="btn btn-primary"
+        [hidden]="notVerified && !verificationSent"
+        (execute)="onContinueButtonClick()"
+    >
+        {{ metadata && metadata.continue && metadata.continue.label }}
+    </button>
+
+    <div class="not-verified" [hidden]="!notVerified || (model.mode === 'Email' && notVerified)">
+        <ng-container *ngTemplateOutlet="statementTemplate; context: metadata && metadata.resendOtp && metadata.resendOtp.description"></ng-container>
+        <button
+            uiRecaptcha
+            [action]="metadata && metadata.resendOtp && metadata.resendOtp.action"
+            class="btn btn-light btn-light-bordered"
+            (execute)="onResendOtpClick()"
+        >
+            {{ metadata && metadata.resendOtp && metadata.resendOtp.label }}
+        </button>
+    </div>
+
+    <div class="not-verified" [hidden]="!notVerified || (model.mode === 'Mobile' && notVerified)">
+        <ng-container *ngTemplateOutlet="statementTemplate; context: metadata && metadata.resendOtp && metadata.resendEmail.description"></ng-container>
+        <button
+            uiRecaptcha
+            [action]="metadata && metadata.resendEmail && metadata.resendEmail.action"
+            class="btn btn-light btn-light-bordered"
+            (click)="onResendEmailClick()"
+        >
+            {{ metadata && metadata.resendEmail && metadata.resendEmail.label }}
+        </button>
+    </div>
+    <div class="resend" [hidden]="!verificationSent">
+        <ng-container *ngTemplateOutlet="statementTemplate; context: metadata && metadata.resendEmail && metadata.resendEmail.resendSuccess"></ng-container>
+    </div>
+
+    <ng-container *ngIf="metadata && metadata.acceptance && metadata.acceptance.statement">
+        <div class="acceptance">
+            <ng-container *ngTemplateOutlet="statementTemplate; context: metadata.acceptance"></ng-container>
+        </div>
+    </ng-container>
+</ng-template>
+
+<ng-template #statementTemplate let-statement="statement">
+    <ui-statement-component [metadata]="statement"></ui-statement-component>
+</ng-template>

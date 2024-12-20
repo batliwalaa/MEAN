@@ -1,0 +1,75 @@
+@import '../../../../../../ui/src/scss/variables';
+@import '../../../../../../ui/src/scss/mixins';
+
+.container {
+    @include non-content-container;
+    color: $text-color;
+    padding: 0 10px;
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: 1fr;
+    row-gap: 20px;
+
+    .header {
+        color: #333;
+        margin-top: 14px;
+        font-weight: 600;
+        font-size: 1.5rem;
+    }
+
+    .add-address {
+        margin-top: 1px;
+        position: relative;
+    
+        i {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 17pt;
+        }
+    }
+
+    .address-container {
+        display: grid;
+        row-gap: 20px;
+
+        &.mobile-container {
+            --wrapper-grid-template-columns: 1fr;
+            --wrapper-grid-auto-flow: row;
+            --buttons-margin-top: 20px;        
+        }
+    
+        &.desktop-container {
+            --wrapper-grid-template-columns: 2fr 1fr;
+            --wrapper-grid-auto-flow: column;
+            --buttons-margin-top: 20px;
+        }
+
+        .item-wrapper {
+            display: grid;
+            grid-template-columns: var(--wrapper-grid-template-columns);
+            grid-auto-flow: var(--wrapper-grid-auto-flow);
+            row-gap: 20px;
+            box-shadow: 0 4px 8px #e1e1e1;
+            border: 1px solid #e1e1e1;
+            padding: 20px;           
+
+            .buttons {
+                display: grid;
+                row-gap: 20px;
+            }
+
+            .address-wrapper {
+                display: grid;
+                grid-auto-flow: row;
+                row-gap: 5px;
+
+                .default-address {
+                    padding-bottom: 10px;
+                    font-weight: 600;
+                }
+            }
+        }
+    }
+}

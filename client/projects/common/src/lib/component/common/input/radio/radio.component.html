@@ -1,0 +1,20 @@
+<div class="radio-container">
+    <div class="control-row">
+        <div class="control" [class.disabled]="disabled" [class.radio]="!smallRadio" [class.radio-small]="smallRadio">
+            <div tabindex="0" [class.radio]="!smallRadio" [class.radio-small]="smallRadio">
+                <span
+                    [class.radio]="!smallRadio"
+                    [class.radio-small]="smallRadio"
+                    [ngClass]="{ checked: data === true }"
+                    (click)="onRadioClick()"
+                ></span>
+                <label>{{ metadata && metadata.label || label }}</label>
+            </div>
+            <div class="information" [hidden]="!showInfo">
+                <div *ngFor="let text of metadata && metadata.information">
+                    {{ text }}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,33 @@
+<div class="address-container">
+    @if (address)
+    {
+        @if (address.addressLine1) 
+        {
+            <div>{{ address.addressLine1 }}</div>
+        }
+        @if (address.addressLine2) 
+        {
+            <div>{{ address.addressLine2 }}</div>
+        }
+        @if (address.addressLine3) 
+        {
+            <div>{{ address.addressLine3 }}</div>
+        }
+        @if (address.town) 
+        {
+            <div>{{ address.town }}</div>
+        }
+        @if (address.state) 
+        {
+            <div>{{ address.state }}</div>
+        }
+        @if (address.postcode) 
+        {
+            <div>{{ address.postcode }}</div>
+        }
+        @if (address.country) 
+        {
+            <div class="country">{{ address.country }}</div>
+        }
+    }
+</div>

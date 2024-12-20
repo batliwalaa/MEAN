@@ -1,0 +1,89 @@
+@import '../../../../../ui/src/scss/variables';
+
+.nav-top {
+    position: absolute;
+    left: 1px;
+    top: 1px;
+}
+
+.wrapper {
+    margin: 0;
+    background-color: #fff;
+    position: relative;
+    height: auto;
+
+    .header {
+        background-color: #fff;
+        z-index: 1;
+        min-height: 50px;
+    }
+
+    .sidebar {
+        display: none;
+    }
+
+    .content {
+        margin-bottom: 10px;
+    }
+}
+
+.wrapper {
+    .footer-top {
+        margin-top: 60px;
+        justify-content: center;
+        background-color: $footer-background-color;
+        height: 50px;
+
+        .go-top {
+            position: relative;
+
+            a {
+                color: #777;
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, 25px);
+
+                span {
+                    padding: 7px 11px;
+                    transition: 0.5s;
+                    box-shadow: 0 2px 9px #a1a1a1;
+
+                    &:hover {
+                        box-shadow: 0 8px 18px #a1a1a1;
+                    }
+                }
+            }
+        }
+    }
+
+    .footer {
+        background-color: $footer-background-color;
+        color: $footer-color;
+    }
+
+    .footer-bottom {
+        justify-content: center;
+        background-color: $footer-background-color;
+        min-height: 50px;
+    }
+}
+
+.non-content-wrapper {
+    .content {
+        margin: 0;
+    }
+}
+
+@media only screen and (min-width: $tablet-min-width) {
+    .wrapper {
+        width: 100%;
+        margin: 0;
+
+        .sidebar {
+            display: block;
+            margin-bottom: 10px;
+            margin-right: 10px;
+        }
+    }
+}

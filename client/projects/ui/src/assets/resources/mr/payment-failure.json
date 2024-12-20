@@ -1,0 +1,18 @@
+{
+    "section": "Payment failure",
+    "transactionId": {
+        "label": "Please quote transaction number"
+    },
+    "failureMessage": {
+        "statement": [
+            { "type": "text", "text": "Something went wrong", "class": "failure" },
+            { "type": "text", "text": ", please " },
+            {
+                "type": "link",
+                "text": "contact support team",
+                "url": "./contact"
+            },
+            { "type": "text", "text": "." }
+        ]
+    }
+}

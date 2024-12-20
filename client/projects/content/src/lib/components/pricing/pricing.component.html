@@ -1,0 +1,20 @@
+<div class="pricing-container">
+    <div class="pricing-item">
+        @if (showAllTaxesInclusive)
+        {
+            <span class="taxes-inclusive">({{ metadata && metadata.taxesInclusive && metadata.taxesInclusive.label }})</span>
+        }
+        <span class="discount">-{{getDiscountPercent(pricing.discountPercent)}} </span>
+    </div>
+    
+    <div class="pricing-item">
+        <span class="now">{{ metadata && metadata.now && metadata.now.label }}: </span>
+        <span class="price-now">
+            <span class="currency-symbol">{{currencySymbol.trim()}}</span>{{toFixed(pricing.retail).trim()}}</span>
+    </div>
+    <div class="pricing-item">
+        <span class="was">{{ metadata && metadata.was && metadata.was.label }}: </span>
+        <span class="price-was">
+            <span class="currency-symbol">{{currencySymbol.trim()}}</span>{{toFixed(pricing.list).trim()}}</span>
+    </div>
+</div>

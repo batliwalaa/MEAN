@@ -1,0 +1,77 @@
+@if(addresses)
+{
+    @for(address of addresses; track address; let i = $index)
+    {
+        @if (isSelectedOrDefaultAddress(address._id))
+        {
+            <ng-container *ngTemplateOutlet="selectedAddressTemplate; context: getAddress(address)"></ng-container>
+        }
+
+        @else
+        {
+            <ng-container *ngTemplateOutlet="selectAddressTemplate; context: getAddress(address)"></ng-container>
+        }
+    }
+    
+    <div class="add-address">
+        <button class="btn btn-light btn-text-left btn-light-bordered" routerLink="../../address/add">
+            {{ metadata && metadata.add && metadata.add.label }}
+        </button>
+        <i class="material-icons">chevron_right</i>
+    </div>
+    @if (acceptance && acceptance.statement)
+    {
+        <div class="acceptance">
+            <ng-container *ngTemplateOutlet="statementTemplate; context: acceptance"></ng-container>
+        </div>
+    }
+}
+    
+
+
+<ng-template #statementTemplate let-statement="statement">
+    <ui-statement-component [metadata]="statement"></ui-statement-component>
+</ng-template>
+
+<ng-template #selectedAddressTemplate let-address="address">
+    <div class="select-address-container">
+        <div class="address-selector">
+            <ui-radio-component
+                [value]="isSelectedOrDefaultAddress(address._id)"
+                (valueChange)="onValueChange(address._id)"
+            ></ui-radio-component>
+            <ui-address-display [address]="address"></ui-address-display>
+        </div>
+        <button class="btn btn-primary" (click)="onDeliverAddressClick(address._id)">
+            {{ metadata && metadata.selectDeliveryAddress && metadata.selectDeliveryAddress.label }}
+        </button>
+        <button class="btn btn-light btn-small btn-light-bordered" [routerLink]="['../../address/edit/', address._id]">
+            {{ metadata && metadata.edit && metadata.edit.label }}
+        </button>
+        <ng-container *ngTemplateOutlet="deleteAddress; context: address"></ng-container>
+    </div>
+</ng-template>
+
+<ng-template #selectAddressTemplate let-address="address">
+    <div class="select-address-container">
+        <div class="address-selector">
+            <ui-radio-component
+                [value]="isSelectedOrDefaultAddress(address._id)"
+                (valueChange)="onValueChange(address._id)"
+            ></ui-radio-component>
+            <ui-address-display [address]="address"></ui-address-display>
+        </div>
+        <ng-container *ngTemplateOutlet="deleteAddress; context: address"></ng-container>
+    </div>
+</ng-template>
+
+<ng-template #deleteAddress let-id="_id">
+    <button
+        uiRecaptcha
+        [action]="metadata && metadata.delete && metadata.delete.action"
+        class="btn btn-light btn-small btn-light-bordered"
+        (execute)="onDeleteClick(id)"
+    >
+        {{ metadata && metadata.delete && metadata.delete.label }}
+    </button>
+</ng-template>

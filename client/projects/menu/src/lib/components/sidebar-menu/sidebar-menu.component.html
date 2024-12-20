@@ -1,0 +1,47 @@
+<ng-container *ngIf="sideBarItems && sideBarItems.length">
+    <div class="container">
+        <div *ngIf="previous && previous.url" class="previous" [routerLink]="[previous.url]">{{previous && previous.label}}</div>
+        <ng-container *ngFor="let item of sideBarItems; let idx = index;">
+            <ul [style.marginBottom]="item.menuItems.length > 0 ? '20px' : '0'" [style.marginTop]="idx === 0 ? '20px' : '0'">
+                <li *ngIf="item.key" class="list-header">{{item.key | textTransform}}</li>
+                <ul *ngIf="item.menuItems && item.menuItems.length > 0">
+                    <ng-container *ngTemplateOutlet="menuItemsTemplate;context:item"></ng-container>
+                </ul>
+            </ul>
+        </ng-container>
+    </div>
+</ng-container>
+
+<ng-template #menuItemsTemplate let-controlType="controlType" let-menuItems="menuItems">
+    <li class="nav-item clear" [hidden]="!hasSelected(menuItems)" (click)="clearFilter(menuItems)">Clear</li>
+    <ng-container *ngFor="let item of menuItems">
+        <ng-container *ngIf="item && item.label && item.label.length > 0">
+            <ng-container *ngIf="controlType === 'Link'">
+                <ng-container *ngIf="item.itemType !== 'List'">
+                    <li class="nav-item" [ngClass]="{ 'selected' : item.selected }" (click)="setSelected(item)">
+                        <a class="nav-link">{{item.label}}</a>
+                    </li>
+                </ng-container>
+                <ng-container *ngIf="item.itemType === 'List'">
+                    <li class="sub-list-header">
+                        <a class="nav-link">{{item.label}}</a>
+                    </li>
+                    <ul>
+                        <li *ngFor="let listItem of item.menuItems" class="nav-item list-item">
+                            <a class="nav-link">{{listItem.label}}</a>
+                        </li>
+                    </ul>
+                </ng-container>
+            </ng-container>
+            <ng-container *ngIf="controlType === 'Checkbox'">
+                <li class="nav-item checkbox" [ngClass]="{ 'selected' : item.selected }" (click)="setSelected(item)">
+                    <a class="nav-link checkbox">
+                        <i *ngIf="item.selected" class="material-icons">check_box</i>
+                        <i *ngIf="!item.selected" class="material-icons">check_box_outline_blank</i>
+                        {{item.label}}
+                    </a>
+                </li>
+            </ng-container>
+        </ng-container>
+    </ng-container>
+</ng-template>

@@ -1,0 +1,19 @@
+<div class="container">
+    <div class="header">{{metadata && metadata.myAccount && metadata.myAccount.label}}</div>
+
+    <div class="options">
+        <ng-container *ngFor="let option of options">
+            <ng-container *ngIf="showFeature(option)">
+                <ng-container *ngTemplateOutlet="tileTemplate; context: option"></ng-container>
+            </ng-container>
+            
+        </ng-container>
+    </div>
+</div>
+
+<ng-template #tileTemplate let-header="header" let-description="description" let-key="key">
+    <div class="tile" (click)="onTileClick(key)">
+        <div class="tile-header">{{header}}</div>
+        <div class="tile-description">{{description}}</div>
+    </div>
+</ng-template>

@@ -1,0 +1,30 @@
+@import '../../../../../ui/src/scss/variables';
+
+.container {
+    width: 100vw;
+    height: 40px;
+    margin: 0;
+    background-color: $bright-green;
+    border: 1px solid transparent;
+    position: relative;
+    padding-left: 20px;
+    
+    span,
+    i {
+        position: absolute;
+        left: 5px;
+        top: 50%;        
+        color: white;
+        font-weight: lighter;
+    }
+
+    i {
+        transform: translateY(-50%) rotate(-180deg);
+    }
+
+    span {
+        transform: translateY(-50%);
+        left: 35px;
+        font-weight: 600;
+    }
+}

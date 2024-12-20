@@ -1,0 +1,11 @@
+ui-lightbox-component {
+    .lightbox {
+        .lightbox-body {    
+            figure {
+                ::ng-deep & {
+                    margin-top: 20px;
+                }
+            }
+        }
+    }        
+}

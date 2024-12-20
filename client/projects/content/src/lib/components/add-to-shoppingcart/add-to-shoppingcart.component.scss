@@ -1,0 +1,14 @@
+@import '../../../../../ui/src/scss/variables';
+
+.btn-basket {
+    height: 38px;
+    padding: 5px 10px 8px 10px;
+    margin-left: 5px;
+    background-color: $bright-green;
+    color: $button-text-color;
+    border: 1px solid transparent;
+    font-size: $font-size;
+    border-radius: 15px;
+    cursor: pointer;
+    font-family: "Open Sans";
+}

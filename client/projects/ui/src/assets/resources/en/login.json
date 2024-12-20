@@ -1,0 +1,136 @@
+{
+    "signInOptions": {
+        "options": {
+            "defaultValue": "Mobile"
+        }
+    },
+    "isoNumberOptions": {
+        "options": {
+            "defaultValue": "+44"
+        }
+    },
+    "email": {
+        "label": "Email Address"
+    },
+    "mobile": {
+        "label": "Mobile no",
+        "pattern": "[0-9]+"
+    },
+    "emailOrMobile":{
+        "label": "Email or Mobile number"
+    },
+    "password": {
+        "label": "Password",
+        "validators": {
+            "required": ""
+        },
+        "error": {
+            "required": "Password is required"
+        }
+    },
+    "using": {
+        "label": "Use"
+    },
+    "showPassword": {
+        "label": ""
+    },
+    "header": {
+        "label": "Welcome"
+    },
+    "signInText": {
+        "label": "Sign in into your account using"
+    },
+    "errorHeader": {
+        "label": "Problem: "
+    },
+    "continue": {
+        "label": "Continue",
+        "action": "validateusername"
+    },
+    "resendOtp": {
+        "label": "Resend Verification OTP",
+        "description": {
+            "statement": [
+                { "type": "text", "text": "Your registered mobile is not verified, ", "class": "failure" },
+                { "type": "text", "text": "you can request for new verification OTP." }
+            ]
+        },
+        "action": "resendotp"
+    },
+    "resendEmail": {
+        "label": "Resend Verification Email",
+        "description": {
+            "statement": [
+                { "type": "text", "text": "Your registered email address is not verified, ", "class": "failure" },
+                { "type": "text", "text": "you can request for new verification email." }
+            ]
+        },
+        "action": "resendemail",
+        "resendSuccess": {
+            "statement": [
+                { "type": "text", "text": "New link has been emailed to registered email address", "class": "success" },
+                { "type": "text", "text": ", which will expire in" },
+                { "type": "text", "text": " 24", "class": "bold" },
+                { "type": "text", "text": " hours" }
+            ]
+        }
+    },
+    "signIn": {
+        "label": "Sign In",
+        "action": "signin"
+    },
+    "change": {
+        "label": "Change"
+    },
+    "notYou": {
+        "label": "Not you?"
+    },
+    "forgotPassword": {
+        "label": "Forgot password?"
+    },
+    "keepMeSignedIn": {
+        "label": "Keep me signed in"
+    },
+    "createAccount": {
+        "statement": [
+            { "type": "text", "text": "Not registered? " },
+            { "type": "link", "text": "Create an account", "url": "./customer/register" }
+        ]
+    },
+    "acceptance": {
+        "controlType": "acceptance",
+        "statement": [
+            { "type": "text", "text": "By signing in, you agree to amreetbazaar's " },
+            {
+                "type": "link",
+                "text": "Terms & Conditions",
+                "url": "./termsandconditions",
+                "newWindow": true
+            },
+            { "type": "text", "text": " and " },
+            {
+                "type": "link",
+                "text": "Privacy Policy",
+                "url": "./privacypolicy",
+                "newWindow": true
+            },
+            { "type": "text", "text": ". Please see our " },
+            {
+                "type": "link",
+                "text": "Cookie Policy",
+                "url": "./cookiepolicy",
+                "newWindow": true
+            },
+            { "type": "text", "text": "." }
+        ]
+    },
+    "errorMessages": [
+        { "key": "validateUsernameEmail", "text": "Failed to find account with email address" },
+        { "key": "validateUsernameMobile", "text": "Failed to find account with mobile" },
+        { "key": "invalidEmail", "text": "please enter valid email address" },
+        { "key": "invalidMobile", "text": "please enter valid mobile number" },
+        { "key": "password", "text": "Incorrect login details." },
+        { "key": "resendOtp", "text": "Failed to send verification OTP, please try again." },
+        { "key": "resendEmail", "text": "Failed to send verification email, please try again." }
+    ]
+}

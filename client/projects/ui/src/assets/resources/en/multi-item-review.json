@@ -1,0 +1,10 @@
+{
+    "purchaseReviews": {
+        "label": "Order purchase review"
+    },
+    "breadcrumb": [
+        { "label": "My Account", "key": "myAccount" },
+        { "label": "My Orders", "key": "myOrders" },
+        { "label": "order review" }
+    ]
+}

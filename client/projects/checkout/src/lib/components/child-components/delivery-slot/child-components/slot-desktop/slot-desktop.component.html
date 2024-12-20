@@ -1,0 +1,43 @@
+<div class="slot-container">
+    <div class="week-container">
+        <div class="week-day">
+            <div class="week-item">
+                <span colspan="2"></span>
+            </div>
+            @for(currentDay of tab.days; track currentDay)
+            {
+                <div class="week-item">
+                    <span class="week-item-weekday">{{ currentDay.weekday }}</span>
+                    <span>
+                        <span class="week-item-date">{{ currentDay.day }}</span>
+                    </span>
+                </div>
+            }            
+        </div>
+        <div class="week-slot-container">
+            @for(item of slotWeekItems; track item;)
+            {
+                <div class="week-slot-item">
+                    <span>{{ item.label }}</span>
+                </div>
+                @for(s of item.slots; track s;)
+                {
+                    <div class="week-slot-item">
+                        @if (s.availableSlots === 0)
+                        {
+                            <span class="not-available">Unavailable</span>
+                        }
+                        @else 
+                        {
+                            <span
+                                class="available"
+                                [ngClass]="{ selected: s.selected }"
+                                (click)="onSlotClick(s)"
+                            >Available</span>
+                        }
+                    </div>
+                }
+            }
+        </div>
+    </div>
+</div>

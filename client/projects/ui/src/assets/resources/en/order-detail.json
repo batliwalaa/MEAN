@@ -1,0 +1,103 @@
+{
+    "orderDetail": {
+        "label": "Order Details"
+    },
+    "header": {
+        "orderDate": {
+            "label": "Order Date"
+        },
+        "orderNumber": {
+            "label": "Order #"
+        },
+        "invoice": {
+            "label": "Invoice"
+        },
+        "creditNote": {
+            "label": "Credit note"
+        },
+        "deliveryAddress": {
+            "label": "Delivery Address"
+        },
+        "paymentMethod": {
+            "label": "Payment Method"
+        },
+        "summary": {
+            "label": "Summary"
+        },
+        "subTotal": {
+            "label": "Item(s) Subtotal"
+        },
+        "shipping": {
+            "label": "Shipping"
+        },
+        "total": {
+            "label": "Total"
+        },
+        "loyaltyPoints": {
+            "label": "Points Redemeed"
+        },
+        "promotions": {
+            "label": "Promotions"
+        },
+        "documents": {
+            "label": "Document(s)"
+        }
+    },
+    "detail": {
+        "eligibleForReturn": {
+            "label": "Eligible for return until"
+        },
+        "productSupport": {
+            "label": "Get product support"
+        },
+        "returnItems": {
+            "label": "Return items"
+        },
+        "productReview": {
+            "label": "Write a product review",
+            "action": "product-review"
+        },
+        "delivered": {
+            "label": "Delivered on"
+        },
+        "trackOrder": {
+            "label": "Track order"
+        }
+        ,
+        "paymentInProgress": {
+            "label": "Payment in progress"
+        },
+        "picking": {
+            "label": "Delivery scheduled for: "
+        },
+        "failed": {
+            "label": "Payment failed on: " 
+        },
+        "returned": {
+            "label": "Returned on: "
+        },
+        "semiReturned": {
+            "label": "Part returned on: "
+        },
+        "closed": {
+            "label": "Closed on: "
+        },
+        "redirectToPayment": {
+            "label": "Retry payment"
+        },
+        "cancelOrder": {
+            "label": "Cancel order"
+        },
+        "between": {
+            "label": "between"
+        },
+        "cancelled": {
+            "label": "Order cancelled on"
+        }
+    },    
+    "breadcrumb": [
+        { "label": "My Account", "key": "AccountHome" },
+        { "label": "My Orders", "key": "AccountOrders" },
+        { "label": "Order Detail" }
+    ]
+}

@@ -1,0 +1,51 @@
+@import '../../../../../../../ui/src/scss/variables';
+@import '../../../../../../../ui/src/scss/mixins';
+
+.item-container {
+    display: flex;
+
+    .image-container {
+        width: 150px;
+
+        figure {
+            @include small-product-image;
+            margin-bottom: 10px;
+        }
+    }
+
+    .text-container {
+        color: $text-color;
+        flex-direction: column;
+        padding-left: 20px;
+
+        .packaging,
+        .description {
+            font-weight: 500;
+            font-size: 1rem;
+            line-height: 12pt;
+        }
+
+        .pricing {
+            margin-top: 10px;
+        }
+    }
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: row;
+    align-self: start;
+    width: 100%;
+
+    .add-to-cart {
+        align-self: flex-start;
+        width: 135px;
+    }
+
+    .btn {
+        height: 41px;
+        margin-top: 6px;
+        margin-left: 10px;
+        width: 100px;
+    }
+}

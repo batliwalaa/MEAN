@@ -1,0 +1,36 @@
+<div *ngIf="!isMobile" class="bread-crumb">
+    <ui-breadcrumb-component [items]="breadcrumbs"></ui-breadcrumb-component>
+</div>
+
+<div class="container">
+    <div class="header">{{metadata && metadata.myOrders && metadata.myOrders.label}}</div>
+
+    <div [ngClass]="{'mobile-container': isMobile, 'desktop-container': !isMobile}">
+        <ng-container *ngTemplateOutlet="filterTemplate"></ng-container>
+        <ng-container *ngFor="let o of filteredOrders">
+            <ui-order-wrapper-component [metadata]="metadata" [order]="o" [slot]="getSlot(o.slotId)"></ui-order-wrapper-component>
+        </ng-container>
+    </div>
+</div>
+
+<ng-template #filterTemplate>
+    <div class="filter-container">
+        <div class="filter">
+            <span class="orders-placed">{{metadata && metadata.showOrdersPlaced && metadata.showOrdersPlaced.label}}</span> {{metadata && metadata.in && metadata.in.label}}
+            <span class="period"
+                (click)="showPeriodDropdown = !showPeriodDropdown"
+            >
+                <span>{{selectedPeriod}}</span>
+                <div *ngIf="showPeriodDropdown" class="dropdown">
+                    <div class="dropdown-container">
+                        <ul>
+                            <li *ngFor="let o of periodOptions" [ngClass]="{'selected': o.value === selectedPeriod }"  (click)="onPeriodOptionClick(o)">{{o.value}}</li>
+                        </ul>
+                    </div>
+                </div>
+            </span>
+        </div>
+        
+        <div class="order-count">{{metadata && metadata.ordersPlaced && metadata.ordersPlaced.label}}: {{count}}</div>
+    </div>
+</ng-template>

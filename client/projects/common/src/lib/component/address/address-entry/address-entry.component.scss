@@ -1,0 +1,16 @@
+@import '../../../../../../ui/src/scss/variables';
+
+.address-container {
+    width: auto;
+
+    .label {
+        font-weight: 500;
+        font-size: 0.9em;
+        color: $text-color;
+    }
+
+    .btn {
+        margin-top: 20px;
+        font-size: $font-size;
+    }
+}

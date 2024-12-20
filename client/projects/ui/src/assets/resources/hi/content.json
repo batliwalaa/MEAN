@@ -1,0 +1,44 @@
+{
+    "addToBasket": {
+        "label": "Add to Basket",
+        "action": "addtobasket"
+    },
+    "countryOfOrigin": {
+        "label": "country of origin"
+    },
+    "bestSeller": {
+        "label": "Best Seller"
+    },
+    "savings": {
+        "label": "savings"
+    },
+    "qty": {
+        "label": "Qty",
+        "min": 1,
+        "max": 20
+    },
+    "increment": {
+        "action": "shoppingcartitemqtyincrement"
+    },
+    "decrement": {
+        "action": "shoppingcartitemqtydecrement"
+    },
+    "enableDelay": 2000,
+    "taxesInclusive": {
+        "label": "all taxes included"
+    },
+    "review": {
+        "average": {
+            "label": "avg"
+        },
+        "of": {
+            "label": "of"
+        },
+        "reviews": {
+            "label": "reviews"
+        },
+        "noreviews": {
+            "label": "0 reviews"
+        }
+    }
+}

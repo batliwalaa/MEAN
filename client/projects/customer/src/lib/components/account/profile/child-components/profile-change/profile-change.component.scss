@@ -1,0 +1,93 @@
+@import '../../../../../../../../ui/src/scss/variables';
+@import '../../../../../../../../ui/src/scss/mixins';
+
+.container {
+
+    &.desktop-container {
+        --buttons-grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    &.mobile-container {
+        --buttons-grid-template-columns: 1fr;
+    }
+
+    .buttons {
+        width: 100%;
+        display: grid;
+        grid-template-columns: var(--buttons-grid-template-columns);
+        column-gap: 10px;
+        row-gap: 10px;
+        margin-top: 20px;
+    }
+
+    .mobile-number {
+        display: grid;
+        grid-template-columns: 80px auto;
+        margin-top: 13px;
+
+        ui-dropdown-component {
+            select {
+                ::ng-deep & {
+                    padding-left: 1px;
+                }
+            }
+
+            label {
+                ::ng-deep & {
+                    padding-left: 7px;
+                }
+            }
+        }
+    }
+
+    .row {
+        &.message {
+            height: 2rem;
+            margin: 5px 0;
+            background-color: #fff3ee;
+            padding: 8px 11px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #d08e94;
+        }
+
+        &.description {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: $text-color;
+
+            .email,
+            .mobile {
+                font-weight: bold;
+            }
+        }
+    }
+
+    .verification-failure,
+    .acceptance {
+        margin-top: 20px;
+        font-size: 0.8em;
+    }
+
+    .expired,
+    .verification-failure {
+        font-size: 0.9em;
+    }
+
+    .expired {
+        margin-top: 20px;
+        line-height: 23px;
+        color: $error-text-color;
+        font-weight: 600;
+    }
+
+    .verification-failure {
+        .failure {
+            ::ng-deep & {
+                color: $error-text-color;
+                font-weight: bold;
+            }
+        }
+    }
+}
+

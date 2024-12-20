@@ -1,0 +1,65 @@
+@import '../../../../../../../ui/src/scss/variables';
+@import '../../../../../../../ui/src/scss/mixins';
+
+div.menu {
+    cursor: pointer;
+    position: relative;
+
+    &:hover {
+        color: $highlight;
+    }
+
+    > div:not(.dropdown) {
+        text-align: right;
+        padding-top: 10px;
+        font-size: 1rem;
+        color: white;
+        white-space: nowrap;
+        padding-right: 45px;
+        position: relative;
+
+        &:after {
+            @include down-arrow(-16px, 1px);
+            right: 27px;
+            bottom: 0;
+        }
+    }
+
+    .dropdown {
+        position: absolute;
+        right: 25px;
+        top: 35px;
+        width: 200px;
+        padding: 11px;
+        border: 0 solid transparent;
+        color: white;
+        background: $bright-green;
+        z-index: 1;
+        font-size: 1rem;
+        
+        &:after {
+            @include up-indicator (-3px, $tertiary-color);
+        }
+
+        div {
+            width: 100%;
+            height: 39px;
+            text-align: left;
+            cursor: pointer;
+            font-weight: normal;
+            padding: 8px;
+            border: 1px solid transparent;
+            border-bottom: 1px solid $bright-green;
+            
+            &.list-header {
+                background-color: $tertiary-color;
+                width: calc(100% + 22px);
+                margin-left: -11px;
+                margin-top: -12px;
+                height: 50px;
+                padding: 14px 8px;
+                cursor: default;
+            }
+        }
+    }
+}

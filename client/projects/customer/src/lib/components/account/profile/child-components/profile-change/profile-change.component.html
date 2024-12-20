@@ -1,0 +1,125 @@
+<ng-container *ngIf="type">
+    <div [uiCheckAllInputsValid]="inputValidatorInitialiser" class="container" [ngClass]="{'mobile-container': isMobile, 'desktop-container': !isMobile}">
+        <div class="error" [hidden]="!hasErrors">
+            <span>{{ metadata && metadata.errorHeader && metadata.errorHeader.label }}</span>
+            <span *ngFor="let e of errors">{{ e.key | titlecase }}: {{ e.error }}</span>
+        </div>
+
+        <ng-container *ngIf="type === 'Email'">
+            <ng-container *ngTemplateOutlet="emailTemplate"></ng-container>
+        </ng-container>
+        <ng-container *ngIf="type === 'Mobile'">
+            <ng-container *ngTemplateOutlet="mobileTemplate"></ng-container>
+        </ng-container>
+
+        <div class="row description">
+            <span>{{ metadata && metadata.description && metadata.description.label }}</span>
+            <span class="mobile" *ngIf="type === 'Mobile'">{{ profile && profile.isoCode }}{{ profile && profile.mobile}}</span>
+            <span class="email" *ngIf="type === 'Email'">{{ profile && profile.emailId}}</span>
+        </div>
+
+        <div class="row">
+            <ui-textbox-component
+                (valueChange)="onValueChange($event)"
+                [value]="model.otp"
+                type="text"
+                name="otp"
+                [ignoreMediaQueries]="ignoreMediaQueries"
+                [metadata]="metadata && metadata.otp"
+            ></ui-textbox-component>
+        </div>
+        
+        <div class="row message">
+            <span>{{metadata && metadata.otpValidMessage && metadata.otpValidMessage.label}}</span>
+        </div>
+
+        <ng-container *ngIf="expired">
+            <ng-container *ngTemplateOutlet="expiredTemplate"></ng-container>
+        </ng-container>
+        <ng-container *ngIf="verificationFailure">
+            <ng-container *ngTemplateOutlet="failureTemplate"></ng-container>
+        </ng-container>
+
+        <div class="buttons">
+            <button class="btn btn-light btn-box-shadow" (click)="onCancelClick()">{{metadata && metadata.cancel && metadata.cancel.label}}</button>            
+            <button
+                uiRecaptcha
+                class="btn btn-light btn-box-shadow"
+                (execute)="onResendClick()"
+                [action]="metadata && metadata.resend && metadata.resend.action"
+            >
+                {{metadata && metadata.resend && metadata.resend.label}}
+            </button>
+            <button
+                uiRecaptcha
+                class="btn btn-primary btn-box-shadow"
+                (execute)="onSubmitClick()"
+                [action]="metadata && metadata.submit && metadata.submit.action"
+                [valid]="isValid"
+            >
+                {{metadata && metadata.submit && metadata.submit.label}}
+            </button>
+        </div>
+    </div>
+    
+</ng-container>
+
+<ng-template #emailTemplate>
+    <div class="row">
+        <ui-textbox-component
+            #emailControl
+            (valueChange)="onValueChange($event)"
+            [value]="model.email"
+            type="text"
+            name="email"
+            [ignoreMediaQueries]="ignoreMediaQueries"
+            [metadata]="metadata && metadata.email"
+        ></ui-textbox-component>
+    </div>
+</ng-template>
+
+<ng-template #mobileTemplate>
+    <div class="row mobile-number">
+        <ui-dropdown-component
+            (valueChange)="onValueChange($event)"
+            [value]="model.isoCode"
+            type="dropdown"
+            name="isoCode"
+            [ignoreMediaQueries]="ignoreMediaQueries"
+            [style]="{
+                'background-color': '#e1e1e1',
+                'border-right': '1px solid transparent'
+            }"
+            [metadata]="metadata && metadata.isoCode"
+            [items]="isoNumbers"
+        >
+        </ui-dropdown-component>
+        <ui-textbox-component
+            #mobileControl
+            (valueChange)="onValueChange($event)"
+            [value]="model.mobile"
+            type="text"
+            name="mobile"
+            [ignoreMediaQueries]="ignoreMediaQueries"
+            [metadata]="metadata && metadata.mobile"
+        >
+        </ui-textbox-component>
+    </div>
+</ng-template>
+
+
+<ng-template #failureTemplate>
+    <ng-container *ngIf="metadata && metadata.verificationFailure && metadata.verificationFailure.statement">
+        <div class="verification-failure">
+            <ng-container *ngTemplateOutlet="statementTemplate; context: metadata.verificationFailure"></ng-container>
+        </div>
+    </ng-container>
+</ng-template>
+
+<ng-template #expiredTemplate>
+    <div class="expired">{{ metadata && metadata.otpExpired && metadata.otpExpired.label }}</div>
+</ng-template>
+
+<ng-template #statementTemplate let-statement="statement">
+    <ui-statement-component [metadata]="statement"></ui-statement-component>
+</ng-template>

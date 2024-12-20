@@ -1,0 +1,65 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "module": "es2020",
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "ES2022",
+    "typeRoots": [
+      "node_modules/@types",
+      "projects/typings"
+    ],
+    "lib": [
+      "es2018",
+      "dom"
+    ],
+    "paths": {
+      "@menu/*": [
+        "projects/menu/*"
+      ],
+      "@topbar/*": [
+        "projects/topbar/*"
+      ],
+      "@search/*": [
+        "projects/search/*"
+      ],
+      "@footer/*": [
+        "projects/footer/*"
+      ],
+      "@common/*": [
+        "projects/common/*"
+      ],
+      "@content/*": [
+        "projects/content/*"
+      ],
+      "@header/*": [
+        "projects/header/*"
+      ],
+      "@shell/*": [
+        "projects/shell/*"
+      ],
+      "@checkout/*": [
+        "projects/checkout/*"
+      ],
+      "@login/*": [
+        "projects/login/*"
+      ],
+      "@customer/*": [
+        "projects/customer/*"
+      ],
+      "@admin/*": [
+        "projects/admin/*"
+      ]
+    }
+  },
+  "angularCompilerOptions": {
+    "fullTemplateTypeCheck": true,
+    "strictInjectionParameters": true
+  }
+}

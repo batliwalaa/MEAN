@@ -1,0 +1,39 @@
+<ng-container *ngIf="footerItems">
+    <div class="footerbar">
+        <ul class="placeholder-item"></ul>
+        <ng-container *ngFor="let item of footerItems; let idx = index">
+            <ul
+                class="footerbar-list"
+                [ngClass]="{
+                    animate: isSelected(item._id),
+                    'no-border': footerItems.length === idx + 1
+                }"
+            >
+                <li class="footer-item" (click)="item.childItems ? setSelectedFooter(item._id) : null">
+                    <a class="footer-link" (click)="(false)">{{ item.label }}</a>
+                    <ng-container *ngIf="item.childItems">
+                        <i class="fa fa-caret-down"></i>
+                        <i class="fa fa-caret-up"></i>
+                    </ng-container>
+                </li>
+                <ng-container *ngIf="item.childItems">
+                    <ng-container *ngTemplateOutlet="childItemsTemplate; context: item"></ng-container>
+                </ng-container>
+            </ul>
+        </ng-container>
+        <ul class="placeholder-item"></ul>
+    </div>
+</ng-container>
+
+<ng-template #childItemsTemplate let-childItems="childItems">
+    <div class="child-container">
+        <div class="child-items">
+            <ul class="footer-child-item item-list">
+                <ng-container *ngFor="let item of childItems">
+                    <li>{{ item.label }}</li>
+                    <li class="list-item-separator"></li>
+                </ng-container>
+            </ul>
+        </div>
+    </div>
+</ng-template>

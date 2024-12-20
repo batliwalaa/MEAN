@@ -1,0 +1,109 @@
+<ui-back-component (isVisible)="onBackVisibilityChange($event)"></ui-back-component>
+
+<div class="mobile-container" [ngClass]="{ 'authenticated': authenticated }">
+    <ng-container *ngTemplateOutlet="menu"></ng-container>
+    <span class="company-logo-small" (click)="onHomeClick()"><a (click)="onHomeClick()">Amreet</a></span>
+    <div class="user-signin-signout">
+        <ui-signin [hidden]="authenticated" [metadata]="metadata" class="small-text signin"> </ui-signin>
+        <div [hidden]="!authenticated">&nbsp;</div>
+        
+    </div>
+    <a href="javascript:void(0);" class="icon" (click)="cartClickHandler()">
+        <i class="material-icons-outlined shopping-cart">shopping_cart</i>        
+        <span class="tq-label">{{ totalQuantity }}</span>
+    </a>
+    <ng-container *ngTemplateOutlet="quicksearchTemplate"></ng-container>
+    <ui-signout [hidden]="!authenticated" [metadata]="metadata" [firstName]="firstName" (signout)="onSignOut()" class="small-text signin"></ui-signout>   
+</div>
+
+<div class="desktop-container" [ngClass]="{ 'authenticated': authenticated }">
+    <ng-container *ngTemplateOutlet="menu"></ng-container>
+    <span class="company-logo-small" (click)="onHomeClick()"><a (click)="onHomeClick()">Happi</a></span>
+    <ng-container *ngTemplateOutlet="quicksearchTemplate"></ng-container>
+    <ng-container *ngTemplateOutlet="languageTemplate"></ng-container>
+    <div 
+        class="user-signin-signout"
+        [ngClass]="{ 'bordered': !authenticated }"
+        (mouseleave)="showPopup = false"
+        (mouseover)="showPopup = !authenticated"
+    >
+        <ui-signin [hidden]="authenticated" [metadata]="metadata" class="small-text signin"> </ui-signin>
+        <div [hidden]="!authenticated">&nbsp;</div>
+        <ng-container *ngTemplateOutlet="signInPopupTemplate"></ng-container>
+    </div>
+    <a href="javascript:void(0);" class="icon" (click)="cartClickHandler()">
+        <i class="material-icons-outlined shopping-cart">shopping_cart</i>        
+        <span class="tq-label">{{ totalQuantity }}</span>
+    </a>
+    <ui-signout [hidden]="!authenticated" [metadata]="metadata" [firstName]="firstName" (signout)="onSignOut()" class="small-text signin"></ui-signout>
+</div>
+
+<ui-menu></ui-menu>
+<ui-burger-menu 
+    [ngClass]="{ 'animate': showMenu, 'authenticated': authenticated, 'back-visible': backComponentIsVisible }"
+    (close)="showMenu = false; showChildMenu = false"></ui-burger-menu>
+
+<ng-template #menu>
+    <div class="menu">
+        <a
+            href="javascript:void(0);"
+            class="icon icon-border"
+            [hidden]="showMenu || showChildMenu"
+            (click)="showMenu = !showMenu"
+        >
+            <i class="material-icons">menu</i>
+        </a>
+        <a
+            href="javascript:void(0);"
+            class="icon icon-border"
+            [hidden]="!showMenu"
+            (click)="showMenu = false; showChildMenu = false"
+        >
+            <i class="material-icons">menu_open</i>
+        </a>
+    </div>
+</ng-template>
+
+<ng-template #quicksearchTemplate>
+    <div class="search-container">
+        <ui-quick-search [metadata]="metadata" class="search"></ui-quick-search>
+    </div>
+</ng-template>
+
+<ng-template #quickbarTemplate>
+    <div class="quickbar">
+        <ui-signin [hidden]="authenticated" [metadata]="metadata" class="small-text signin"> </ui-signin>
+        <ui-signout [hidden]="!authenticated" [metadata]="metadata" [firstName]="firstName" (signout)="onSignOut()" class="small-text signin">
+        </ui-signout>
+        <a href="javascript:void(0);" class="icon" (click)="cartClickHandler()">
+            <i class="material-icons-outlined">shopping_bag</i>
+            <span class="tq-label">{{ totalQuantity }}</span>
+        </a>
+    </div>
+</ng-template>
+
+
+<ng-template #signInPopupTemplate>
+    <ng-container *ngIf="showPopup">
+        <div class="signin-popup">
+            <ul>
+                <li><a [routerLink]="['./signin']">{{metadata && metadata.signIn && metadata.signIn.label}}</a></li>
+                <li><span>{{metadata && metadata.notRegistered && metadata.notRegistered.label}}</span>, <a [routerLink]="['./customer/register']">{{metadata && metadata.createAccount && metadata.createAccount.label}}</a></li>
+            </ul>
+        </div>
+    </ng-container>
+</ng-template>
+
+<ng-template #languageTemplate>
+    <div 
+        class="flag-container"
+        (click)="showLanguagePopup = !showLanguagePopup;"
+        (outsideClick)="showLanguagePopup = false"
+    >
+        <div class="flag" [ngClass]="country"></div>
+        <ui-language-selector-component
+            *ngIf="metadata && metadata.language && metadata.language.options.length > 1"
+            [hidden]="!showLanguagePopup"
+            [metadata]="metadata"></ui-language-selector-component>
+</div>
+</ng-template>

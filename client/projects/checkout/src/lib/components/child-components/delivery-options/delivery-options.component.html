@@ -1,0 +1,59 @@
+@if (metadata)
+{
+    <div class="options-container">
+        <div class="title">{{ metadata.section }}</div>
+
+        @for (option of options; track option; let i = $index)
+        {
+            @if (isOptionAvailable(option.type))
+            {
+                <ng-container *ngTemplateOutlet="availableOptionTemplate; context: getOption(option)"></ng-container>
+            }
+            @else 
+            {
+                <ng-container *ngTemplateOutlet="nonAvailableOptionTemplate; context: getOption(option)"></ng-container>
+            }
+        }
+
+        <button class="btn btn-primary" [disabled]="!continue" (click)="onContinueClick()">
+            {{ metadata && metadata.continue && metadata.continue.label }}
+        </button>
+    </div>
+}
+
+
+<ng-template #availableOptionTemplate let-option="option">
+    <div class="option-section">
+        <div class="option-selector">
+            <ui-radio-component
+                smallRadio="true"
+                [value]="isOptionSelected(option.type)"
+                (valueChange)="onDeliveryOptionChanged(option.type)"
+            ></ui-radio-component>
+            <div class="option-detail">
+                @if (hasValue(option.type))
+                {
+                    <span class="currency-symbol">{{ configuration.currencySymbol }}{{ getOptionValue(option.type) }}</span>
+                }
+                <span class="option-type">{{ option.type }}</span>
+                <span class="option-text">{{ option.text }} {{ getByDate(option.type) }}</span>
+            </div>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #nonAvailableOptionTemplate let-option="option">
+    <div class="option-section disabled">
+        <div class="option-selector">
+            <ui-radio-component
+                smallRadio="true"
+                disabled="true"
+                [value]="isOptionSelected(option.type)"
+            ></ui-radio-component>
+            <div class="option-detail">
+                <span class="option-type">{{ option.type }}</span>
+                <span class="option-non-available">{{ getUnavailableText(option) }}</span>
+            </div>
+        </div>
+    </div>
+</ng-template>

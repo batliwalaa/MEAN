@@ -1,0 +1,84 @@
+<div class="address-container">
+    @if (metadata)
+    {
+        @if (metadata.postcode)
+        {
+            <ui-textbox-component
+                (valueChange)="address.postcode = $event.value; valueChanged()"
+                [value]="address.postcode"
+                type="text"
+                name="postcode"
+                [metadata]="metadata.postcode"
+            >
+            </ui-textbox-component>
+        }
+        @if (metadata.addressLine1)
+        {
+            <ui-textbox-component
+                (valueChange)="address.addressLine1 = $event.value; valueChanged()"
+                [value]="address.addressLine1"
+                type="text"
+                name="address1"
+                [metadata]="metadata.addressLine1"
+            >
+            </ui-textbox-component>
+        }
+        @if (metadata.addressLine2)
+        {
+            <ui-textbox-component
+                (valueChange)="address.addressLine2 = $event.value; valueChanged()"
+                [value]="address.addressLine2"
+                type="text"
+                name="address2"
+                [metadata]="metadata.addressLine2"
+            >
+            </ui-textbox-component>
+        }
+        @if (metadata.addressLine3)
+        {
+            <ui-textbox-component
+                (valueChange)="address.addressLine3 = $event.value; valueChanged()"
+                [value]="address.addressLine3"
+                type="text"
+                name="address3"
+                [metadata]="metadata.addressLine3"
+            >
+            </ui-textbox-component>
+        }
+        @if (metadata.town)
+        {
+            <ui-textbox-component
+                (valueChange)="address.town = $event.value; valueChanged()"
+                [value]="address.town"
+                type="text"
+                name="town"
+                [metadata]="metadata && metadata.town"
+            >
+            </ui-textbox-component>
+        }
+        @if (metadata.state)
+        {
+            <ui-dropdown-component
+                (valueChange)="address.state = $event.value; valueChanged()"
+                [value]="address.state"
+                type="dropdown"
+                name="state"
+                [metadata]="metadata.state"
+                [items]="states"
+            >
+            </ui-dropdown-component>
+        }
+        @if (metadata.addressType)
+        {
+            <ui-dropdown-component
+                (valueChange)="address.addressType = $event.value; valueChanged()"
+                [value]="address.addressType"
+                type="dropdown"
+                name="addressTypes"
+                [metadata]="metadata.addressType"
+                [items]="addressTypes"
+            >
+            </ui-dropdown-component>
+        }
+    }
+</div>

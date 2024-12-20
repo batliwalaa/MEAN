@@ -1,0 +1,53 @@
+@import '../../../../../ui/src/scss/variables';
+
+.cart-container {
+    color: $text-color;
+    padding: 0 10px;
+    
+    .shopping-cart-label {
+        color: #333;
+        margin-top: 14px;
+        font-weight: 600;
+        font-size: 1.5rem;
+    }
+
+    .items-container {
+        margin-top: 20px;
+
+        .hr {
+            border-top: 1px solid lightgray;
+            margin-bottom: 20px;
+        }
+    }
+
+    .total-container {
+        margin-top: 21px;
+    }
+
+    .disclaimer-container {
+        font-size: 0.7rem;
+        margin-top: 20px;
+    }
+
+    .empty-cart-message {
+        font-size: 0.9em;
+        font-weight: 500;
+        margin-top: 17px;
+    }
+}
+
+@media only screen and (min-width: $tablet-min-width) {
+    .cart-container {
+        margin-left: auto;
+        margin-right: auto;
+        width: 720px;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .cart-container {
+        margin-left: auto;
+        margin-right: auto;
+        width: 950px;
+    }
+}

@@ -1,0 +1,15 @@
+<ng-container *ngIf="showMainMenu && menuItems">
+    <nav [ngClass]="{ 'mobile-container': isMobile, 'desktop-container': !isMobile }" class="navbar">
+        <ng-container *ngTemplateOutlet="menuTemplate"></ng-container>
+    </nav>
+</ng-container>
+
+<ng-template #menuTemplate>    
+    <div id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto">
+            <span class="nav-item" [ngClass]="getMenuItemClass(item)" *ngFor="let item of menuItems;" (click)="menuItemClick(item.label, item.url)">
+                <span>{{item.label}}</span>
+            </span>
+        </div>
+    </div>
+</ng-template>

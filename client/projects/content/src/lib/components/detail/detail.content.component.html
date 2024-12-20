@@ -1,0 +1,142 @@
+<div [ngClass]="{
+    'main-container': showSidebar,
+    'main-nosidebar-container': !showSidebar
+}">
+    @if (showSidebar)
+    {
+        <ng-container *ngTemplateOutlet="sidebarTemplate"></ng-container>
+    }
+    @if (itemDetail)
+    {
+        <ng-container *ngTemplateOutlet="detailsTemplate"></ng-container>
+        <ui-view-review-component></ui-view-review-component>
+    }
+</div>
+
+<ng-template #detailsTemplate>
+    <div class="item-details-container">
+        <div class="left-container">
+            @if (!isMobile)
+            {
+                <div class="image-thumbnails">
+                    @for (image of itemDetail.images; track image;)
+                    {
+                        <figure>
+                            <img [ngClass]="{ 'selected': image.size === selectedImage }" (mouseover)="selectedImage = image.size" [src]="image.src" />
+                        </figure>
+                    }
+                </div>
+            }                        
+            @if (!isMobile)
+            {
+                <figure>
+                    <img [src]="imageUrl" />
+                </figure>
+            }
+            @else 
+            {
+                <div>
+                    <ui-carousel-component>
+                        @for (image of itemDetail.images; track image;)
+                        {
+                            <ng-container *uiCarouselItem>
+                                <figure >
+                                    <img [src]="image.src" />
+                                </figure>
+                            </ng-container>
+                        }
+                    </ui-carousel-component>
+                </div>
+            }
+        </div>
+        <div class="right-container">
+            @if (itemDetail.title)
+            {
+                <div class="detail-description">
+                    {{ itemDetail.title }}
+                </div>
+            }
+            @if (itemDetail.brand)
+            {
+                <div class="detail-brand">
+                    <span class="pre-text">{{metadata && metadata.by && metadata.by.label}}</span>
+                    <span class="text"> {{ itemDetail.brand }}</span>
+                </div>
+            }
+            @if (showReviews)
+            {
+                <ui-rating-review-component [reviewSummary]="itemDetail.reviewSummary" [metadata]="metadata && metadata.starReview"></ui-rating-review-component>
+            }            
+            <ui-pricing-component [metadata]="metadata" [pricing]="itemDetail.pricing"></ui-pricing-component>
+            @for (detail of itemDetail.details; track detail;)
+            {
+                @if (isSpeciality(detail.title))
+                {
+                    <div class="speciality">
+                        @if (detail.value === 'Vegetarian')
+                        {
+                            <span class="veg-symbol">V</span>
+                            <span class="pre-text">suitable for </span>
+                        }                        
+                        <span class="text">{{ detail.value }}</span>
+                    </div>
+                }                
+            }
+            @for (detail of itemDetail.details; track detail;)
+            {
+                @if (isDescription(detail.title))
+                {
+                    <div class="item-descs">
+                        <ul>
+                            @for (d of detail.value; track d;)
+                            {
+                                <li>{{ d }}</li>
+                            }
+                        </ul>
+                    </div>
+                }
+            }
+            <div class="country-container">
+                country of origin: <span class="country">{{ itemDetail.country }}</span>
+            </div>
+
+            <ui-add-to-shoppingcart-quantity [metadata]="metadata" [item]="itemDetail"></ui-add-to-shoppingcart-quantity>
+
+            <div class="packs-container">
+                @for (i of packItems; track i;)
+                {
+                    <div 
+                        class="pack-item"
+                        [ngClass]="{ 'selected' : isSelected(i._id) }"
+                        (click)="onPackSelected(i._id)"
+                    >
+                        <div class="size">
+                            <span>{{getSize(i.details)}}</span>
+                            <span>{{getSizePack(i.details)}}</span>
+                        </div>
+                        <ng-container *ngTemplateOutlet="packPrice; context: i"></ng-container>
+                    </div>
+                }
+                
+            </div>
+            @for (section of sections; track section) {
+                <ui-detail-description-component [productDetails]="getProductDetails(section)"></ui-detail-description-component>
+            }
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #packPrice let-pricing="pricing">
+    <div class="pricing">
+        <span class="item-retail-price"><span class="currency-symbol">{{ configuration.currencySymbol }}</span>{{toFixed(pricing.retail)}}</span>
+        <span class="item-list-price"><span class="currency-symbol">{{ configuration.currencySymbol }}</span>{{toFixed(pricing.list)}}</span>
+        <span class="item-savings"><span class="currency-symbol">{{ configuration.currencySymbol }}</span>{{toFixed(pricing.savings)}}</span>
+    </div>
+</ng-template>
+
+<ng-template #sidebarTemplate>
+    <div class="sidebar">
+        <div class="type" (click)="onTypeClick()">{{itemDetail && itemDetail.type}}</div>
+        <div class="sub-type" (click)="onSubTypeClick()">{{itemDetail && itemDetail.subType}}</div>
+    </div>
+</ng-template>

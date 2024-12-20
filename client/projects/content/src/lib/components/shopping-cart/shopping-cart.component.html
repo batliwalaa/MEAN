@@ -1,0 +1,26 @@
+<div class="cart-container">
+    <div class="shopping-cart-label">{{ metadata && metadata.myBasket && metadata.myBasket.label }}</div>
+    <ng-container *ngIf="showItems">
+        <div class="total-container"><ui-proceed-to-buy [metadata]="metadata"></ui-proceed-to-buy></div>
+
+        <div class="items-container">
+            <ng-container *ngIf="basketItems">
+                <ng-container *ngFor="let group of basketItems">
+                    <ui-group-container [metadata]="metadata" [group]="group"></ui-group-container>
+                </ng-container>
+            </ng-container>
+        </div>
+
+        <div class="total-container"><ui-proceed-to-buy [metadata]="metadata"></ui-proceed-to-buy></div>
+
+        <div class="disclaimer-container">
+            {{ metadata && metadata.disclaimer && metadata.disclaimer.label }}
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="!showItems">
+        <div class="empty-cart-message">
+            {{ metadata && metadata.emptyCart && metadata.emptyCart.label }}
+        </div>
+    </ng-container>
+</div>

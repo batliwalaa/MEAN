@@ -1,0 +1,9 @@
+{
+    "section": "Your Payment is Successful",
+    "transactionId": {
+        "label": "Payment Transaction ID"
+    },
+    "bankRefNumber": {
+        "label": "Your Bank Reference Number"
+    }
+}

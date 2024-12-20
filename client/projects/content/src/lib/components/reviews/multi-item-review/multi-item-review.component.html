@@ -1,0 +1,30 @@
+@if (!isMobile)
+{
+    <div class="bread-crumb">
+        <ui-breadcrumb-component [items]="breadcrumbs"></ui-breadcrumb-component>
+    </div>
+}
+
+<div class="review-container">
+    <div class="reviewer">
+        <i class="material-icons">person</i>
+        {{user}}
+    </div>
+
+    <div class="header">{{metadata && metadata.purchaseReviews && metadata.purchaseReviews.label}}</div>
+    
+    <div class="items-container">
+        @for (review of reviews; track review;)
+        {
+            <div class="item-container">
+                <figure>
+                    <img [src]="getImageUrl(review.productID)" (click)="onImageClick(review)" />
+                </figure>
+                <div class="description">
+                    <span>{{getProductDescription(review.productID)}}</span>
+                </div>
+                <ui-star-rating-component (onChange)="onRatingChange($event, review)" [rating]="review && review.rating"></ui-star-rating-component>
+            </div>
+        }        
+    </div>
+</div>

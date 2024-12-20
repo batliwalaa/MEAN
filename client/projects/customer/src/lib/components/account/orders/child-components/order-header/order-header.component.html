@@ -1,0 +1,100 @@
+<div class="container">
+    <ng-container *ngIf="template === 'LIST'">
+        <ng-container *ngTemplateOutlet="listTemplate"></ng-container>
+    </ng-container>
+    <ng-container *ngIf="template === 'DETAIL'">
+        <ng-container *ngTemplateOutlet="detailTemplate"></ng-container>
+    </ng-container>
+</div>
+
+<ng-template #listTemplate>
+    <div class="header-list-container" [ngClass]="{'mobile-container': isMobile, 'desktop-container': !isMobile }">
+        <div class="header-item-group">
+            <div class="header-item bold flex-start">{{metadata && metadata.orderDate && metadata.orderDate.label}}</div>
+            <div class="header-item flex-start">{{order.dateCreated | date: 'd MMM YYYY'}}</div>
+        </div>
+        <div class="header-item-group">
+            <div class="header-item bold flex-center">{{metadata && metadata.amount && metadata.amount.label}}</div>
+            <div class="header-item flex-center">{{order.amount | currency : currencyCode}}</div>
+        </div>
+        <div class="header-item-group">
+            <div class="header-item bold flex-center">{{metadata && metadata.delivery && metadata.delivery.label}}</div>
+            <div class="header-item flex-center">
+                <a 
+                    class="down-arrow"
+                    (mouseenter)="onDeliveryClick()"
+                    (mouseleave)="onDeliveryClick()"
+                >{{fullName}}</a>
+                <div [hidden]="!showDeliveryAddress" class="delivery">
+                    <span *ngIf="!deliveryAddress" class="loader">loading</span>
+                    <ui-address-preview-component *ngIf="deliveryAddress" [deliveryAddress]="deliveryAddress"></ui-address-preview-component>
+                </div>
+            </div>
+        </div>
+        <div class="header-item-group order-number">
+            <div class="header-item flex-end">
+                <span class="bold">{{metadata && metadata.orderNumber && metadata.orderNumber.label}}</span>
+                <span>{{order.orderNumber}}</span>
+            </div>
+            <div class="header-item flex-end p-r-15">
+                <a (click)="onDetailsClick()">{{metadata && metadata.orderDetails && metadata.orderDetails.label}}</a>
+                <span></span>
+                <ng-container *ngIf="showDocuments">
+                    <ui-order-invoice-component [metadata]="metadata" [show]="showInvoiceOptions" [showCreditNote]="showCreditNote" [orderID]="order._id"></ui-order-invoice-component>
+                </ng-container>               
+            </div>
+        </div>
+        <div class="show-hide-detail">
+            <i class="material-icons" [ngClass]="{ 'show': show === true }" (click)="onShowDetailClick()">chevron_left</i>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #paymentMethodTemplate>
+    <ng-container *ngIf="paymentMode === 'CC'">
+        <span><img [src]="'assets/images/payment/' +  bankCode + '.svg'"/> {{paymentInfo}}</span>
+    </ng-container>    
+</ng-template>
+
+<ng-template #detailTemplate>
+    <div class="header-detail-container" [ngClass]="{'mobile-container': isMobile, 'desktop-container': !isMobile }">
+        <div [ngClass]="{'section-container': isMobile }">
+            <div class="header-item bold flex-start">{{metadata && metadata.shipping && metadata.shipping.label}}</div>
+            <div class="header-item flex-start shipping">
+                <div>{{order && order.fullName}}</div>
+                <ui-address-preview-component *ngIf="order && order.address" [compact]="true" [deliveryAddress]="order.address"></ui-address-preview-component>
+            </div>
+        </div>
+        <div [ngClass]="{'section-container': isMobile }">
+            <div class="header-item bold flex-start">{{metadata && metadata.paymentMethod && metadata.paymentMethod.label}}</div>
+            <div class="header-item bold flex-start payment-method">
+                <ng-container *ngTemplateOutlet="paymentMethodTemplate"></ng-container>
+            </div>
+        </div>
+        <div [ngClass]="{'section-container': isMobile }">
+            <div class="header-item bold flex-start">{{metadata && metadata.summary && metadata.summary.label}}</div>
+            <div class="header-item bold flex-end summary">
+                <div class="summary-item">
+                    <span>{{metadata && metadata.subTotal && metadata.subTotal.label}}</span>
+                    <span>{{order && order.amount | currency : currencyCode}}</span>
+                </div>
+                <div class="summary-item">
+                    <span>{{metadata && metadata.shipping && metadata.shipping.label}}</span>
+                    <span>{{order && order.shipping || 0 | currency : currencyCode}}</span>
+                </div>
+                <div *ngIf="order && order.loyaltyPoints" class="summary-item">
+                    <span>{{metadata && metadata.loyaltyPoints && metadata.loyaltyPoints.label}}</span>
+                    <span>{{order.loyaltyPoints | currency : currencyCode}}</span>
+                </div>
+                <div *ngIf="order && order.promotions" class="summary-item">
+                    <span>{{metadata && metadata.promotions && metadata.promotions.label}}</span>
+                    <span>{{order.promotions | currency : currencyCode}}</span>
+                </div>
+                <div class="summary-item">
+                    <span>{{metadata && metadata.total && metadata.total.label}}</span>
+                    <span>{{order && order.amount | currency : currencyCode}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-template>

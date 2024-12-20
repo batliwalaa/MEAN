@@ -1,0 +1,46 @@
+@import '../../../../../../ui/src//scss//variables';
+@import '../../../../../../ui/src//scss//mixins';
+
+.container {
+    position: relative;
+    background-color: #fff;
+    padding: 11px;
+    font-size: 0.85em;
+
+    .header {
+        @include header;
+        font-size: 1.2rem;
+    }
+
+    .feature-rating {
+        .feature-item {
+            margin: 5px 0;
+            display: grid;
+            grid-auto-flow: row;
+            grid-template-columns: 1fr 1fr;
+
+            &:first-child {
+                margin-top: 10px;
+            }
+            span:last-child {
+                text-align: left;
+            }
+        }
+
+        .no-reviews {
+            cursor: default;
+        }
+    }
+}
+
+@media only screen and (min-width: $tablet-min-width) {
+    .container {
+        .feature-rating {
+            .feature-item {                
+                span:last-child {
+                    text-align: right;
+                }
+            }
+        }
+    }
+}

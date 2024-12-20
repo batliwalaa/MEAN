@@ -1,0 +1,113 @@
+@if (metadata)
+{
+    <div class="container">
+        <div class="title">{{ metadata.section }}</div>
+
+        @if (hasErrors)
+        {
+            <div class="error">
+                <span>{{ metadata && metadata.errorHeader && metadata.errorHeader.label }}</span>
+                @for (e of errors; track e;)
+                {
+                    <span>{{ e.key | titlecase }}: {{ e.error }}</span>
+                }                
+            </div>
+        }
+        
+        
+        <div class="address-slot-section">
+            <ui-address-preview-component [metadata]="metadata" [deliveryAddress]="deliveryAddress"></ui-address-preview-component>
+            
+            <div class="slot">
+                <div class="section-title">{{metadata.delivery && metadata.delivery.label}}</div>
+                <div class="item">Delivery date: {{slot.deliveryDate | date}}</div>
+                <div class="item">Delivery slot: {{slot.startTime}}:00 - {{slot.endTime}}:00</div>
+                <div class="item">
+                    {{metadata.minimumOrder && metadata.minimumOrder.label}} 
+                    <span class="free">{{metadata.free && metadata.free.label}} {{metadata.delivery && metadata.delivery.label}}:</span> 
+                    <span class="value">{{currencySymbol}}{{minimumOrderValue}}</span>                     
+                </div>
+                <div class="item">{{metadata.deliveryCharge && metadata.deliveryCharge.label }}: <span class="value">{{currencySymbol}}{{deliveryCharge}}</span></div>
+            </div>
+        </div>
+
+        <div class="order-items-section">
+            <div class="section-title">{{metadata.orderItems && metadata.orderItems.label}}</div>            
+            <ng-container *ngTemplateOutlet="changeTemplate"></ng-container>
+            <ul class="items">
+                @for(item of items; track item;)
+                {
+                    <li>
+                        <div class="item-image">
+                            <img [src]="item.imageSrc">
+                        </div>
+                        <div class="item-description">
+                            <span>{{item.title}}</span>
+                            <span><label class="value">{{currencySymbol}}{{item.totalPrice}} ({{currencySymbol}}{{item.price}} /1 item)</label> - Quantity: {{item.quantity}}</span>
+                            <span>Country of origin: {{item.country}}</span>
+                            <span>{{metadata.taxInformation && metadata.taxInformation.label}}</span>
+                        </div>                    
+                    </li>
+                }
+            </ul>
+            <ng-container *ngTemplateOutlet="changeTemplate"></ng-container>
+        </div>
+
+        <div class="order-loyalty-section">
+            <div class="loyalty-gained-section">
+                @if (loyaltyPoints)
+                {
+                    <div class="points-gain">{{metadata.loyaltyPointsGain && metadata.loyaltyPointsGain.label}}: <span class="">{{currentOrderLoyaltyPointsGain}} points</span></div>
+                    <div class="loyalty-info">{{metadata.loyaltyPointsInfo && metadata.loyaltyPointsInfo.label}}</div>
+                }
+                
+            </div>
+            <div class="order-total-section">
+                <div class="sub-total">{{metadata.subtotal && metadata.subtotal.label}}:</div>
+                <div class="value">{{orderSubTotal}}</div>
+                <div class="delivery-charge">{{metadata.deliveryCharge && metadata.deliveryCharge.label}}:</div>
+                <div class="value">{{deliveryCharge}}</div>
+                @if (availableLoyaltyPoints > 0)
+                {
+                    <div class="points-to-redeem">
+                        {{availableLoyaltyPoints}} points
+                    </div>
+                    <div class="value"></div>
+
+                    <div class="points-to-redeem">
+                        {{metadata.pointsToRedeem && metadata.pointsToRedeem.label}}: <input #pointsToRedeem type="number" min="0" [max]="availableLoyaltyPoints" [(ngModel)]="loyaltyPointsRedeem" />
+                    </div>
+                    <div class="value">-{{getPointsToRedeem()}}</div>
+                }
+                                <div class="total">{{metadata.total && metadata.total.label}}:</div>
+                <div class="value">{{currencySymbol}}{{orderTotal}}</div>
+            </div>
+        </div>
+
+        <button
+            uiRecaptcha
+            [action]="metadata && metadata.continue && metadata.continue.action"
+            class="btn btn-primary"
+            (execute)="onContinueClick()"
+        >
+            {{ metadata && metadata.continue && metadata.continue.label }}
+        </button>
+
+        @if (acceptance && acceptance.statement)
+        {
+            <div class="acceptance">
+                <ng-container *ngTemplateOutlet="statementTemplate; context: acceptance"></ng-container>
+            </div>
+        }
+    </div>
+}
+
+<ng-template #changeTemplate>
+    <div class="change">
+        <a [routerLink]="['/shoppingcart']">{{metadata.change && metadata.change.label}}</a>
+    </div>
+</ng-template>
+
+<ng-template #statementTemplate let-statement="statement">
+    <ui-statement-component [metadata]="statement"></ui-statement-component>
+</ng-template>

@@ -1,0 +1,35 @@
+{
+    "search": {
+        "label": "Search"
+    },
+    "signIn": {
+        "label": "Sign In"
+    },
+    "hello": {
+        "label": "Hello"
+    },
+    "accountAndOrders": {
+        "label": "Account & Orders"
+    },
+    "newCustomer": {
+        "label": "New Customer"
+    },
+    "options": [
+        { "label": "My Account", "link": "./account" },
+        { "label": "My Orders", "link": "./account/orders" },
+        { "label": "My Loyalty Points", "link": "./account/loyalty" },
+        { "label": "My Profile", "link": "./account/profile" }
+    ],
+    "signOut": {
+        "label": "Sign Out"
+    },
+    "notRegistered": {
+        "label": "Not Registered"
+    },
+    "createAccount": {
+        "label": "create account"
+    },
+    "language": {
+        "options": ["English"]
+    }
+}

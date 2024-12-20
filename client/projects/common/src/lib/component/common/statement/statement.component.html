@@ -1,0 +1,18 @@
+@if (metadata && metadata.length > 0)
+{
+    <div class="statement-container">
+        @for(item of metadata; track item;)
+        {
+            @if (item.type === 'text')
+            {
+                <span class="statement-text" [ngClass]="item.class">{{ item.text }}</span>
+            }
+            @if (item.type === 'link')
+            {
+                <span class="statement-link">
+                    <a [href]="item.url" [attr.target]="item.newWindow ? '_blank' : null">{{ item.text }}</a>
+                </span>
+            }
+        }
+    </div>
+}

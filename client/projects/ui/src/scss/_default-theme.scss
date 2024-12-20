@@ -1,0 +1,26 @@
+/* :root {
+    --control-height: 4.4rem;
+    --background-color: #fff;
+    --error-message-color: #d96060;
+} */
+
+@mixin control-height {
+    height: var(--control-height, 4.4rem);   
+}
+
+@mixin error-message-color {
+    color: var(--error-message-color, #d96060);
+}
+
+@mixin background-color {
+    background-color: var(--background-color, #fff);
+}
+
+@mixin border ($color: #f1f1f1, $radius: 0.3rem) {
+    border: var(--border, 0.1rem solid #f1f1f1);
+    border-radius: $radius;
+}
+
+@mixin border-transparent {
+    @include border(transparent);
+}

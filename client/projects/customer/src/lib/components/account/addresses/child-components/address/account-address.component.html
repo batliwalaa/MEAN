@@ -1,0 +1,72 @@
+<div *ngIf="!isMobile" class="bread-crumb">
+   <ui-breadcrumb-component [items]="breadcrumbs"></ui-breadcrumb-component>
+</div>
+
+<div [uiCheckAllInputsValid]="inputValidatorInitialiser" class="container">
+    <div class="title">{{metadata && metadata.address && metadata.address.section }}</div>
+    <div class="section-container">
+        <ui-address-entry
+            [address]="address"
+            [metadata]="metadata && metadata.address"
+            [states]="states"
+            (addressChange)="onAddressChange($event)"
+        ></ui-address-entry>
+    </div>  
+    <ng-container *ngIf="metadata && metadata.address &&  metadata.address.additionalDeliveryInstructions">
+        <ng-container *ngTemplateOutlet="additionalInstructionsTemplate"></ng-container>
+    </ng-container>
+    <ng-container *ngIf="metadata && metadata.address.accessCode && metadata.address.accessCode">
+        <ng-container *ngTemplateOutlet="accessCodeTemplate"></ng-container>
+    </ng-container>
+    <ng-container *ngIf="metadata && metadata.address &&  metadata.address.setDefaultAddress">
+        <ng-container *ngTemplateOutlet="defaultAddressTemplate"></ng-container>
+    </ng-container>
+    <div class="section-container">
+        <button
+        uiRecaptcha
+        [action]="metadata && metadata.address &&  metadata.address.continue && metadata.address.continue.action"
+        class="btn btn-primary"
+        [disabled]="!isValid"
+        [valid]="isValid"
+        (execute)="onSubmitClick()"
+        >
+            {{ metadata && metadata.address &&  metadata.address.continue && metadata.address.continue.label }}
+        </button>
+    </div>
+</div>
+
+<ng-template #additionalInstructionsTemplate>
+    <div class="section-container">
+        <div class="section-title">
+            {{ metadata && metadata.address &&  metadata.address.additionalDeliveryInstructions.label }}
+        </div>
+        <div class="text">{{ metadata && metadata.address &&  metadata.address.additionalDeliveryInstructions.text }}</div>
+        <ui-textarea-component
+            name="instructions"
+            [metadata]="metadata.address.additionalDeliveryInstructions.instructions"
+            (valueChange)="onValueChange($event)"
+        ></ui-textarea-component>
+    </div>
+</ng-template>
+
+<ng-template #accessCodeTemplate>
+    <div class="section-container">
+        <div class="section-title">{{ metadata.address.accessCode.label }}</div>
+        <ui-textbox-component
+            name="code"
+            [metadata]="metadata.address.accessCode.code"
+            (valueChange)="onValueChange($event)"
+        ></ui-textbox-component>
+    </div>
+</ng-template>
+
+<ng-template #defaultAddressTemplate>
+    <div class="section-container">
+        <ui-checkbox-component
+            [metadata]="metadata.address.setDefaultAddress"
+            name="isDefaultAddress"
+            [value]="address.isDefaultAddress"
+            (valueChange)="onValueChange($event)"
+        ></ui-checkbox-component>
+    </div>
+</ng-template>

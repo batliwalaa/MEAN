@@ -1,0 +1,6 @@
+<div class="group-label">{{ group.key }}</div>
+<ng-container *ngFor="let item of group.items">
+    <div class="item-container">
+        <ui-shoppingcart-item-container [metadata]="metadata" [item]="item"></ui-shoppingcart-item-container>
+    </div>
+</ng-container>

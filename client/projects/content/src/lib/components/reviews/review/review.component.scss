@@ -1,0 +1,259 @@
+@import '../../../../../../ui/src/scss/variables';
+@import '../../../../../../ui/src/scss/mixins';
+@import '../mixins.scss';
+
+.review-container {
+    @include non-content-container;
+    padding: 0 10px;
+
+    .reviewer {
+        @include reviewer;
+        margin-top: 10px;
+    }
+
+    .header {
+        @include header;
+    }
+
+    .product {
+        display: flex;
+        column-gap: 20px;
+
+        figure {
+            @include small-product-image(60px, 60px);
+        }
+
+        .description {
+            font-size: 0.9rem;
+            font-weight: 500;
+            width: 100%;
+            position: relative;
+
+            span {
+                position: absolute;
+                left: 0;
+                top: 40%;
+                transform: translateY(-50%);
+            }
+        }
+    }
+    
+    .product-images {
+        .add-take-photo {
+            margin-top: 20px;
+            display: flex;
+
+            button,
+            button {
+                border: 1px solid transparent;
+                background-color: #fafafa;
+                cursor: pointer;
+                border-radius: $border-radius;
+                display: flex;
+                padding-left: 9px;
+                padding-top: 4px;
+
+                i {
+                    font-size: 3rem;
+                    color: #777;
+                }
+
+                &:hover {                    
+                    background-color: #e1e1e1;
+                    box-shadow: 3px 4px 4px #a1a1a1;
+                }
+            }
+
+            .take-photo {
+                margin-left: 20px;
+            }
+        }
+
+        .reviews {
+            display: flex;
+            margin-top: 20px;
+            flex-direction: row;
+            flex-flow: wrap;
+            column-gap: 15px;
+            row-gap: 15px;
+            justify-content: flex-start;
+
+            figure {
+                @include small-product-image(60px, 60px);
+                border: 1px solid #f1f1f1;
+                border-radius: $border-radius;
+                box-shadow: 1px 3px 4px #a1a1a1;
+                cursor: default;
+                position: relative;
+
+                .cross {
+                    position: absolute;
+                    right: -11px;
+                    top: -10px;
+                    font-size: 19px;
+                    color: #777;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+
+    .product-images,
+    .review-description,
+    .headline,
+    .overall-rating,
+    .features-rating,
+    .product {
+        margin-top: 35px;
+        padding: 10px;
+        border: 1px solid #fafafa;
+        box-shadow: 3px 6px 5px #ccc;
+
+        .header {
+            font-size: 1.2rem;
+        }
+    }
+
+    .features-rating,
+    .overall-rating {
+        ui-star-rating-component {
+            .container {
+                ::ng-deep & {
+                    margin-top: 7px;
+                }
+            }
+        }
+    }
+
+    .features-rating {
+        .feature-rating-item {
+            display: grid;
+            grid-auto-flow: row;
+            grid-template-columns: 1fr;
+            align-items: center;
+            margin-top: 25px;
+
+            &:first-child {
+                margin-top: 15px;
+            }
+
+            .feature {
+                font-size: 0.85rem;
+            }
+        }
+
+        ui-star-rating-component {
+            .container {
+                ui-star-component {
+                    .one-star {
+                        ::ng-deep & {
+                            --star-size: 2rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+ui-lightbox-component {
+    .lightbox-body {
+        ::ng-deep & {
+            margin: 40px auto!important;
+            width: fit-content;
+        }
+    }
+
+    .take-photo-or-video {
+        .take-photo-or-video-container {
+            position: absolute;
+                left: 50%;
+                top: calc(100vh - 150px);
+                text-align: center;
+                transform: translateX(-50%);
+
+                a {
+                    color: white;
+                    text-decoration: none;
+                    background-color: transparent;
+                    user-select: none;
+                    cursor: pointer;
+                    font-weight: 200;
+                    font-size: 1.25rem;
+
+                    &.selected {
+                        color: #d7c407;
+                    }
+                }
+
+                &-action {
+                    margin-top: 3rem;
+                    font-size: 1.5rem;
+                    font-weight: normal;
+                    width: 12rem;
+                    height: 3rem;
+                    display: inline-flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    margin-left: -50%;
+
+                    .capture {
+                        width: 5rem;
+                        height: 5rem;
+                        border: 3px solid white;
+                        border-radius: 2.5rem;
+                        display: block;
+                        padding: 2px;
+                        position: relative;
+
+                        div {
+                            display: block;
+                            width: 4rem;
+                            height: 4rem;
+                            background-color: white;
+                            border: 1px solid transparent;
+                            border-radius: 2rem;
+                            position: absolute;
+                            left: 5px;
+                            top: 5px;
+                        }
+
+                        &.recording {
+                            border: 3px solid red;
+
+                            div {
+                                background-color: red;
+                            }
+                        }
+                    }
+                }
+        }
+
+    }
+}
+
+@media only screen and (min-width: $tablet-min-width) {
+    .review-container {
+        .features-rating {
+            .feature-rating-item {
+                grid-auto-flow: column;
+                grid-template-columns: 1fr 1fr;
+                margin-top: 15px;
+                column-gap: 10px;
+
+                &:first-child {
+                    margin-top: 0;
+                }
+
+                ui-star-rating-component {
+                    .container {
+                        ::ng-deep & {
+                            margin-top: 0;
+                            margin-bottom: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -1,0 +1,78 @@
+:root {
+    --star-color: #a1a1a1;
+    --star-background: #fc0;
+}
+
+.stars {
+    --star-size: 25px;
+    --percent: calc(math.div(var(--rating), 5) * 100%);
+    &:before {        
+        content: '★★★★★';
+    }
+}
+
+.one-star,
+.two-star,
+.three-star,
+.four-star,
+.five-star {
+    --star-size: 18px;
+}
+
+.five-star {
+    --percent: calc(math.div(var(--rating), 5) * 100%);
+    &:before {        
+        content: '★★★★★';
+    }
+}
+
+.four-star {
+    --percent: calc(math.div(var(--rating), 4) * 100%);
+
+    &:before {
+        content: '★★★★';
+    }    
+}
+
+.three-star {
+    --percent: calc(math.div(var(--rating), 3) * 100%);
+
+    &:before {        
+        content: '★★★';
+    }
+}
+
+.two-star {
+    --percent: calc(math.div(var(--rating), 2) * 100%);
+
+    &:before {        
+        content: '★★';
+    }
+}
+
+.one-star {
+    --percent: calc(var(--rating) * 100%);
+
+    &:before {        
+        content: '★';
+    }
+}
+
+.stars,
+.one-star,
+.two-star,
+.three-star,
+.four-star,
+.five-star {
+    display: inline-block;
+    font-size: var(--star-size);
+    line-height: 1;
+    cursor: pointer;
+
+    &:before {
+        background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+}

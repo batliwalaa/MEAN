@@ -1,0 +1,95 @@
+// bright blue: #068ef9
+// vibrant red: #d93939
+// amrret bazaar green : #589b08
+// amrret bazaar light green : #B9D871
+// yellow: #ffdd40
+// green: #11c425
+
+$vibrant-red: #d93939;
+$bright-green: #068ef9;
+$bright-green: #709e03;
+$tertiary-color: #FFD700;
+$quaternary-color: #6fa09c;
+
+$text-color: #333;
+
+$tablet-min-width: 768px;
+$desktop-min-width: 1050px;
+
+$mobile-icon-size: 22pt;
+$tablet-icon-size: 25pt;
+$desktop-icon-size: 28pt;
+
+$highlight: $bright-green; // rgb(184, 134, 11)
+$highlight-hover: $bright-green;
+
+$hamburger-item-border-color: $bright-green;
+$hamburger-menu-background-color: $bright-green;
+$hamburger-menu-color: #fff;
+
+$menu-background-color: #fff;
+$menu-color: #fff;
+$menu-sub-background-color: #ced0fd;
+$menu-border-color: $highlight;
+
+$font-size: 1rem;
+
+$border-color-light: #cfd2fa;
+$border-light: 1px solid $border-color-light;
+$border-color: #f1f1f1;
+$border: 1px solid $border-color;
+$placeholder-color: $bright-green;
+
+$button-color: $bright-green;
+// footer section
+$footer-size: 1rem;
+$footer-item-size: 0.9rem;
+$footer-color: #fff;
+$footer-background-color: #f5f5f5;
+$footer-border-color: $highlight;
+$footertop-background-color: #3a376c;
+
+$border-transparent: 1px solid transparent;
+$border-radius: 3px;
+$mobile-textarea-height: 100px;
+$mobile-control-height: 44px;
+$tablet-control-height: 44px;
+$desktop-control-height: 44px;
+$mobile-control-row-height: 46px;
+$tablet-control-row-height: 46px;
+$desktop-control-row-height: 46px;
+$mobile-control-row-margin-top: 25px;
+$tablet-control-row-margin-top: 25px;
+$desktop-control-row-margin-top: 25px;
+$main-blue-color: $bright-green; //#079ad9; // #3176ff;
+$main-blue-active-color: #3a376c;
+$button-text-color: #fff;
+$form-background-color: #fff;
+$checkbox-background-color: #c0c0c0;
+$indicator-color: $highlight-hover;
+$page-background-color: $form-background-color;
+
+$mobile-input-height: $mobile-control-height;
+$tablet-input-height: $tablet-control-height;
+$desktop-input-height: $desktop-control-height;
+
+$disabled-background-color: whitesmoke;
+$disabled-color: #c1c1c1;
+$disabled-border: 1px solid $disabled-color;
+
+$error-text-color: #cc2b02;
+$error-background-color: #f0ebeb;
+$error-border-color: #d96060;
+
+$control-error-border-color: $error-border-color;
+$control-error-background-color: #eed9d9;
+$control-error-up-arrow-indicator-color: #cc2b02;
+$control-error-text-color: $error-text-color;
+
+$price-color: #aa1b04;
+
+$button-light: #f8f9fa;
+$button-light-hover: #dfe0e1;
+$success-text-color: #218838;
+$success: #5cb85c;
+$burger-menu-font-size: 1rem;

@@ -1,0 +1,64 @@
+@if (show)
+{
+    <div class="control-row">
+        <div class="control" [attr.information]="metadata && metadata.information && metadata.information.length > 0">
+            <textarea
+                uiCheckIsValid
+                [readonly]="readonly"
+                [rows]="metadata && metadata.rows"
+                #inputControl
+                [id]="id"
+                #model="ngModel"
+                [(ngModel)]="data"
+                [ngModelOptions]="{ updateOn: 'change' }"
+                [ngClass]="data && data.trim().length > 0 ? 'has-value' : ''"
+                (change)="onChange()"
+                (keyup)="onKey($event)"
+                autocomplete="nope"
+                [maxlength]="
+                    metadata && metadata.validators && metadata.validators.maxLength === '' ? metadata.maxLength : null
+                "
+                [required]="metadata && metadata.validators && metadata.validators?.required === '' ? '' : null"
+            >
+            </textarea>
+            <label [ngClass]="ignoreMediaQueries ? 'ignore' : ''">
+                {{ metadata && metadata.label }}
+                @if (metadata && metadata.validators && metadata.validators.required === '')
+                {
+                    <span>*</span>
+                }
+            </label>
+            @if (!disableValidation && (model.dirty || model.touched) && model.invalid)
+            {
+                <div class="error">
+                    @if (model.errors.required)
+                    {
+                        <span>{{ metadata.error.required }}</span>
+                    }
+                    @if (model.errors.maxlength)
+                    {
+                        <span>{{ metadata.error.maxLength }}</span>
+                    }
+                </div>
+            }
+            
+            <div class="focus-indicator"></div>
+            <span class="optional-text">{{ metadata && metadata.optionalText }}</span>
+            <a class="information-icon" (click)="onShowInfoIconClick()" (outsideClick)="showInfo = false"></a>
+
+            @if (showInfo)
+            {
+                <div class="information">
+                    @for (text of metadata && metadata.information; track text;)
+                    {
+                        <div>
+                            {{ text }}
+                        </div>
+                    }
+                </div>
+            }
+            <div class="background"></div>
+        </div>
+    </div>
+}
+

@@ -1,0 +1,161 @@
+@if (!isMobile)
+{
+    <div class="bread-crumb">
+        <ui-breadcrumb-component [items]="breadcrumbs"></ui-breadcrumb-component>
+    </div>
+}
+
+<div class="review-container">
+    <div class="reviewer">
+        <i class="material-icons">person</i>
+        {{review && review.user}}
+    </div>
+
+    <div class="header">{{metadata && metadata.review && metadata.review.label}}</div>
+    
+    <div class="product">
+        <figure>
+            <img [src]="imageUrl" />
+        </figure>
+        <div class="description">
+            <span>{{product && product.title}}</span>
+        </div>
+    </div>
+
+    <div class="overall-rating">
+        <div class="header">
+            {{metadata && metadata.overallRating && metadata.overallRating.label}}
+        </div>
+        <ui-star-rating-component (onChange)="onRatingChange($event)" [rating]="review && review.rating"></ui-star-rating-component>
+    </div>
+    @if (featureRatings.length > 0)
+    {
+        <div class="features-rating">
+            <div class="header">
+                {{metadata && metadata.featureRating && metadata.featureRating.label}}
+            </div>
+            @for (fr of featureRatings; track fr; let idx = $index;)
+            {
+                <div class="feature-rating-item">
+                    <span class="feature">{{fr.feature}}</span>
+                    <ui-star-rating-component (onChange)="onFeatureRatingChange(idx, $event)" [rating]="fr.rating"></ui-star-rating-component>
+                </div>
+            }
+        </div>
+    }
+    
+    
+    <div class="product-images">
+        <div class="header">
+            {{metadata && metadata.photoOrVideo && metadata.photoOrVideo.label}}
+        </div>
+        @if(review && review.urls.length > 0)
+        {
+            <div class="reviews">
+                @for (ir of review.urls; track ir; let idx = $index;)
+                {
+                    <figure >
+                        <img (click)="openLightbox('ir-'+idx)" [src]="ir.src" />
+                        <i (click)="removeImage(idx)" class="material-icons cross">cancel</i>
+                        <ui-image-lightbox-component [id]="'ir-'+idx" [src]="ir.src" (close)="onlightboxClose('ir-'+idx)"></ui-image-lightbox-component>
+                    </figure>
+                }         
+            </div>
+        }
+        
+        <div class="add-take-photo">
+            <div class="add-photo">
+                <button (click)="imageGalleryInput.click()">
+                    <i  class="material-icons">insert_photo</i>
+                    <input
+                        #imageGalleryInput
+                        id="imageGallery"
+                        type="file"
+                        [hidden]="true"
+                        [imageToDataUrl]="imageOptions"
+                        (imageSelected)="onFileChange($event)"
+                        accept="image/png,image/jpeg,image/jpg"
+                    />
+                </button>
+            </div>
+            @if (hasMediaDevice)
+            {
+                <div class="take-photo">
+                    <button (click)="onTakePhoto()">
+                        <i class="material-icons">photo_camera</i>
+                        <ng-container *ngTemplateOutlet="takePhotoOrVideoTemplate"></ng-container>
+                    </button>
+                </div>
+            }
+        </div>        
+    </div>
+    
+    <div class="headline">
+        <div class="header">
+            {{metadata && metadata.headline && metadata.headline.label}}
+        </div>
+        <ui-textbox-component
+            name="headline"
+            [type]="'text'"
+            [value]="review && review.headline"
+            [metadata]="metadata && metadata.headline"
+            (valueChange)="onValueChange($event)"
+        ></ui-textbox-component>
+    </div>
+    
+    <div class="review-description">
+        <div class="header">
+            {{metadata && metadata.description && metadata.description.label}}
+        </div>
+        <ui-textarea-component
+            name="review"
+            [value]="review && review.review"
+            [metadata]="metadata && metadata.description"
+            (valueChange)="onValueChange($event)"
+        ></ui-textarea-component>
+    </div>
+</div>
+
+<ng-template #takePhotoOrVideoTemplate>
+    <ui-lightbox-component [id]="'take-photo-or-video'">
+        <div class="take-photo-or-video">
+            <video #cameraInput id="video"></video>
+            <div class="take-photo-or-video-container">
+                <div class="take-photo-or-video-container-selector">
+                    <a
+                        [hidden]="true"
+                        [ngClass]="{ selected: takeVideo }"
+                        (click)="takeVideo = true; takePhoto = false"
+                    >
+                        VIDEO
+                    </a>
+                    @if (takePhoto)
+                    {
+                        <a
+                            [ngClass]="{ selected: takePhoto }"
+                            (click)="takeVideo = false; takePhoto = true"
+                        >
+                            PHOTO
+                        </a>
+                    }
+                    
+                </div>
+                <div class="take-photo-or-video-container-action">
+                    <a class="cancel" (click)="onCancel()">
+                        Cancel
+                    </a>
+                    @if (takePhoto && takeVideo)
+                    {
+                        <a
+                            class="capture"
+                            [ngClass]="{ recording: recording }"
+                            (click)="onCapture()"
+                        >
+                            <div></div>
+                        </a>
+                    }
+                </div>
+            </div>
+        </div>
+    </ui-lightbox-component>
+</ng-template>

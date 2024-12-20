@@ -1,0 +1,33 @@
+@import '../../../../../../../ui/src/scss/variables';
+@import '../../../../../../../ui/src/scss/mixins';
+
+.container {
+    cursor: pointer;
+    position: relative;
+
+    a {
+        position: relative;
+
+        &:hover {
+            color: $highlight;
+        }
+        
+        > div {
+            text-align: center;
+            padding-top: 10px;
+            font-size: 1rem;
+            color: white;
+            position: relative;
+        }        
+    }
+}
+
+@media only screen and (min-width: $tablet-min-width) {
+    .container {
+        a {
+            > div:after {
+                @include down-arrow(-16px, 1px);
+            }
+        }
+    }
+}

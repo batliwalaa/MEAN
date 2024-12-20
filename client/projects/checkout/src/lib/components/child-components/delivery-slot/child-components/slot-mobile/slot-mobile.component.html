@@ -1,0 +1,17 @@
+<div class="slot-container">
+    @for(slot of selectedDateSlots; track slot;)
+    {
+        @if (slot.availableSlots > 0)
+        {
+            <div
+                class="slot available"
+                [ngClass]="{ selected: slot.selected }"
+                (click)="onSlotClick(slot)"
+            >{{ slot.startTime }}:00 - {{ slot.endTime }}:00</div>
+        }
+        @else
+        {
+            <div class="slot not-available">Unavailable</div>
+        }
+    }
+</div>

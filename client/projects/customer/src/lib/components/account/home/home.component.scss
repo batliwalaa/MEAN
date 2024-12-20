@@ -1,0 +1,52 @@
+@import '../../../../../../ui/src/scss/variables';
+@import '../../../../../../ui/src/scss/mixins';
+
+.container {
+    @include non-content-container;
+    color: $text-color;
+    padding: 0 10px;
+    
+    .header {
+        @include header;
+    }
+
+    .options {
+        margin: 30px 0;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        column-gap: 10px;
+        row-gap: 20px;
+        justify-content: center;
+
+        .tile {
+            width: 100%;
+            max-width: 350px;
+            border: 1px solid transparent;
+            padding: 7px 11px;
+            height: 90px;
+            display: grid;
+            cursor: pointer;
+            box-shadow: 0 2px 8px #c0c0c0;
+            &:hover {
+                border-style: outset;
+                border-color: #f1f1f1;
+            }
+            
+            &-header {
+                padding: 7px 0;
+                font-size: 1.2rem;
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+@media only screen and (min-width: $tablet-min-width) {
+    .container {
+        .options {
+            row-gap: 60px;
+            justify-content: space-between;
+        }
+    }
+}

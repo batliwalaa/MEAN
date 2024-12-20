@@ -1,0 +1,45 @@
+<div class="control-row">
+    <div class="control" [attr.information]="metadata && metadata.information && metadata.information.length > 0">
+        <input
+            uiCheckIsValid
+            [type]="type"
+            #inputControl
+            [id]="id"
+            [attr.name]="name"
+            #model="ngModel"
+            [(ngModel)]="data"
+            [ngModelOptions]="{ updateOn: 'blur' }"
+            [ngClass]="data.trim().length > 0 ? 'has-value' : ''"
+            (blur)="onBlur()"
+            autocomplete="nope"
+            validateEqual
+            [attr.validateequalcontrol]="
+                metadata && metadata.validators && metadata.validators.validateEqual === ''
+                    ? metadata.validateEqualControl
+                    : null
+            "
+        />
+        <label [ngClass]="ignoreMediaQueries ? 'ignore' : ''">{{ metadata && metadata.label }}</label>
+        @if (model.touched && model.invalid)
+        {
+            <div class="error">
+                <span>{{ metadata.error.validateEqual }}</span>
+            </div>
+        }
+        
+        <div class="focus-indicator"></div>
+        <span class="optional-text">{{ metadata && metadata.optionalText }}</span>
+        <a class="information-icon" (click)="onShowInfoIconClick()" (outsideClick)="showInfo = false"></a>
+
+        @if (showInfo)
+        {
+            <div class="information">
+                @for(text of metadata && metadata.information; track text;)
+                {
+                    <div>{{ text }}</div>
+                }
+            </div>
+        }
+        <div class="background"></div>
+    </div>
+</div>

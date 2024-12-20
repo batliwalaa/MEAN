@@ -1,0 +1,80 @@
+.carousel-wrapper {
+    overflow: hidden;
+    position: relative;
+
+    i {
+        position: absolute;
+        top: 50%;;
+        transform: translateY(-50%);
+        z-index: 1;
+        font-size: 40px;
+        color: #e1e1e1;
+        opacity: 0.3;
+
+        &:hover {
+            opacity: 1;
+        }
+
+        &.chevron-left {
+            left: -12px;
+        }
+
+        &.chevron-right {
+            right: -12px;
+        }
+    }
+    ul {
+        width: 100%;
+
+        &.carousel-inner {
+            display: flex;
+        }
+    }
+
+    .image-circles {
+        position: absolute;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        padding: 5px;
+        background-color: transparent;
+        display: flex;
+
+        span {
+            width: 20px;
+            height: 6px;
+            border: 0;
+            border-radius: 10px;
+            background-color: #555;
+            opacity: 1;
+            position: relative;
+            display: inline-block;
+
+            &:not(:first-child) {
+                margin-left: 5px;
+            }
+
+            span {
+                display: none;
+            }
+
+            .progress {
+                display: block;
+                background-color: #e1e1e1;
+                animation: progressBar 5s ease-in-out;
+                animation-fill-mode:both; 
+                width: 20px;
+                height: 6px;
+                position: absolute;
+                left: 0;
+                top: 0;
+            }
+        }
+        
+        @keyframes progressBar {
+          0% { width: 0; }
+          100% { width: 100%; }
+        }
+    }
+}
+

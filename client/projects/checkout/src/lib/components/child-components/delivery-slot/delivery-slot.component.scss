@@ -1,0 +1,72 @@
+@import '../../../../../../ui/src/scss/variables';
+
+.container {
+    .title {
+        margin: 16px 0;
+        color: #555;
+        font-size: 1.1em;
+        font-weight: 600;
+        margin-bottom: 6px;
+    }
+
+    .content {
+        margin-bottom: 15px;
+        color: #555;
+        font-size: 0.9em;
+        font-weight: 500;
+    }
+
+    .btn {
+        margin-top: 20px;
+    }
+
+    .tabs-mobile {
+        width: 100%;
+    }
+
+    .tabs-tablet,
+    .tabs-desktop {
+        display: none;
+    }
+
+    .acceptance {
+        margin-top: 20px;
+        font-size: 0.8em;
+        padding-top: 10px;
+        border-top: 3px solid #f1f1f1;
+    }
+
+    .slot-no-available,
+    .slot-bad-request {
+        width: 100%;
+        border: 1px solid transparent;
+        background-color: #fff9ed;
+        color: $text-color;
+        padding: 11px;
+        font-size: 0.85em;
+    }
+}
+
+@media only screen and (min-width: $tablet-min-width) {
+    .container {
+        .tabs-tablet,
+        .tabs-mobile {
+            display: block;
+        }
+        .tabs-desktop {
+            display: none;
+        }
+    }
+}
+
+@media only screen and (min-width: $desktop-min-width) {
+    .container {
+        .tabs-tablet,
+        .tabs-mobile {
+            display: none;
+        }
+        .tabs-desktop {
+            display: block;
+        }
+    }
+}

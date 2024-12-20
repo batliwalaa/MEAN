@@ -1,0 +1,13 @@
+<div class="container">
+    <div class="basket-total">
+        <span
+            >{{ metadata && metadata.itemsTotal && metadata.itemsTotal.label }} ({{ totalQty }}
+            {{ metadata && metadata.items && metadata.items.label }}):
+        </span>
+        <span class="currency-symbol">{{ currencySymbol }}</span>
+        <span>{{ totalToPay }}</span>
+    </div>
+    <button class="btn btn-primary" (click)="buyNowClick()">
+        {{ metadata && metadata.proceedToBuy && metadata.proceedToBuy.label }}
+    </button>
+</div>

@@ -1,0 +1,23 @@
+<section class="carousel-wrapper" [ngStyle]="carouselWrapperStyle">
+    <i (click)="previous()" class="material-icons chevron-left">chevron_left</i>
+    <ul class="carousel-inner" #carousel>
+        @for (item of items; track item;)
+        {
+            <li class="carousel-item">
+                <ng-container *ngTemplateOutlet="item.tmpl"></ng-container>
+            </li>
+        }
+    </ul>
+    <i (click)="next()" class="material-icons chevron-right">chevron_right</i>
+    @if (enableTimer)
+    {
+        <div class="image-circles">
+            @for (item of items; track item; let idx = $index;)
+            {
+                <span>
+                    <span [ngClass]="{ 'progress': idx === currentSlide }"></span>
+                </span>
+            }            
+        </div>
+    }    
+</section>

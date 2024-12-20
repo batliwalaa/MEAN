@@ -1,0 +1,71 @@
+<div *ngIf="!isMobile" class="bread-crumb">
+    <ui-breadcrumb-component [items]="breadcrumbs"></ui-breadcrumb-component>
+</div>
+
+<div class="container">
+    <div class="header">{{metadata && metadata.myProfile && metadata.myProfile.label}}</div>
+
+    <ng-container *ngIf="profile">
+        <div class="profile-container" [ngClass]="{'mobile-container': isMobile, 'desktop-container': !isMobile}">
+            <div class="profile-item">
+                <div class="label">{{metadata && metadata.firstName && metadata.firstName.label}}:</div>
+                <div class="text">{{profile.firstName}}</div>
+                <div></div>
+            </div>
+            <div class="profile-item">
+                <div class="label">{{metadata && metadata.lastName && metadata.lastName.label}}:</div>
+                <div class="text">{{profile.lastName}}</div>
+                <div></div>
+            </div>
+            <div class="profile-item">
+                <div class="label">{{metadata && metadata.mobile && metadata.mobile.label}}:</div>
+                <div class="text">
+                    <span>{{profile.isoCode}}</span>
+                    <span>{{profile.mobile}}</span>
+                </div>
+                <div>
+                    <button 
+                        [hidden]="!showChange"
+                        class="btn btn-light btn-light-bordered btn-box-shadow"
+                        uiRecaptcha
+                        [action]="metadata && metadata.change && metadata.change.action"
+                        (execute)="onClick('Mobile')"
+                    >
+                        {{metadata && metadata.change && metadata.change.label}}
+                    </button>
+                </div>
+                <ui-account-profile-change
+                    [hidden]="showChange || type === 'Email'"
+                    [profile]="profile"
+                    [type]="'Mobile'"
+                    [metadata]="metadata && metadata.profileChange"
+                    (cancel)="onCancel()"
+                    (resendOtp)="onResendOtpClick($event)"
+                ></ui-account-profile-change>
+            </div>
+            <div class="profile-item">
+                <div class="label">{{metadata && metadata.email && metadata.email.label}}:</div>
+                <div class="text">{{profile.emailId}}</div>
+                <div>
+                    <button
+                        [hidden]="!showChange"
+                        class="btn btn-light btn-light-bordered btn-box-shadow"
+                        uiRecaptcha
+                        [action]="metadata && metadata.change && metadata.change.action"
+                        (execute)="onClick('Email')"
+                    >
+                        {{metadata && metadata.change && metadata.change.label}}
+                    </button>
+                </div>
+                <ui-account-profile-change
+                    [hidden]="showChange || type === 'Mobile'"
+                    [profile]="profile"
+                    [type]="'Email'"
+                    [metadata]="metadata && metadata.profileChange"
+                    (cancel)="onCancel()"
+                    (resendOtp)="onResendOtpClick($event)"
+                ></ui-account-profile-change>
+            </div>
+        </div>
+    </ng-container>
+</div>

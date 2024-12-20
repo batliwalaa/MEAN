@@ -1,0 +1,13 @@
+<div *ngIf="errorType === 'fatal'" class="error-container">
+    <p>Opps something went wrong</p>
+    <p>Support team has been notifed, please try again later</p>
+    <p>Amreet Bazaar team is working hard to resolve the issue at the earliest.</p>
+
+    <p>Go to <a [routerLink]="['/home']">Home page</a></p>
+</div>
+
+<div *ngIf="errorType === 'payment'" class="error-container">
+    <p>Opps something went wrong</p>
+    <p>There was a problem processing your payment / order, quoting: <span>PF001</span></p>
+    <p>Please contact <a [routerLink]="['/contact']">support</a> team</p>
+</div>

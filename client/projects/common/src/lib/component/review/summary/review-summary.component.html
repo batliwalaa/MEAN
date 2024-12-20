@@ -1,0 +1,29 @@
+<div class="container">
+    @if (showAverageRating)
+    {
+        <div class="average-rating">
+            <span class="five-star" [attr.style]="rating"></span>
+            <span class="text">{{reviewSummary.averageRating}} {{metadata && metadata.outOf && metadata.outOf.label}}</span>
+        </div>
+    }    
+    <div class="number-of-reviews">
+        {{reviewSummary.totalRatings}} {{metadata && metadata.reviewsOrRatings && metadata.reviewsOrRatings.label}}
+    </div>
+
+    <div class="rating-summary">
+        @for (item of reviewSummary.ratingSummary; track item;)
+        {
+            <div class="summary-line">
+                <span [ngClass]="ratingSummary(item)" [attr.style]="'--rating: 100'"></span>
+                <span class="percent" [attr.style]="percent(item.value)"></span>
+                <span class="percent-value">{{item.value}}%</span>
+            </div>
+        }
+    </div>
+    @if (showViewAll)
+    {
+        <div class="all-reviews" (click)="onViewReviews()">
+            <span>{{metadata && metadata.viewAll && metadata.viewAll.label}}</span>
+        </div>
+    }
+</div>

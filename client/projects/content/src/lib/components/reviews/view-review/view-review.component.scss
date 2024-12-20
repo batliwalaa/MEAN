@@ -1,0 +1,336 @@
+@import '../../../../../../ui//src/scss/variables';
+@import '../../../../../../ui//src/scss/mixins';
+@import '../mixins.scss';
+
+.container {
+    @include non-content-container;
+    color: $text-color;
+    padding: 0 10px;
+
+    .product-review-container {
+        display: grid;
+        grid-auto-flow: row;
+        grid-template-columns: 1fr;
+        margin-top: 20px;
+
+        &.no-product {
+            grid-template-columns: 1fr;
+        }
+
+        .review-summary {
+            .header {
+                @include header;
+            }
+    
+            .no-product {
+                display: grid;
+                grid-template-columns: 1fr;
+                justify-items: stretch;
+
+                ui-feature-review-component {
+                    .container {
+                        ::ng-deep & {
+                            margin-top: 9px;
+                        }
+
+                        .header {
+                            ::ng-deep & {
+                                margin-bottom: 16px;
+                            }
+                        }
+                    }
+                }
+            }
+            
+            ui-feature-review-component,
+            ui-review-summary-component {
+                max-width: 280px;
+
+                .container {
+                    ::ng-deep & {
+                        padding: 11px 0;
+                    }
+                }
+            }
+        }
+    
+        .product-summary {
+            display: grid;
+            grid-auto-flow: row;
+            grid-template-columns: 1fr 2fr;
+            column-gap: 10px;
+            margin-top: 14px;
+    
+            figure {
+                margin: 0;
+                cursor: pointer;
+                text-align: center;
+                height: 180px;
+                margin-bottom: 10px;
+        
+                img {
+                    max-width: 150px;
+                    max-height: 100%;
+                }
+            }
+    
+            .summary {
+                display: grid;
+                grid-auto-flow: row;
+                justify-content: left;
+                align-content: start;
+                row-gap: 5px;
+    
+                .description {
+                    font-weight: 600;
+                    font-size: 1.2rem;
+                }
+    
+                .size {
+                    font-size: $font-size;
+                    font-weight: normal;
+                    line-height: 20px;
+                    color: $text-color;
+                    max-width: 280px;
+                    margin-bottom: 5px;
+                }
+    
+                .size {
+                    
+                }
+    
+                .country-container {
+                    font-size: $font-size;
+                    margin-top: 5px;
+                    color: $text-color;
+    
+                    .country {
+                        font-size: 1.1em;
+                        color: $text-color;
+                        font-weight: 500;
+                    }
+                }
+    
+                .speciality {
+                    font-weight: normal;
+                    font-size: 0.8em;
+                    margin-top: 5px;
+                    
+                    .veg-symbol {
+                        color: green;
+                        font-weight: 600;
+                    }
+    
+                    .pre-text {
+                        color: $text-color;
+                        margin-left: 5px;
+                    }
+    
+                    .text {
+                        color: $text-color;
+                        font-weight: 500;
+                        line-height: 10px;
+                    }
+                }
+            }
+    
+            ui-add-to-shoppingcart-quantity {
+                
+                .add-to-basket-container {
+                    ::ng-deep & {
+                        padding: 0;
+                    }
+                }
+            }
+    
+        }
+    }
+
+    .reviews-container {
+        position: relative;
+
+        .review-user {
+            @include reviewer;
+        }
+
+        .feature-rating {
+            margin-top: 10px;
+
+            .header {
+                margin-left: 20px;
+                font-weight: 500;
+                font-size: 1.2rem;
+            }
+
+            .no-reviews {
+                cursor: default;
+            }
+        }
+
+        .images-container {
+            display: grid;
+            grid-auto-flow: column;
+            justify-content: stretch;
+            margin-top: 10px;
+
+            figure {
+                @include small-product-image(50px, 50px, false);
+
+                cursor: default;
+                border: 1px solid #c0c0c0;
+                padding: 1px;
+                box-sizing: content-box;
+
+                &:not(:first-child) {
+                    margin-left: 2px;
+                }
+            }
+
+            ui-carousel-component {
+                width: calc(100vw - 20px);
+
+                .carousel-wrapper {
+                    ::ng-deep & {
+                        display: grid;
+                        grid-auto-flow: column;
+                        grid-template-columns: 20px auto 20px;
+                        column-gap: 5px;
+                    }
+
+                    i {
+                        ::ng-deep & {
+                            position: relative;
+                            top: 8px;
+                            transform: unset;
+                            opacity: 1;
+                        }
+
+                        &.chevron-right {
+                            ::ng-deep & {
+                                right: 9px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .description {
+            margin-top: 5px;
+            padding: 2px 0;
+            line-height: 1.3rem;
+        }
+
+        .review-date {
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        .nav-reviews {
+            position: absolute;
+            left: 1px;
+            top: 1px;
+        }
+    }  
+
+    .review-note {
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-top: 20px;
+    }
+
+    .header {
+        @include header;
+    }
+
+    .mt-20 {
+        margin-top: 20px;
+    }
+
+    .mt-40 {
+        margin-top: 40px;
+    }
+
+    .see-more-reviews {
+        a {
+            color: #0000ff;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+ui-lightbox-component {
+    .lightbox {
+        .lightbox-body {    
+            figure {
+                ::ng-deep & {
+                    margin-top: 20px;
+                }
+            }
+        }
+    }        
+}
+
+@media only screen and (min-width: $tablet-min-width) {
+    .container {    
+        .product-review-container {
+            grid-template-columns: 1fr 1fr;
+
+            .review-summary {
+                .no-product {
+                    grid-template-columns: 1fr 1fr;
+                    column-gap: 40px;
+                }
+
+                ui-feature-review-component,
+                ui-review-summary-component {
+                    max-width: unset;
+                }
+            }
+        }
+
+        .reviews-container {
+            .images-container {
+                ui-carousel-component {
+                    width: calc(100% - 20px);
+                }
+            }
+        }
+    }
+
+    ui-lightbox-component {
+        .lightbox {
+            .lightbox-body {
+                ::ng-deep & {
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    text-align: right;
+                }
+
+                button {
+                    ::ng-deep & {
+                        width: 200px;
+                    }
+                }
+        
+                figure {
+                    ::ng-deep & {
+                        margin-top: 20px;
+                        width: 400px;
+                    }
+                    
+                    img {
+                        ::ng-deep & {
+                            width: 400px;
+                        }
+                    }
+                }
+            }
+        }        
+    }
+}
+

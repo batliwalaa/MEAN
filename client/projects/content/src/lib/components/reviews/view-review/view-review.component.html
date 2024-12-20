@@ -1,0 +1,105 @@
+<div *ngIf="show && reviews && reviews.length > 0" class="container">
+    <div class="product-review-container" [ngClass]="{'no-product': !showProductInfo }">
+        <ng-container *ngIf="reviewSummary">
+            <ng-container *ngTemplateOutlet="reviewSummaryTemplate"></ng-container>
+        </ng-container>
+        <ng-container *ngIf="product && showProductInfo">
+            <ng-container *ngTemplateOutlet="productTemplate"></ng-container>
+        </ng-container>
+    </div>
+    <div class="review-note">
+        {{metadata && metadata.verifiedPurchaser && metadata.verifiedPurchaser.label}}
+    </div>
+    <div *ngIf="reviews" class="reviews-container">
+        <a class="nav-reviews" #navReviews></a>
+        <div class="header">{{metadata && metadata.reviews && metadata.reviews.label}}</div>
+        <ng-container *ngTemplateOutlet="reviewsTemplate"></ng-container>
+    </div>
+    <div *ngIf="!showProductInfo && reviewsCount > reviewLimit" class="see-more-reviews mt-20">
+        <a (click)="onSeeMoreReviewsClick()">{{metadata && metadata.seeMoreReviews && metadata.seeMoreReviews.label}}</a>
+    </div>
+</div>
+
+<ng-template #reviewSummaryTemplate>
+    <div class="review-summary">
+        <div class="header">
+            {{metadata && metadata.customerReviews && metadata.customerReviews.label}}
+        </div>
+        <div [ngClass]="{'no-product': !showProductInfo }">
+            <ui-review-summary-component [showViewAll]="false" [reviewSummary]="reviewSummary" [metadata]="metadata && metadata.reviewSummary"></ui-review-summary-component>
+            <ui-feature-review-component [featuresRating]="sortedFeaturesRating" [metadata]="metadata"></ui-feature-review-component>
+        </div>        
+    </div>
+</ng-template>
+
+<ng-template #productTemplate>
+    <div class="product-summary">
+        <figure (click)="onItemClick">
+            <img [src]="imageUrl">
+        </figure>
+        <div class="summary">
+            <div class="description">{{getBrand()}}{{product.title}}</div>
+            <div class="size">{{ getSizePack(product.details) }}</div>
+            <ui-pricing-component [metadata]="metadata" [pricing]="product.pricing"></ui-pricing-component>
+            <ng-container *ngFor="let detail of product.details">
+                <div *ngIf="isSpeciality(detail.title)" class="speciality">
+                    <span *ngIf="detail.value === 'Vegetarian'" class="veg-symbol">V</span>
+                    <span class="pre-text" *ngIf="detail.value === 'Vegetarian'">{{metadata && metadata.suitableFor && metadata.suitableFor.label}}</span
+                    ><span class="text">{{ detail.value }}</span>
+                </div>
+            </ng-container>
+            <div class="country-container">
+                {{ metadata && metadata.countryOfOrigin && metadata.countryOfOrigin.label }}:
+                <span class="country">{{ product.country }}</span>
+            </div>
+        </div>
+        <div></div>
+        <ui-add-to-shoppingcart-quantity [metadata]="metadata" [item]="product"></ui-add-to-shoppingcart-quantity>
+    </div>
+</ng-template>
+
+<ng-template #reviewsTemplate>
+    <ng-container *ngFor="let review of sortedReviews; let idx = index">
+        <div class="review-user" [ngClass]="{ 'mt-20': idx === 0, 'mt-40': idx > 0 }">
+            <i class="material-icons">person</i>
+            <span>{{review.user}}</span>
+        </div>
+        <div class="feature-rating">
+            <span class="five-star" [attr.style]="getRating(review)" [ngClass]="{ 'no-reviews': review.rating === 0 }"></span>
+            <span class="header">{{review.headline}}</span>
+        </div>
+        <div *ngIf="isValidDate(review)" class="review-date">
+            <span>Review date</span>: <span>{{getReviewDate(review) | date: 'dd MMMM YYYY'}}</span>
+        </div>
+
+        <ng-container *ngIf="review.urls && review.urls.length > 0">
+            <div class="images-container">
+                <ui-carousel-component [enableTimer]="false" [setWidth]="false">
+                    <ng-container *ngFor="let url of review.urls;let idx1 = index">
+                        <ng-container *ngIf="url.type === 'image'">
+                            <ng-container *uiCarouselItem>
+                                <figure>
+                                    <img (click)="openLightbox('review-image-'+idx+'-'+idx1)" [src]="url.src" />
+                                </figure>
+                                <ng-container *ngTemplateOutlet="reviewImageLightbox; context: getLightboxData(url.src, idx+'-'+idx1)"></ng-container>
+                            </ng-container>
+                        </ng-container>
+                    </ng-container>
+                </ui-carousel-component>
+            </div>
+        </ng-container>
+
+        <div class="description">
+            {{review.review}}
+        </div>
+        <ui-like-dislike-component
+            [metadata]="metadata"
+            [likeVote]="review && review.votes && review.votes.likeVote || 0"
+            [dislikeVote]="review && review.votes && review.votes.dislikeVote || 0"
+            (voteChange)="onVoteChange(review, $event)"></ui-like-dislike-component>
+    </ng-container>
+</ng-template>
+
+<ng-template #reviewImageLightbox let-src="src" let-id="id">
+    <ui-image-lightbox-component [id]="id" [src]="src" (close)="onlightboxClose(id)"></ui-image-lightbox-component>
+</ng-template>

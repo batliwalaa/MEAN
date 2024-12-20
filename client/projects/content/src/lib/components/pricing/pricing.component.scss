@@ -1,0 +1,51 @@
+@import '../../../../../ui/src/scss/variables';
+
+:host {
+    --font-size: calc(#{$font-size} * 0.9);
+    font-family: "Open Sans";
+    font-size: var(--font-size);
+    line-height: calc(var(--font-size) * 1.2);
+    
+}
+
+.pricing-container {
+    color: $text-color;
+
+    .pricing-item {
+        margin-bottom: 7px;
+
+        .taxes-inclusive,
+        .list {
+            color: $footertop-background-color;
+            text-decoration: line-through;
+            font-weight: 400;
+            margin-left: 5px;
+        }
+        .taxes-inclusive {
+            margin-left: 0;
+            margin-bottom: 2px;
+            text-decoration: none;
+            font-size: 0.9em;
+            display: block;
+        }
+
+        .discount {
+            font-size: calc($font-size * 1.75);
+            color: $vibrant-red;
+            line-height: 1.75rem;
+        }
+
+        .price-was,
+        .price-now {
+            font-weight: 700;
+        }
+
+        .price-was {
+            text-decoration: line-through;
+        }
+    }
+
+    .currency-symbol {
+        font-size: var(--font-size);
+    }
+}

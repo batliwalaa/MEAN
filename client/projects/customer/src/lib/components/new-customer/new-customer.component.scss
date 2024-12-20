@@ -1,0 +1,85 @@
+@import '../../../../../ui/src/scss/variables';
+@import '../../../../../ui/src/assets/fonts/material-icons/material-icons.css';
+
+.signup-container {
+    position: relative;
+    height: 100%;
+    background-color: #fff;
+    margin: 20px auto;
+    width: 100%;
+    max-width: 480px;
+
+    > * {
+        margin: 0;
+    }
+
+    .signup-form-container {
+        .header {
+            color: $highlight;
+            margin-bottom: 10px;
+            font-weight: 500;
+            font-size: 1.5em;
+        }
+
+        .error {
+            span:not(:first-child) {
+                color: $text-color;
+                margin-top: 8px;
+                display: block;
+            }
+
+            span:first-child {
+                font-weight: 500;
+                font-size: 1.1em;
+            }
+        }
+
+        .row {
+            margin-top: 20px;
+        }
+
+        .mobile-number {
+            display: grid;
+            grid-template-columns: 80px auto;
+            margin-top: 13px;
+
+            ui-dropdown-component {
+                select {
+                    ::ng-deep & {
+                        padding-left: 1px;
+                    }
+                }
+            }
+        }
+
+        .information {
+            background-color: #fcfcfc;
+            border: 1px solid transparent;
+            padding: 6px 11px;
+            box-shadow: 2px 2px #f1f1f1;
+
+            span {
+                line-height: 17px;
+                font-size: 0.65em;
+                display: block;
+                font-weight: 500;
+                color: #555;
+            }
+        }
+
+        .btn {
+            margin-top: 20px;
+        }
+
+        .has-account,
+        .acceptance {
+            margin-top: 20px;
+            font-size: 0.8em;
+        }
+
+        .has-account {
+            border-top: 3px solid #f1f1f1;
+            padding-top: 10px;
+        }
+    }
+}

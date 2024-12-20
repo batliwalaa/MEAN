@@ -1,0 +1,323 @@
+@import './variables';
+
+.control-row {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 7px;
+    display: block;
+    position: sticky;
+
+    &.first {
+        margin-top: 0;
+    }
+
+    .control {
+        border: $border;
+        border-radius: $border-radius;
+        position: relative;
+
+        &.radio,
+        &.radio-small &.checkbox {
+            border: $border-transparent;
+        }
+
+        .checkbox,
+        input,
+        select,
+        textarea,
+        button {
+            height: $mobile-control-height;
+            width: 100%;
+            border: $border-transparent;
+        }
+
+        .checkbox,
+        select,
+        textarea,
+        input {
+            padding: 12px 6px 6px 11px;
+            background: transparent;
+
+            + label {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: $mobile-control-height;
+                background: $form-background-color;
+                z-index: -2;
+                text-align: left;
+                padding: 15px 11px;
+                font-size: 0.9em;
+                color: #a1a1a1;
+                animation: move-label-down 0.5s ease-in-out;
+
+                > span {
+                    color: #d96060;
+                    font-weight: bold;
+                }
+            }
+
+            &.has-value,
+            &:focus {
+                + label {
+                    font-size: 0.7em;
+                    padding-top: 3px;
+                    color: $main-blue-active-color;
+                    animation: move-label-up 0.3s ease-in-out;
+                    z-index: 1;
+                    background: transparent;
+                    height: 10px;
+                }
+            }
+
+            &:focus {
+                ~ .focus-indicator {
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 3px;
+                    height: $mobile-control-height;
+                    background-color: $indicator-color;
+                    border: 1px solid $indicator-color;
+                }
+            }
+        }
+
+        input {
+            padding: 5px 6px 6px 11px;
+        }
+
+        textarea {
+            height: $mobile-textarea-height;
+            resize: none;
+            padding-top: 28px;
+
+            &:focus {
+                ~ .focus-indicator {
+                    height: $mobile-textarea-height;
+                }
+            }
+        }
+
+        button {
+            background-color: $main-blue-color;
+            color: $button-text-color;
+            cursor: pointer;
+
+            &:focus,
+            &:hover {
+                background-color: $main-blue-active-color;
+            }
+        }
+
+        select {
+            padding-left: 6px;
+            font-size: $font-size;
+        }
+
+        div.radio {
+            width: 30px;
+            height: 30px;
+            border-radius: 15px;
+
+            span.radio {
+                border-radius: 7px;
+                width: 14px;
+                height: 14px;
+            }
+        }
+
+        div.radio-small {
+            width: 20px;
+            height: 20px;
+            border-radius: 10px;
+
+            span.radio-small {
+                border-radius: 5px;
+                width: 10px;
+                height: 10px;
+            }
+        }
+
+        div.radio-small,
+        div.radio {
+            border: $border;
+            position: relative;
+
+            span.radio-small,
+            span.radio {
+                position: absolute;
+                left: 50%;
+                top: 50%;
+                transform: translate(-50%, -50%);
+                border: 1px solid transparent;
+                background-color: transparent;
+                cursor: pointer;
+
+                &.checked {
+                    border: 1px solid $highlight;
+                    background-color: $highlight;
+                }
+
+                + label {
+                    margin-left: 32px;
+                    width: calc(100% - 32px);
+                }
+            }
+        }
+
+        > div.checkbox {
+            margin-top: 3px;
+
+            span.checkbox {
+                position: absolute;
+                left: -1px;
+                top: 6px;
+                padding: 0 11px;
+                border: $border;
+                border-color: $bright-green;
+                background-color: $form-background-color;
+                width: 32px;
+                height: 32px;
+                cursor: pointer;
+
+                &.checked:before {
+                    position: absolute;
+                    content: '\2713';
+                    font-size: 2em;
+                    color: $indicator-color;
+                    left: 2px;
+                    top: 0;
+                    transform: rotate(13deg);
+                }
+
+                + label {
+                    margin-left: 32px;
+                    width: calc(100% - 32px);
+                }
+            }
+        }
+
+        .optional-text {
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 100%;
+            height: $mobile-control-height;
+            background: transparent;
+            z-index: -1;
+            text-align: left;
+            padding: 0 11px;
+            font-size: 0.7em;
+            padding-top: 3px;
+            color: $main-blue-active-color;
+            text-align: right;
+        }
+
+        .background {
+            width: 100%;
+            display: block;
+            height: $mobile-control-height;
+            position: absolute;
+            left: 0;
+            top: 0;
+            z-index: -3;
+            background: $form-background-color;
+        }
+    }
+
+    @media screen and (min-width: $tablet-min-width) {
+        .control {
+            .checkbox,
+            select,
+            input,
+            button {
+                height: $tablet-control-height;
+            }
+
+            select,
+            input {
+                + label {
+                    height: $tablet-control-height;
+                }
+            }
+        }
+    }
+}
+
+@media screen and (min-width: $desktop-min-width) {
+    .control-row {
+        .control {
+            .checkbox,
+            select,
+            input,
+            button {
+                height: $desktop-control-height;
+            }
+
+            select,
+            textarea,
+            input {
+                + label:not(.ignore) {
+                    height: $desktop-control-height;
+                    left: -100%;
+                    text-align: right;
+                    animation: unset;
+                }
+                &.has-value,
+                &:focus {
+                    + label:not(.ignore) {
+                        animation: unset;
+                        font-size: 0.9em;
+                        color: #a1a1a1;
+                        padding-top: 15px;
+                    }
+                }
+            }
+
+            select,
+            textarea,
+            input {
+                padding-top: 15px !important;
+
+            }
+
+            select {
+                padding-top: 13px !important;
+            }
+
+            select,
+            input,
+            textarea,
+            .checkbox {
+                + label:not(.ignore) {
+                    background-color: $page-background-color;
+                }
+            }
+        }
+    }
+}
+
+@keyframes move-label-up {
+    from {
+        padding-top: 15px;
+        font-size: 0.9em;
+    }
+    to {
+        padding-top: 3px;
+        font-size: 0.7em;
+    }
+}
+
+@keyframes move-label-down {
+    from {
+        padding-top: 3px;
+        font-size: 0.7em;
+    }
+    to {
+        padding-top: 15px;
+        font-size: 0.9em;
+    }
+}

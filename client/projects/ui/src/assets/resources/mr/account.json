@@ -1,0 +1,25 @@
+{
+    "myAccount": {
+        "label": "माझे खाते"
+    },
+    "options": [
+        {
+            "header": "माझे आदेश",
+            "description": "ट्रॅक करा, परत करा किंवा पुन्हा खरेदी करा",
+            "key": "myOrders"
+        }, {
+            "header": "My Profile",
+            "description": "Edit login, name, mobile and reset password",
+            "key": "myProfile"
+        }, {
+            "header": "My Addresses",
+            "description": "Add, edit or delete addresses for orders",
+            "key": "myAddresses"
+        }, {
+            "header": "My Loyalty Points",
+            "description": "Loyalty points accumulation and redeem",
+            "key": "myLoyaltyPoints",
+            "featureEnabled": false
+        }
+    ]
+}

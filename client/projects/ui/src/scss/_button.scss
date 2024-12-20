@@ -1,0 +1,59 @@
+@import './variables';
+
+.btn {
+    width: 100%;
+    height: $mobile-control-height;
+    border-radius: $border-radius;
+    cursor: pointer;
+
+    &[disabled] {
+        color: $disabled-color;
+        background-color: $disabled-background-color;
+        $border: $disabled-border;
+        cursor: not-allowed;
+    }
+}
+
+.btn-primary {
+    color: $button-color;
+    background: $bright-green;
+    border: 1px solid $highlight;
+    font-size: 1rem;
+    font-weight: 600;
+
+    &.btn-box-shadow {
+        box-shadow: 0 2px 8px $bright-green;
+    }
+}
+
+.btn-small {
+    height: calc(#{$mobile-control-height} - 10px);
+}
+
+.btn-light {
+    background-color: $button-light;
+    border: 1px solid transparent;
+    font-weight: 550;
+    color: $text-color;
+    font-size: 1rem;
+
+    &:hover {
+        background-color: $button-light-hover;
+        border: 1px solid $button-light;
+    }
+
+    &.btn-box-shadow {
+        box-shadow: 0 2px 8px #c0c0c0;
+    }
+}
+
+.btn-light-bordered {
+    border: $border-light;
+}
+
+.btn-text-left {
+    font-weight: 600;
+    padding-left: 20px;
+    background-color: #fff;
+    text-align: left;
+}

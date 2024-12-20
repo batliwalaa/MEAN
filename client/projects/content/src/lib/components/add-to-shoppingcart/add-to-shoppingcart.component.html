@@ -1,0 +1,8 @@
+<button
+    uiRecaptcha
+    [action]="metadata && metadata.addToBasket && metadata.addToBasket.action"
+    class="btn btn-basket"
+    (execute)="addToBasketClick()"
+>
+    {{ metadata && metadata.addToBasket && metadata.addToBasket.label }}
+</button>

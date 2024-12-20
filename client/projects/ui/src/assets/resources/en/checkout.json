@@ -1,0 +1,247 @@
+{
+    "address": {
+        "address": {
+            "section": "Add a new address",
+            "country": {
+                "label": "India"
+            },
+            "postcode": {
+                "label": "Pincode:",
+                "pattern": "[0-9]+",
+                "maxLength": "10",
+                "validators": {
+                    "required": "",
+                    "pattern": "",
+                    "maxLength": ""
+                },
+                "error": {
+                    "required": "Pincode is required",
+                    "pleaseEnterValidCharacters": "Please enter valid pincode."
+                }
+            },
+            "addressLine1": {
+                "label": "House no., Apartment, Company:",
+                "pattern": "^[\\u0192\\u02c6\\u0152\\u017d\\u02dc\\u0161\\u0153\\u017e\\u0178a-zA-Z0-9\\u00c0-\\u1ef9\\u3021-\\ufa29\\u002d\\u0020\\u002e]*$",
+                "maxLength": "100",
+                "validators": {
+                    "required": "",
+                    "pattern": ""
+                },
+                "error": {
+                    "required": "Address Line 1 is required",
+                    "pleaseEnterValidCharacters": "Please enter valid characters."
+                }
+            },
+            "addressLine2": {
+                "label": "Area, Colony, Street, Sector, Village:",
+                "pattern": "^[\\u0192\\u02c6\\u0152\\u017d\\u02dc\\u0161\\u0153\\u017e\\u0178a-zA-Z0-9\\u00c0-\\u1ef9\\u3021-\\ufa29\\u002d\\u0020\\u002e]*$",
+                "maxLength": "100",
+                "validators": {
+                    "pattern": ""
+                },
+                "error": {
+                    "pleaseEnterValidCharacters": "Please enter valid characters."
+                }
+            },
+            "addressLine3": {
+                "label": "Landmark: e.g. behind Ruby Hall:",
+                "pattern": "^[\\u0192\\u02c6\\u0152\\u017d\\u02dc\\u0161\\u0153\\u017e\\u0178a-zA-Z0-9\\u00c0-\\u1ef9\\u3021-\\ufa29\\u002d\\u0020\\u002e]*$",
+                "maxLength": "100",
+                "validators": {
+                    "pattern": ""
+                },
+                "error": {
+                    "pleaseEnterValidCharacters": "Please enter valid characters."
+                }
+            },
+            "town": {
+                "label": "Town/City:",
+                "pattern": "^[\\u0192\\u02c6\\u0152\\u017d\\u02dc\\u0161\\u0153\\u017e\\u0178a-zA-Z0-9\\u00c0-\\u1ef9\\u3021-\\ufa29\\u002d\\u0020\\u002e]*$",
+                "maxLength": "50",
+                "validators": {
+                    "required": "",
+                    "pattern": ""
+                },
+                "error": {
+                    "required": "Town/City is required",
+                    "pleaseEnterValidCharacters": "Please enter valid characters."
+                }
+            },
+            "state": {
+                "label": "Please select state",
+                "validators": {
+                    "required": ""
+                },
+                "error": {
+                    "required": "State is required"
+                }
+            },
+            "addressType": {
+                "label": "Please select address type",
+                "validators": {
+                    "required": ""
+                },
+                "error": {
+                    "required": "Address type is required"
+                }
+            }
+        },
+        "additionalDeliveryInstructions": {
+            "label": "Additional delivery instructions",
+            "text": "Enter additional instructions to find the address, if any? (max 250 characters)",
+            "instructions": {
+                "label": "Provide details such as building description, nearby landmark or any navigation instructions.",
+                "maxLength": "250",
+                "rows": "5",
+                "validators": {
+                    "maxLength": ""
+                }
+            }
+        },
+        "accessCode": {
+            "label": "Enter security code or a call box number to access the premise, if any?",
+            "code": {
+                "label": "9999",
+                "maxLength": "4",
+                "validators": {
+                    "maxLength": ""
+                }
+            }
+        },
+        "setDefaultAddress": {
+            "label": "Set as default address"
+        },
+        "selectDeliveryAddress": {
+            "label": "Deliver to this address"
+        },
+        "add": {
+            "label": "Add a new address"
+        },
+        "edit": {
+            "label": "Edit address"
+        },
+        "delete": {
+            "label": "Delete",
+            "action": "deletedeliveryaddress"
+        },
+        "back": {
+            "label": "Back"
+        },
+        "continue": {
+            "label": "Continue"
+        }
+    },
+    "options": {
+        "section": "Choose a delivery option",
+        "options": [
+            {
+                "type": "FREE Delivery",
+                "text": "get it by",
+                "unavailable": "Free delivery option available for order above"
+            },
+            {
+                "type": "Standard Delivery",
+                "text": "get it by"
+            },
+            {
+                "type": "Scheduled Delivery",
+                "text": "get it by",
+                "unavailable": "Delivery option unavailable for this order"
+            }
+        ],
+        "continue": {
+            "label": "Continue"
+        }
+    },
+    "slots": {
+        "section": "Delivery Slot",
+        "content": "Choose a date and time for delivery",
+        "continue": {
+            "label": "Continue"
+        },
+        "notAvailable": {
+            "label": "Please select another slot, slot unavailable"
+        },
+        "badRequest": {
+            "label": "Please try again"
+        }
+    },
+    "acceptance": {
+        "controlType": "acceptance",
+        "statement": [
+            { "type": "text", "text": "Please see our " },
+            {
+                "type": "link",
+                "text": "Terms & Conditions",
+                "url": "./termsandconditions",
+                "newWindow": true
+            },
+            { "type": "text", "text": ", our " },
+            {
+                "type": "link",
+                "text": "Privacy Policy",
+                "url": "./privacypolicy",
+                "newWindow": true
+            },
+            { "type": "text", "text": " and our " },
+            {
+                "type": "link",
+                "text": "Cookie Policy",
+                "url": "./cookiepolicy",
+                "newWindow": true
+            }
+        ]
+    },
+    "errorHeader": {
+        "label": "Failure to reserve the slot, please try reserving another slot."
+    },
+    "preview": {
+        "section": "Checkout order preview",
+        "continue": {
+            "label": "Proceed to payment",
+            "action": "makepayment"
+        },
+        "subtotal": {
+            "label": "Sub total"
+        },
+        "gst": {
+            "label": "G.S.T."
+        },
+        "total": {
+            "label": "Total"
+        },
+        "address": {
+            "label": "Address"
+        },
+        "delivery": {
+            "label": "Delivery"
+        },
+        "orderItems": {
+            "label": "Order items"
+        },
+        "change": {
+            "label": "Change quantities or remove items from cart"
+        },
+        "minimumOrder": {
+            "label": "Minimum order value for"
+        },
+        "free": {
+            "label": "FREE"
+        },
+        "deliveryCharge": {
+            "label": "Delivery charges"
+        },
+        "taxInformation": {
+            "label": "Inclusive of all taxes"
+        },
+        "loyaltyPointsGain": {
+            "label": "In this order you will be gaining loyalty points"
+        },
+        "loyaltyPointsInfo": {
+            "label": "1 loyalty point (1 point = £1.00) / £100.00, you can redeem points in next order / collect points and redeem later"
+        },
+        "pointsToRedeem": {
+            "label": "Redeem points"
+        }
+    }
+}

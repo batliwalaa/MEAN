@@ -1,0 +1,44 @@
+@import '../../../../../../ui/src/scss/variables';
+
+.select-address-container {
+    margin-top: 1px;
+    padding: 10px 20px;
+    border: $border-light;
+
+    &:first-child {
+        margin-top: 20px;
+    }
+
+    .address-selector {
+        display: grid;
+        grid-auto-flow: column;
+        grid-template-columns: 40px auto;
+        grid-column-gap: 20px;
+        justify-content: flex-start;
+        justify-items: center;
+    }
+
+    .btn {
+        margin-top: 10px;
+    }
+}
+
+.add-address {
+    margin-top: 1px;
+    position: relative;
+
+    i {
+        position: absolute;
+        right: 14px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 17pt;
+    }
+}
+
+.acceptance {
+    margin-top: 20px;
+    font-size: 0.8em;
+    padding-top: 10px;
+    border-top: 3px solid #f1f1f1;
+}

@@ -1,0 +1,38 @@
+.page {
+    width: 100%;
+
+    fieldset {
+        border-top: 1px solid $main-blue-color;
+        width: 80%;
+        margin: 25px auto 0 auto;
+        padding-top: 25px;
+        font-size: 0.9em;
+
+        @media screen and (min-width: $desktop-min-width) {
+            width: 800px;
+        }
+
+        legend {
+            padding: 0 11px 5px;
+            padding-left: 35px;
+            text-align: left;
+            position: relative;
+
+            &:before {
+                font-family: 'Material Icons';
+                position: absolute;
+                font-size: 1.7em;
+                left: 5px;
+                top: -4px;
+                color: $main-blue-color;
+            }
+
+            + textbox-component,
+            + dropdown-component {
+                .control-row {
+                    margin-top: 0;
+                }
+            }
+        }
+    }
+}

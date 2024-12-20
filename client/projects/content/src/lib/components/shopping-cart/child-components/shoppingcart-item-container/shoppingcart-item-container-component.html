@@ -1,0 +1,32 @@
+<div class="item-container">
+    <div class="image-container">
+        <figure>
+            <img [src]="imageUrl" />
+        </figure>
+    </div>
+    <div class="text-container">
+        <div class="description">{{ item.title }}</div>
+        <div class="packaging">{{packaging}}</div>
+        <div class="pricing">
+            <ui-pricing-component [metadata]="metadata" [pricing]="item.pricing"></ui-pricing-component>
+        </div>
+    </div>
+</div>
+<div class="buttons-container">
+    <div class="add-to-cart">
+        <ui-number-component
+            [value]="item.quantity"
+            [metadata]="metadata"
+            (valueChange)="onQuantityChange($event)"
+        ></ui-number-component>
+    </div>
+    <button
+        uiRecaptcha
+        [action]="metadata && metadata.delete && metadata.delete.action"
+        type="button"
+        class="btn btn-light"
+        (execute)="deleteFromBasket()"
+    >
+        {{metadata && metadata.delete && metadata.delete.label}}
+    </button>
+</div>

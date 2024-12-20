@@ -1,0 +1,40 @@
+{
+    "review": {
+        "label": "Review"
+    },
+    "overallRating": {
+        "label": "Product Rating"
+    },
+    "featureRating": {
+        "label": "Rate by features"
+    },
+    "photoOrVideo": {
+        "label": "Add photo from image gallery / Take photo"
+    },
+    "headline": {
+        "label": "Review headline",
+        "maxLength": "250",
+        "optionalText": "Define what you like / dislike of product.",
+        "validators": {
+            "maxLength": ""
+        }
+    },
+    "description": {
+        "label": "Review description",
+        "optionalText": "Describe like / dislike of product.",
+        "maxLength": "250",
+        "rows": "5",
+        "validators": {
+            "maxLength": ""
+        }
+    },
+    "save": {
+        "label": "Save",
+        "action": "review-save"
+    },    
+    "breadcrumb": [
+        { "label": "My Account", "key": "myAccount" },
+        { "label": "My Orders", "key": "myOrders" },
+        { "label": "review" }
+    ]
+}

@@ -1,0 +1,21 @@
+<div *ngIf="!isMobile" class="bread-crumb">
+    <ui-breadcrumb-component [items]="breadcrumbs"></ui-breadcrumb-component>
+</div>
+
+<div class="container">
+    <div class="header">{{metadata && metadata.orderDetail && metadata.orderDetail.label}}</div>
+    <div class="order-info" [ngClass]="{'mobile-container': isMobile, 'desktop-container': !isMobile}">
+        <div class="order-date">
+            <span>{{headerMetadata && headerMetadata.orderDate && headerMetadata.orderDate.label}}:</span>
+            <span>{{order && order.dateCreated | date: 'd MMM YYYY'}}</span>
+        </div>
+        <div class="order-number">
+            <span>{{headerMetadata && headerMetadata.orderNumber && headerMetadata.orderNumber.label}}:</span>
+            <span>{{order && order.orderNumber}}</span>
+        </div>
+        <div class="order-invoice">
+            <ui-order-invoice-component [metadata]="headerMetadata" [orderID]="order._id"></ui-order-invoice-component>
+        </div>
+    </div>
+    <ui-order-wrapper-component [template]="'DETAIL'" [metadata]="metadata" [order]="order" [slot]="slot"></ui-order-wrapper-component>
+</div>

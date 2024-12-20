@@ -1,0 +1,142 @@
+<ng-container *ngIf="menuItems">
+  <nav class="navbar" (outsideClick)="onClose($event)">
+    <div id="navbarSupportedContent">
+        <ng-container *ngIf="authenticated && metadata">
+            <ng-container *ngTemplateOutlet="authTemplate"></ng-container>
+        </ng-container>
+        <ng-container *ngIf="!authenticated && metadata">
+            <ng-container *ngTemplateOutlet="notAuthTemplate"></ng-container>
+        </ng-container>
+
+      <ul class="navbar-nav" [ngClass]="{ animate: showChildMenu }">
+        <ng-container *ngFor="let item of menuItems;let idx = index;">
+          <ng-container *ngIf="item.itemType === 'List'">
+            <li class="nav-item list-header" [style.marginTop]="idx === 0 ? 0 : '20px'">{{item.label}}</li>
+            <ul class="list-items">
+              <ng-container *ngFor="let listItem of activeChildItems(item.childItems);let idx = index">
+                <li class="nav-item"  (click)="setSelectedMenu(listItem)">
+                  <a class="nav-link">{{listItem.label}}</a>
+                  <ng-container *ngTemplateOutlet="chevronRightTemplate; context:getItem(listItem)"></ng-container>
+                </li>                
+                <li class="separator"></li>
+              </ng-container>
+            </ul>
+          </ng-container>
+        </ng-container>
+        <li *ngIf="metadata" class="nav-item list-header" [style.marginTop]="'20px'">{{metadata && metadata.settings && metadata.settings.label}}</li>
+        <ul *ngIf="metadata" class="list-items">
+            <li class="nav-item">
+                {{metadata && metadata.language && metadata.language.label}}: 
+                <div 
+                    class="language-options"
+                    (mouseleave)="showLanguagePopup = false;"
+                    (mouseover)="showLanguagePopup = true;"
+                >
+                    {{language}}
+                    <ui-language-selector-component
+                      *ngIf="metadata && metadata.language && metadata.language.options.length > 1"
+                      [hidden]="!showLanguagePopup"
+                      [metadata]="metadata"></ui-language-selector-component>
+                    
+                </div>
+            </li>
+            <li class="separator"></li>
+        </ul>
+      </ul>
+    </div>
+  </nav>
+</ng-container>
+
+<ng-container *ngIf="menuItems">
+  <ng-container *ngFor="let item of menuItems">
+    <ng-container *ngIf="item.itemType === 'List'">
+      <ng-container *ngFor="let listItem of activeChildItems(item.childItems)">
+        <ng-container *ngIf="listItem.childItems">
+          <ng-container *ngTemplateOutlet="listItemsTemplate; context:listItem"></ng-container>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+</ng-container>
+
+<ng-template #listItemsTemplate let-listItems="childItems" let-id="id" let-category="label">
+  <div class="child-container" [ngClass]="{ 'animate': isSelected(id) }">
+    <div class="child-items ">
+      <ul class="child-toolbar">
+        <li class="">
+          <i class="material-icons" (click)="showChildMenu = false;">double_arrow</i>
+          <span (click)="showChildMenu = false;">Back</span>
+        </li>          
+      </ul>
+      <ng-container *ngFor="let item of listItems;let idx = index;">
+        <ng-container *ngIf="item.itemType !== 'List'">
+          <ul class="menu-child-item item" [style.order]="1" >
+            <ng-container *ngTemplateOutlet="childItemTemplate;context: getItem(item, category)"></ng-container>
+          </ul>
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #chevronRightTemplate let-item="item">  
+  <ng-container *ngIf="item.childItems && item.childItems.length">
+    <i class="material-icons" (click)="setSelectedMenu(item)">chevron_right</i>
+  </ng-container>
+</ng-template>
+
+<ng-template #childItemTemplate let-item="item" let-category="category">  
+  <li *ngIf="item.itemType === 'Image'" [class]="item.highlight === true ? 'highlight' : 'no-highlight'" (click)="onSubCategoryClick(item, category)">
+    <a class="nav-link" >{{item.label}}</a>
+  </li>
+  <li *ngIf="item.itemType === 'Text'" [class]="item.highlight === true ? 'highlight' : 'no-highlight'" (click)="onSubCategoryClick(item, category)">
+    <a class="nav-link" >{{item.label}}</a>
+  </li>
+  <li class="separator"></li>
+</ng-template>
+
+<ng-template #authSettingsTemplate>     
+    <li class="nav-item" (click)="onSignOutClick()">
+        <a class="nav-link">{{metadata && metadata.signOut && metadata.signOut.label}}</a>
+    </li>
+    <li class="separator"></li>
+</ng-template>
+
+<ng-template #authTemplate>
+    <ul class="navbar-nav navbar-nav-bordered">
+        <li class="nav-item list-header">
+            <a class="nav-link">{{metadata && metadata.hello && metadata.hello.label}}{{firstName}}</a>
+        </li>
+        <ul class="list-items">
+            <ng-container  *ngFor="let o of accountOptions">
+                <ng-container *ngTemplateOutlet="accountOptionTemplate; context: o"></ng-container>
+            </ng-container>            
+            <ng-container *ngTemplateOutlet="authSettingsTemplate"></ng-container>
+        </ul>
+    </ul>
+</ng-template>
+
+<ng-template #notAuthTemplate>
+    <ul class="navbar-nav navbar-nav-bordered">
+        <li class="nav-item list-header" (click)="onSignInClick()">
+            <a class="nav-link">{{metadata && metadata.hello && metadata.hello.label}}, {{metadata && metadata.signIn && metadata.signIn.label}}</a>
+        </li>
+        <ul class="list-items">
+            <li class="nav-item" (click)="onSignInClick()">
+                <a class="nav-link">{{metadata && metadata.signIn && metadata.signIn.label}}</a>
+            </li>
+            <li class="separator"></li>
+            <li class="nav-item" [routerLink]="['./customer/register']">
+                <span class="nav-link">{{metadata && metadata.notRegistered && metadata.notRegistered.label}}, <a class="nav-link">{{metadata && metadata.createAccount && metadata.createAccount.label}}</a></span>
+            </li>
+            <li class="separator"></li>
+        </ul>
+    </ul>
+</ng-template>
+
+<ng-template #accountOptionTemplate let-key="key" let-label="label">
+    <li class="nav-item" (click)="onItemClick(key)">
+        <a class="nav-link">{{label}}</a>
+    </li>
+    <li class="separator"></li>
+</ng-template>

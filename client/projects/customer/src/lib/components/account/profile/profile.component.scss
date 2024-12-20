@@ -1,0 +1,73 @@
+@import '../../../../../../ui/src/scss/variables';
+@import '../../../../../../ui/src/scss/mixins';
+
+.container {
+    @include non-content-container;
+    color: $text-color;
+    padding: 0 10px;
+    
+    .mobile-container {
+        --profile-item-grid-auto-flow: row;
+        --profile-item-grid-template-columns: 1fr;
+        --profile-item-justify-content: stretch;
+        --ui-account-profile-change-grid-column-start: unset;
+        --ui-account-profile-change-grid-column-end: unset;
+        --ui-account-profile-change-padding: 0;
+    }
+
+    .desktop-container {
+        --profile-item-grid-auto-flow: row;
+        --profile-item-grid-template-columns: repeat(2, 1fr) 2fr;
+        --profile-item-justify-content: stretch;
+        --ui-account-profile-change-grid-column-start: 1;
+        --ui-account-profile-change-grid-column-end: 4;
+        --ui-account-profile-change-padding: 11px;
+    }
+
+    .header {
+        color: #333;
+        margin-top: 14px;
+        font-weight: 600;
+        font-size: 1.5rem;
+    }
+
+    .profile-container {
+        display: grid;
+        grid-auto-flow: row;
+        grid-template-columns: 1fr;
+        row-gap: 15px;
+        justify-content: stretch;
+        margin-top: 20px;
+
+        .profile-item {
+            display: grid;
+            grid-auto-flow: var(--profile-item-grid-auto-flow);
+            grid-template-columns: var(--profile-item-grid-template-columns);
+            column-gap: 15px;
+            row-gap: 10px;
+            justify-content: var(--profile-item-justify-content);
+            padding: 11px;
+            border: 1px solid transparent;
+            border-radius: $border-radius;
+            box-shadow: 2px 2px 8px #f1f1f1;
+            align-items: center;
+
+            .label {
+                font-weight: 550;
+            }
+
+            .text {
+                span:not(:first-child) {
+                    margin-left: 5px;
+                }
+            }
+
+            ui-account-profile-change {
+                grid-column-start: var(--ui-account-profile-change-grid-column-start);
+                grid-column-end: var(--ui-account-profile-change-grid-column-end);
+                padding: var(--ui-account-profile-change-padding);
+                max-width: 40rem;
+            }
+        }
+    }
+}

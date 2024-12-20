@@ -1,0 +1,39 @@
+@if (productDetails && productDetails.length > 0) 
+{
+    <div class="details-div-class">
+        <div class="detail-title"><label>{{ sectionName }}</label></div>
+        @switch (displayType)
+        {
+            @case ('list') 
+            {
+                <ol>
+                    @for (pd of productDetails; track $index)
+                    {
+                        <li class="desc-list-item-class">
+                        <div><span class="desc-title">{{ pd.title }}:</span>{{pd.value}}</div>
+                        </li>
+                    }        
+                </ol>
+            }
+            @case ('table')
+            {
+                <table class = "detail-cls">
+                    @for (pd of productDetails; track $index) {
+                        <tr class="table-row-cls">
+                            <td class = "table-left-td-cls">
+                                {{ pd.title }}:
+                            </td>
+                            <td class="table-right-td-cls">
+                                {{pd.value}}
+                            </td>
+                        </tr>
+                    }
+                </table>
+            }
+            @case ('text')
+            {
+                <div class="text-cls">{{ productDetails[0].value }}</div>
+            }
+        }
+    </div>
+}

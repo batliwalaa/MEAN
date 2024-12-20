@@ -1,0 +1,22 @@
+@import '../../../../../ui/src/scss/variables';
+
+.header-container {
+    margin: 0;
+    padding: 15px 0 25px 0;
+    background-color: $bright-green;
+    text-align: center;
+
+    .company-logo-small {
+        position: relative;
+        padding-top: 0;
+
+        &:after {
+            content: "bazaar";
+            position: absolute;
+            left: 45px;
+            top: 26px;
+            color: #fff;
+            font-size: 1rem;
+        }
+    }
+}

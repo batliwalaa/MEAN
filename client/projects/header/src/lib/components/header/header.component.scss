@@ -1,0 +1,247 @@
+@import '../../../../../ui/src/scss/variables';
+@import '../../../../../ui/src/scss/mixins';
+
+@mixin signout ($gridColumEnd) {
+    grid-column-start: 1;
+    grid-column-end: $gridColumEnd;
+    width: 100%;
+}
+
+.desktop-container {
+    display: none;
+    
+    ui-signout {
+        @include signout(7);
+    }
+}
+
+.mobile-container {
+    position: relative;
+    background-color: #fff;
+    height: 100%;
+    padding: 5px 0;
+    padding-bottom: 10px;
+    display: grid;
+    grid-auto-flow: row;
+    grid-template-columns: 50px calc(100% - 230px) 125px 55px;
+    justify-content: center;
+    justify-items: center;
+    grid-auto-rows: 1fr;
+
+    .search-container {
+        grid-column-start: 1;
+        grid-column-end: 5;
+        width: 100%;
+        padding: 2px 20px;
+    }
+
+    &.authenticated {
+        padding-bottom: 0;
+    }
+    
+    ui-signout {
+        @include signout(6);
+    }
+}
+
+ .company-logo-small {
+    font-family: "Poppins";
+    position: relative;
+    padding-top: 0;
+    justify-self: left;
+    color: $bright-green;
+
+    &:after {
+        content: "Hippo";
+        position: absolute;
+        left: 45px;
+        top: 24px;
+        font-size: 1rem;
+    }
+}
+
+.menu {
+    position: relative;
+
+    i {
+        position: absolute;
+        left: -15px;
+        top: 0;
+        font-weight: lighter;
+        font-size: 32px;
+        border: 1px solid transparent;
+        color: $bright-green;
+    }
+}
+
+.icon {
+    position: relative;
+
+    i.shopping-cart {
+        color: $bright-green;
+        font-size: 1.2em;
+
+        &:before {
+            content: " ";
+            border-top: 3px solid $bright-green;
+            left: 9px;
+            top: 3px;
+            width: 18px;
+            height: 6px;
+            position: absolute;
+            background-color: $bright-green;
+        }
+    }
+
+    .tq-label {
+        position: absolute;
+        left: 11px;
+        top: -2px;
+        font-size: 0.4em;
+        font-weight: 700;
+        background-color: $quaternary-color;
+        width: 18px;
+        height: 18px;
+        border: 1px solid transparent;
+        border-radius: 9px;
+        color: white;
+        padding: 2px;
+    }
+}
+
+.user-signin-signout {
+    justify-self: end;    
+    padding-right: 10px;
+    border: 1px solid transparent;
+}
+
+ui-burger-menu {
+    top: 50px;
+    min-width: 300px;
+    max-width: 300px;
+    left: -320px;
+    transition: 1s;
+    position: absolute;
+    background-color: $hamburger-menu-background-color;
+    color: $hamburger-menu-color;
+    overflow-x: hidden;
+    height: calc(100% - 47px);
+    padding-left: 20px;
+    z-index: 1;
+    min-height: 100vh;
+    
+    &.animate {
+        left: -20px;
+    }
+
+    &.back-visible {
+        top: 85px;
+    }
+    
+    &.authenticated {
+        top: 45px;
+
+        &.back-visible {
+            top: 85px;
+        }
+    }
+}
+
+ui-menu {
+    position: relative;
+    padding: 0;
+    display: block;
+}
+
+@media only screen and (min-width: 300px) {
+    .company-logo-small {
+        padding-left: unset;
+    
+        &:after {
+            left: 45px;
+        }
+    }
+}
+
+@media only screen and (min-width: $tablet-min-width) {
+    ui-back-component,
+    .mobile-container {
+        display: none;
+    }
+
+    .desktop-container {
+        display: block;
+        position: relative;
+        background-color: #fff;
+        height: 100%;
+        padding: 15px 0 5px 0;
+        display: grid;
+        grid-auto-flow: row;
+        grid-template-columns: 50px 100px calc(100% - 500px) 40px 230px 80px;
+        justify-content: center;
+        justify-items: center;
+        z-index: 1;
+        
+        .user-signin-signout {
+            padding: 0 30px 0 15px;
+
+            &.bordered {
+                position: relative;
+
+                &:hover {
+                    border: 1px solid #f1f1f1;
+                    border-radius: 2px;
+                }
+
+                .signin-popup {
+                    position: absolute;
+                    border: 1px solid #f1f1f1;
+                    background-color: #fff;
+                    padding: 20px 11px;
+                    z-index: 1;
+                    width: 300px;
+                    right: -2px;
+                    top: 37px;
+                    border-radius: 2px;
+
+                    &:after {
+                        @include up-indicator(9px, #fff);
+                    }
+                    li {
+                        text-align: center;
+                        color: $text-color;
+
+                        &:first-child {
+                            margin-bottom: 15px;
+                            border: 1px solid $bright-green;
+                            background-color: $bright-green;
+                            padding: 10px;
+                            color: #fff;
+                            margin-left: 70px;
+                            margin-right: 70px;
+                        }
+
+                        span + a {
+                            color: $bright-green;
+                            font-weight: 500;
+                            font-size: 1.1rem;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .search-container {
+        width: 100%;
+        padding: 0 10px;
+    }
+
+    ui-burger-menu {
+        top: 70px;
+
+        &.authenticated {
+            top: 70px;
+        }
+    }
+}

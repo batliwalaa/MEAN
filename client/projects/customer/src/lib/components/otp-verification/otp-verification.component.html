@@ -1,0 +1,118 @@
+<div class="container">
+    <div class="form-container">
+        <h4 class="header">
+            {{ metadata && metadata.header && metadata.header.label }}
+        </h4>
+        <div class="error" [hidden]="!hasErrors">
+            <span>{{ metadata && metadata.errorHeader && metadata.errorHeader.label }}</span>
+            <span *ngFor="let e of errors">{{ e.key | titlecase }}: {{ e.error }}</span>
+        </div>
+
+        <ng-container *ngIf="verify">
+            <ng-container *ngTemplateOutlet="verifyTemplate"></ng-container>
+            <ng-container *ngTemplateOutlet="expiredTemplate"></ng-container>
+        </ng-container>
+        <ng-container *ngIf="verificationFailure">
+            <ng-container *ngTemplateOutlet="failureTemplate"></ng-container>
+        </ng-container>
+        <ng-container *ngIf="verified">
+            <ng-container *ngTemplateOutlet="verifiedTemplate"></ng-container>
+        </ng-container>
+        <ng-container *ngIf="metadata && metadata.acceptance && metadata.acceptance.statement">
+            <div class="acceptance">
+                <ng-container *ngTemplateOutlet="statementTemplate; context: metadata.acceptance"></ng-container>
+            </div>
+        </ng-container>
+    </div>
+</div>
+
+<ng-template #statementTemplate let-statement="statement">
+    <ui-statement-component [metadata]="statement"></ui-statement-component>
+</ng-template>
+
+<ng-template #verifyTemplate>
+    <div class="description">
+        <span>{{ metadata && metadata.description && metadata.description.label }}</span>
+        <span *ngIf="type === 'Mobile'" class="mobile"
+            >{{ verifyOtpModel && verifyOtpModel.isoCode }}{{ verifyOtpModel && verifyOtpModel.mobile | mask: 4 }}</span
+        >
+        <span *ngIf="type === 'Email'" class="email"
+            >{{ verifyOtpModel && verifyOtpModel.email | mask:null:true }}</span
+        >
+    </div>
+
+    <div class="row">
+        <ui-textbox-component
+            (valueChange)="onValueChange($event)"
+            (keyboardKeyup)="onKeyUp($event)"
+            [value]="otp"
+            type="text"
+            name="otp"
+            [ignoreMediaQueries]="ignoreMediaQueries"
+            [metadata]="metadata && metadata.otp"
+        ></ui-textbox-component>
+    </div>
+
+    <button
+        uiRecaptcha
+        class="btn btn-primary"
+        [disabled]="!isValid"
+        [hidden]="expired"
+        [action]="metadata && metadata.verify && metadata.verify.action"
+        (execute)="onVerifyClick()"
+    >
+        {{ metadata && metadata.verify && metadata.verify.label }}
+    </button>
+
+    <button
+        uiRecaptcha
+        class="btn btn-light btn-light-bordered"
+        [action]="metadata && metadata.resend && metadata.resend.action"
+        (execute)="onResendClick()"
+    >
+        {{ metadata && metadata.resend && metadata.resend.label }}
+    </button>
+</ng-template>
+
+<ng-template #failureTemplate>
+    <ng-container *ngIf="metadata && metadata.verificationFailure && metadata.verificationFailure.statement">
+        <div class="verification-failure">
+            <ng-container *ngTemplateOutlet="statementTemplate; context: metadata.verificationFailure"></ng-container>
+        </div>
+    </ng-container>
+</ng-template>
+
+<ng-template #verifiedTemplate>
+    <div class="row" [hidden]="!isProfileChange">
+        <ui-textbox-component
+            (valueChange)="onValueChange($event)"
+            [value]="password"
+            type="password"
+            name="password"
+            [ignoreMediaQueries]="ignoreMediaQueries"
+            [metadata]="metadata && metadata.password"
+        >
+        </ui-textbox-component>
+    </div>
+    <div class="row" [hidden]="!isProfileChange">
+        <button
+            uiRecaptcha
+            class="btn btn-primary"
+            [action]="metadata && metadata.passwordSubmit && metadata.passwordSubmit.action"
+            (execute)="onPasswordSubmitClick()"
+        >
+            {{ metadata && metadata.passwordSubmit && metadata.passwordSubmit.label }}
+        </button>
+    </div>
+    <div class="verified" [hidden]="isProfileChange">
+        <span class="success">{{ metadata && metadata.otpVerifySuccess && metadata.otpVerifySuccess.label }}</span>
+        <span
+            >{{ metadata && metadata.autoRedirect && metadata.autoRedirect.label }} {{ timeInSeconds || '' }}
+            {{ metadata && metadata.autoRedirect && metadata.autoRedirect.timeComponent }}</span
+        >
+    </div>
+</ng-template>
+
+<ng-template #expiredTemplate>
+    <div [hidden]="!expired" class="expired">{{ metadata && metadata.otpExpired && metadata.otpExpired.label }}</div>
+</ng-template>

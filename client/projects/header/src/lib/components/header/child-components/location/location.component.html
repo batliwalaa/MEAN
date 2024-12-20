@@ -1,0 +1,27 @@
+<div class="container">
+    <ng-container *ngTemplateOutlet="mobileTemplate"></ng-container>
+    <ng-container *ngTemplateOutlet="desktopTemplate"></ng-container>
+</div>
+
+<ng-template #mobileTemplate>
+    <div class="mobile-container">
+        <ng-container *ngTemplateOutlet="locationTemplate"></ng-container>
+    </div>
+</ng-template>
+
+<ng-template #desktopTemplate>
+    <div class="desktop-container">
+        <ng-container *ngTemplateOutlet="locationTemplate"></ng-container>
+    </div>
+</ng-template>
+
+<ng-template #locationTemplate>
+    <div *ngIf="!hasLocation" class="select-delivery-location" [ngClass]="{ 'authenticated': authenticated }">
+        <i class="material-icons">location_on</i>
+        <span>Select delivery location</span>
+    </div>
+    <div *ngIf="hasLocation" class="delivery-location" [ngClass]="{ 'authenticated': authenticated }">
+        <i class="material-icons">location_on</i>
+        <span>{{location}}, {{city}}</span>
+    </div>
+</ng-template>

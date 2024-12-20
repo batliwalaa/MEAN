@@ -1,0 +1,63 @@
+@import '../../../../../ui/src/scss/variables';
+
+.subMenu {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.main-container {
+    display: grid;
+    grid-template-columns: auto;
+}
+
+.main-nosidebar-container {
+    display: flex;
+    width: 100%;
+}
+
+.sidebar {
+    width: 200px;
+    min-height: calc(100vh - 300px);
+    border-right: 1px solid #e0e0e0;
+    display: none;
+}
+
+.main-container,
+.main-nosidebar-container {
+    .list-items {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-items: stretch;
+        justify-content: center;
+        width: 100%;
+        flex: 1;
+        row-gap: 40px;
+        column-gap: 40px;
+    }
+}
+
+@media only screen and (min-width: $tablet-min-width) {
+    .main-container {
+        grid-template-columns: 200px auto;
+    }
+
+    .sidebar {
+        display: block;
+    }
+
+    .main-nosidebar-container {
+        display: flex;
+        margin: unset;
+        width: unset;
+    }
+
+    .main-container,
+    .main-nosidebar-container {
+        .list-items {
+            align-items: stretch;
+            justify-content: center;
+            margin-top: 40px;
+        }
+    }
+}

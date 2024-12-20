@@ -1,0 +1,47 @@
+<div *ngIf="!isMobile" class="bread-crumb">
+    <ui-breadcrumb-component [items]="breadcrumbs"></ui-breadcrumb-component>
+</div>
+
+<div class="container">
+    <div class="header">{{ metadata && metadata.header && metadata.header.label }}</div>
+    <div class="add-address">
+        <button class="btn btn-light btn-text-left btn-light-bordered" (click)="addAddressClick()">
+            {{ metadata && metadata.add && metadata.add.label }}       
+        </button>
+        <i class="material-icons">chevron_right</i>
+    </div>
+
+    <div class="address-container" [ngClass]="{'mobile-container': isMobile, 'desktop-container': !isMobile }">  
+        <ng-container *ngFor="let a of addresses">
+            <ng-container *ngTemplateOutlet="itemTemplate; context: {a:a}"></ng-container> 
+        </ng-container>
+    </div> 
+</div>
+
+<ng-template #buttonsTemplate let-a="a">
+    <button  uiRecaptcha
+    [action]="metadata && metadata.edit && metadata.edit.action" 
+    class="btn btn-primary btn-box-shadow" (click)="onEditClick(a._id)">
+        {{ metadata && metadata.edit && metadata.edit.label }}
+    </button>
+    <button  
+        *ngIf="!a.isDefaultAddress"
+        uiRecaptcha
+        [action]="metadata && metadata.delete && metadata.delete.action" 
+        class="btn btn-light btn-light-bordered btn-box-shadow" (click)="onDeleteClick(a._id)">
+        {{ metadata && metadata.delete && metadata.delete.label }}
+    </button>   
+</ng-template>
+
+<ng-template #itemTemplate let-a="a">   
+        <div class="item-wrapper">           
+            <div class="address-wrapper">
+                <div *ngIf="a.isDefaultAddress" class="default-address">{{ metadata && metadata.default && metadata.default.label }}</div>
+                {{ fullName }}                
+                <ui-address-preview-component  [deliveryAddress]="a"></ui-address-preview-component>
+            </div>
+            <div class="buttons">
+                <ng-container *ngTemplateOutlet="buttonsTemplate; context:{a:a}"></ng-container>
+            </div>  
+        </div>         
+</ng-template>

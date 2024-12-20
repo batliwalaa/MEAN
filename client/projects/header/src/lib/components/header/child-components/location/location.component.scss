@@ -1,0 +1,90 @@
+@import '../../../../../../../ui//src//scss//variables';
+@import '../../../../../../../ui//src//scss//mixins';
+
+.container {
+    width: 100vw;
+    height: 35px;
+    margin: 0;
+    background-color: $tertiary-color;
+    border: 1px solid transparent;
+    position: relative;
+    padding-left: 20px;
+
+    .mobile-container {
+        --position: relative;
+        --color: white;
+
+        .delivery-location,
+        .select-delivery-location {
+            &:after {
+                content: 'chevron_left';
+                position: absolute;
+                right: 10px;
+                top: 5px;
+                font-family: 'Material Icons';
+                font-feature-settings: 'liga';
+                transform: rotate(-90deg);
+                font-size: 1.5rem
+            }
+        }
+    }
+
+    .desktop-container {
+        --position: relative;
+        --color: white;
+
+        display: none;
+
+        .delivery-location,
+        .select-delivery-location {
+            text-align: right;
+            padding: 0;
+            padding-right: 10px;
+            margin-top: -6px;
+
+            &.authenticated {
+                margin-top: 0;
+            }
+
+            &:after {
+                @include down-arrow(-16px, 1px);
+                right: -7px;
+                bottom: 2px;
+            }
+
+            i {
+                position: relative;
+                padding: 5px;
+            } 
+        }
+    }
+
+    .delivery-location,
+    .select-delivery-location {
+        position: var(--position);
+        color: var(--color);
+        text-align: center;
+        padding: 9px 0;
+ 
+        i {
+            position: absolute;
+            left: -10px;
+            top: 5px;
+        } 
+    }
+}
+
+@media only screen and (min-width: $tablet-min-width) {
+    .container {
+        width: 100%;
+        background-color: transparent;
+    }
+
+    .mobile-container {
+        display: none!important;
+    }
+
+    .desktop-container {
+        display: block!important;
+    }
+}

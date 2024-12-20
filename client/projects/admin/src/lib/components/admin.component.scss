@@ -1,0 +1,11 @@
+@import '../../../../ui/src/scss/mixins';
+
+.container {
+    @include non-content-container;
+    
+    margin-top: 40px;
+
+    button {
+        margin-bottom: 20px;
+    }
+}

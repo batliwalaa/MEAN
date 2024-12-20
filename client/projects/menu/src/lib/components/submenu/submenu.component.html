@@ -1,0 +1,69 @@
+<ng-container *ngIf="showSubMenu">
+    <ng-container *ngTemplateOutlet="mobileTemplate"></ng-container>
+    <ng-container *ngTemplateOutlet="desktopTemplate"></ng-container>
+</ng-container>
+
+<ng-container *ngTemplateOutlet="categoriesTemplate"></ng-container>
+
+<ng-template #subMenuTemplate>
+    <div #wrapper class="wrapper">
+        <div class="sub-category-container">
+            <ng-container *ngIf="menuChildItems && menuChildItems.length">
+                <ng-container *ngIf="isMobile">
+                    <ng-container *ngTemplateOutlet="selectedItemTemplate; context: getSelectedItem()"></ng-container>
+                </ng-container>
+                <ng-container *ngFor="let item of menuChildItems">                            
+                    <ng-container *ngTemplateOutlet="itemTemplate; context: getItem(item)"></ng-container>
+                </ng-container>
+            </ng-container>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #mobileTemplate>
+    <div class="mobile-container sub-navbar-container">
+        <div class="sub-navbar">    
+            <ng-container *ngIf="category">
+                <div class="selected-category" (click)="showDropMenu = !showDropMenu">
+                    <span class="nav-item">{{category.label}}</span>
+                    <i class="material-icons">keyboard_arrow_down</i>                    
+                </div>                
+            </ng-container>
+    
+            <ng-container *ngTemplateOutlet="subMenuTemplate"></ng-container>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #desktopTemplate>
+    <div class="desktop-container sub-navbar-container">
+        <div class="sub-navbar">
+            <ng-container *ngTemplateOutlet="subMenuTemplate"></ng-container>
+        </div>
+    </div>
+</ng-template>
+
+<ng-template #categoriesTemplate>
+    <div class="drop-menu-container" *ngIf="showDropMenu" (outsideClick)="showDropMenu = false">
+        <ng-container *ngFor="let c of categories">
+            <div class="drop-menu-item" (click)="onDropMenuItemClick(c)">{{c.label}}</div>
+        </ng-container>
+    </div>
+</ng-template>
+
+<ng-template #itemTemplate let-item="item">
+    <!--  [ngClass]="{ 'child-items': item.childItems && item.childItems.length }" -->
+    <span *ngIf="showMenuItem(item)" class="nav-item-container" [ngClass]="{ 'selected': !isMobile && item.selected }" (click)="onMenuItemClick(item)">
+        <span class="nav-item">
+            <a class="nav-link">{{item.label}}</a>
+        </span>
+    </span>
+</ng-template>
+
+<ng-template #selectedItemTemplate let-item="item">
+    <span *ngIf="item" class="nav-item-container selected">
+        <span class="nav-item">
+            <a class="nav-link">{{item.label}}</a>
+        </span>
+    </span>
+</ng-template>

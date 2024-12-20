@@ -1,0 +1,94 @@
+@import '../../../../../ui/src/scss/variables';
+@import '../../../../../ui/src/scss/mixins';
+@import '../../../../../ui/src/assets/fonts/material-icons/material-icons.css';
+
+.container {
+    @include non-content-container;
+    max-width: 30rem;
+    position: relative;
+    height: 100%;
+    background-color: #fff;
+    margin: 20px auto;
+
+    > * {
+        margin: 0;
+    }
+
+    .form-container {
+        .header {
+            color: $highlight;
+            margin-bottom: 10px;
+            font-weight: 500;
+            font-size: 1.5em;
+        }
+
+        .error {
+            span:not(:first-child) {
+                color: $text-color;
+                margin-top: 8px;
+                display: block;
+            }
+
+            span:first-child {
+                font-weight: 500;
+                font-size: 1.1em;
+            }
+        }
+
+        .row {
+            margin-top: 20px;
+        }
+
+        .btn {
+            margin-top: 20px;
+        }
+
+        .description {
+            margin-top: 20px;
+            font-size: 0.9em;
+            color: $text-color;
+
+            .email,
+            .mobile {
+                font-weight: bold;
+            }
+        }
+        .verification-failure,
+        .acceptance {
+            margin-top: 20px;
+            font-size: 0.8em;
+        }
+
+        .verified,
+        .expired,
+        .verification-failure {
+            font-size: 0.9em;
+        }
+
+        .verified {
+            margin-top: 20px;
+            line-height: 23px;
+
+            .success {
+                color: $success-text-color;
+                font-weight: bold;
+            }
+        }
+
+        .expired {
+            margin-top: 20px;
+            line-height: 23px;
+            color: $error-text-color;
+            font-weight: 600;
+        }
+
+        .verification-failure {
+            .failure {
+                ::ng-deep & {
+                    color: $error-text-color;
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+}

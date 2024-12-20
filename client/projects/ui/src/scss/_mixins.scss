@@ -1,0 +1,61 @@
+@import './variables';
+
+@mixin down-arrow($right, $bottom) {
+    content: " ";
+    width: 0;
+    height: 0;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid $bright-green;
+    position: absolute;
+    right: $right;
+    bottom: $bottom;
+}
+
+@mixin up-indicator ($right, $borderColor, $zIndex: -1, $top: -5px) {
+    content: " ";
+    width: 0;
+    height: 0;
+    border-right: 10px solid transparent;
+    border-bottom: 10px solid $borderColor;
+    position: absolute;
+    z-index: $zIndex;
+    right: $right;
+    transform: translateX(-50%) rotate(135deg);
+    top: $top;
+}
+
+
+@mixin non-content-container ($maxWidth: 58rem) {
+    margin: 0 auto;
+    width: 100vw;
+    max-width: $maxWidth;
+}
+
+@mixin header {
+    color: #333;
+    margin-top: 14px;
+    font-weight: 600;
+    font-size: 1.5rem;
+}
+
+@mixin small-product-image ($figureMaxWidth: 125px, $imgMaxWidth: 100px, $zoom: false) {
+    margin: 0;
+    text-align: center;
+    max-height: $figureMaxWidth;
+
+    img {
+        max-width: $imgMaxWidth;
+        max-height: $imgMaxWidth;
+        cursor: pointer;
+        
+        @if $zoom {
+            &:hover {
+                transform: scale(2);
+                max-width: 200px;
+                z-index: 1;
+                border: 1px solid #c0c0c0;
+            }
+        }
+    }
+}

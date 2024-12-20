@@ -1,0 +1,56 @@
+@import '../../../.././../../../ui/src/scss/variables';
+
+.control-row {
+    display: flex;
+    flex-direction: row;
+
+    .button-minus,
+    .button-add {
+        cursor: pointer;
+        background: #f3f3f3;
+
+        i {
+            font-size: 28px;
+            padding: 4px 0;
+            border: 1px solid $bright-green;
+        }
+    }
+
+    .button-minus {
+        margin-right: -2px;
+
+        i {
+            border-right: 1px solid transparent;
+        }
+    }
+    .button-add {
+        margin-left: -2px;
+    }
+
+    .control {
+        border: 1px solid transparent;
+        border-top: 1px solid $bright-green;
+        border-bottom: 1px solid $bright-green;
+
+        input {
+            padding-left: 42px;
+            text-align: center;
+            height: 36px;
+        }
+    }
+
+    .inner-text {
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: $bright-green;
+        color: white;
+        height: 36px;
+        padding: 8px 8px;
+        padding-top: 11px;
+        font-size: 0.8em;
+        border-right: 1px solid lightgrey;
+        border-top: 1px solid $bright-green;
+        border-bottom: 1px solid $bright-green;
+    }
+}

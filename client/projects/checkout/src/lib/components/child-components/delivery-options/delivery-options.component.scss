@@ -1,0 +1,75 @@
+@import '../../../../../../ui/src/scss/variables';
+
+.options-container {
+    .title {
+        margin: 16px 0;
+        color: #555;
+        font-size: 1.1em;
+        font-weight: 600;
+    }
+
+    .btn {
+        margin-top: 20px;
+    }
+
+    .option-section {
+        padding: 10px 20px;
+        border: $border-light;
+        margin-top: 1px;
+
+        &:first-child {
+            margin-top: 20px;
+        }
+
+        .option-selector {
+            display: grid;
+            grid-auto-flow: column;
+            grid-template-columns: 30px auto;
+            grid-column-gap: 10px;
+            justify-content: flex-start;
+            justify-items: center;
+
+            .option-detail {
+                font-weight: 550;
+                font-size: 0.9em;
+
+                span {
+                    line-height: 20px;
+                }
+
+                .option-type,
+                .currency-symbol {
+                    color: #555;
+                }
+
+                .option-type {
+                    margin-left: 2px;
+                }
+
+                .option-non-available,
+                .option-text {
+                    font-weight: lighter;
+                    display: block;
+                    color: #409847;
+                    font-size: 0.8em;
+                }
+
+                .option-non-available {
+                    margin-top: 5px;
+                    padding: 15px 9px;
+                    color: $disabled-color;
+                    border: 1px solid #f0f0f0;
+                }
+            }
+        }
+
+        &.disabled {
+            color: $disabled-color;
+            border: 1px solid #f0f0f0;
+
+            .option-selector .option-detail .option-type {
+                color: #999;
+            }
+        }
+    }
+}

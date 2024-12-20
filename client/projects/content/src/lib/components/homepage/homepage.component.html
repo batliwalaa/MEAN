@@ -1,0 +1,61 @@
+<div class="main-container">
+    @if (homePageData && homePageData.sections && homePageData.sections.length)
+    {
+        @for (section of homePageData.sections; track section; let idx = $index;)
+        {
+            @if (homePageData.layout === 'row')
+            {
+                <ng-container *ngTemplateOutlet="rowTemplate; context:section"></ng-container>
+            }
+            @if (homePageData.layout === 'flex')
+            {
+                <ng-container *ngTemplateOutlet="flexTemplate; context:section"></ng-container>
+            }
+        }
+    }
+</div>
+
+<ng-template #rowTemplate let-backgroundImageUrl="backgroundImageUrl" let-widgets="widgets">
+    @for (widget of widgets; track widget;)
+    {
+        <div class="widget-row">
+            <div class="widget-title">{{widget.title}}</div>
+            <div class="widget-item-container">
+                @for (item of widget.items; track item;)
+                {
+                    <div class="widget-item" [ngClass]="{ 'item-link': item.url }">
+                        <figure>
+                            <figcaption class="widget-item-title">{{item.title}}</figcaption>
+                            <img [src]="item.imageUrl" />
+                        </figure>
+                    </div>
+                }
+            </div>
+            <div class="widget-footer"><a [routerLink]="widget.footer">{{widget.footer}}</a></div>
+        </div>
+    }
+</ng-template>
+
+<ng-template #flexTemplate let-backgroundImageUrl="backgroundImageUrl" let-widgets="widgets" let-controlType="controlType">
+    @if (!controlType || controlType !== 'carousel')
+    {
+        @for (widget of widgets; track widget;)
+        {
+            <div class="widget-flex">
+                <div class="widget-title">{{widget.title}}</div>
+                <div class="widget-item-container">
+                    @for (item of widget.items; track item;)
+                    {
+                        <div class="widget-item" [style.width.%]="widget.width" [ngClass]="{ 'item-link': item.query }" (click)="onWidgetItemClick(item.query)">
+                            <figure>
+                                <figcaption class="widget-item-title">{{item.title}}</figcaption>
+                                <img [src]="item.imageUrl" />
+                            </figure>
+                        </div>
+                    }
+                </div>
+                <div class="widget-footer"><a [routerLink]="widget.footer">{{widget.footer}}</a></div>
+            </div>       
+        }
+    }
+</ng-template>

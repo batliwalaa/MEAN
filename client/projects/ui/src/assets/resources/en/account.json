@@ -1,0 +1,25 @@
+{
+    "myAccount": {
+        "label": "My Account"
+    },
+    "options": [
+        {
+            "header": "My Orders",
+            "description": "Track, return or buy again",
+            "key": "AccountOrders"
+        }, {
+            "header": "My Profile",
+            "description": "Edit login, name, mobile and reset password",
+            "key": "AccountProfile"
+        }, {
+            "header": "My Addresses",
+            "description": "Add, edit or delete addresses for orders",
+            "key": "AccountAddresses"
+        }, {
+            "header": "My Loyalty Points",
+            "description": "Loyalty points accumulation and redeem",
+            "key": "myLoyaltyPoints",
+            "featureEnabled": false
+        }
+    ]
+}

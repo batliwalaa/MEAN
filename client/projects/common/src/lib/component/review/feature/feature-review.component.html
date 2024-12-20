@@ -1,0 +1,18 @@
+@if (featuresRating && metadata)
+{
+    <div class="container">
+        <div class="header">
+            {{metadata && metadata.feature && metadata.feature.label}}
+        </div>
+        <div class="feature-rating">
+            @for(rating of featuresRating; track rating;)
+            {
+                <div class="feature-item">
+                    <span>{{rating.feature}}</span>
+                    <span class="five-star" [attr.style]="getRating(rating)" [ngClass]="{ 'no-reviews': rating.value === 0 }"></span>
+                </div>
+            }
+            
+        </div>
+    </div>
+}

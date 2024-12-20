@@ -1,0 +1,21 @@
+@import '../../../../../ui/src/scss/variables';
+
+.add-to-basket-container {
+    background-color: $menu-color;
+    padding: 0 20px 20px 10px;   
+    position: relative;
+    margin-bottom: 2px;
+    width: 100%;  
+
+    .overlay {
+        position: absolute;
+        width: calc(100% - 35px);
+        left: 20px;
+        top: 26px;
+        height: calc(100% - 45px);
+        z-index: 10;
+        opacity: 0.7;
+        background-color: $menu-color;        
+    }
+
+}

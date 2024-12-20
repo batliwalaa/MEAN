@@ -1,0 +1,79 @@
+{
+    "header": {
+        "label": "OTP Verification"
+    },
+    "resend": {
+        "label": "Resend OTP"
+    },
+    "otp": {
+        "label": "OTP"
+    },
+    "verify": {
+        "label": "Verify"
+    },
+    "description": {
+        "label": "Please enter the OTP code sent to "
+    },
+    "verificationFailure": {
+        "statement": [
+            { "type": "text", "text": "Verification failure", "class": "failure" },
+            { "type": "text", "text": ", please " },
+            {
+                "type": "link",
+                "text": "contact support team",
+                "url": "./contact"
+            },
+            { "type": "text", "text": "." }
+        ]
+    },
+    "otpVerifySuccess": {
+        "label": "Your account has been verified successfully, "
+    },
+    "otpExpired": {
+        "label": "Your current OTP is expired, you can request for OTP resend."
+    },
+    "autoRedirect": {
+        "label": "you will be automatically redirected in",
+        "time": 3,
+        "timeComponent": "secs"
+    },
+    "acceptance": {
+        "controlType": "acceptance",
+        "statement": [
+            { "type": "text", "text": "Please see our " },
+            {
+                "type": "link",
+                "text": "Terms & Conditions",
+                "url": "./termsandconditions",
+                "newWindow": true
+            },
+            { "type": "text", "text": ", our " },
+            {
+                "type": "link",
+                "text": "Privacy Policy",
+                "url": "./privacypolicy",
+                "newWindow": true
+            },
+            { "type": "text", "text": " and our " },
+            {
+                "type": "link",
+                "text": "Cookie Policy",
+                "url": "./cookiepolicy",
+                "newWindow": true
+            }
+        ]
+    },
+    "password": {
+        "label": "Enter password",
+        "validators": {
+            "required": ""
+        },
+        "error": {
+            "required": "Password is required"
+        }
+    },
+    "passwordSubmit": {
+        "label": "Submit",
+        "action": "profile-change-password"
+    }
+}

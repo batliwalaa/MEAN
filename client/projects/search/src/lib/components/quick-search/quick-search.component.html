@@ -1,0 +1,6 @@
+<div class="search">
+    <input #search type="text" [(ngModel)]="searchTerm" [attr.placeholder]="metadata && metadata.search && metadata.search.label" class="search-textbox"/>
+    <span class="icon" (click)="onSearchClick()">
+        <i class="material-icons">search</i>
+    </span>
+</div>

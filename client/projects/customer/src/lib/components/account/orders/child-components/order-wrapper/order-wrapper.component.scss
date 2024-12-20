@@ -1,0 +1,59 @@
+@import '../../../../../../../../ui/src/scss/variables';
+
+@mixin border {
+    border: $border;
+    border-color: #ccc;
+    border-radius: $border-radius;
+}
+.order-wrapper {
+        margin: 40px 0;
+        
+        &.list-order-wrapper {
+            @include border;
+        }
+
+        ui-order-detail-component {
+            .container {
+                ::ng-deep & {
+                    min-height: 0;
+                    max-height: 0;
+                    overflow-y: hidden;
+                    transition: 1s;
+                    padding: 0;
+                    margin-top: -2px;
+                }
+            }
+
+            &.show {
+                .container {
+                    ::ng-deep & {
+                        max-height: fit-content;
+                        padding: 20px;
+                        padding-top: 7px;
+                        margin-top: 0;
+                    }
+                }
+            }
+        }
+
+        &.detail-order-wrapper {
+            .detail-wrapper,
+            .header-wrapper {
+                @include border()
+            }
+
+            .header-wrapper {
+                margin-bottom: 10px;
+
+                ui-order-header-component {
+                    .container {
+                        .header-detail-container {
+                            ::ng-deep & {
+                                background-color: #fff;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }

@@ -1,0 +1,50 @@
+<div class="container">
+    <ng-container *ngIf="verify">
+        <div class="verify">
+            <span>{{ metadata && metadata.emailVerify && metadata.emailVerify.label }}</span>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="verified">
+        <div class="verified">
+            <span class="success">{{
+                metadata && metadata.emailVerifySuccess && metadata.emailVerifySuccess.label
+            }}</span>
+            <span
+                >{{ metadata && metadata.autoRedirect && metadata.autoRedirect.label }} {{ timeInSeconds || '' }}
+                {{ metadata && metadata.autoRedirect && metadata.autoRedirect.timeComponent }}</span
+            >
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="resent">
+        <div class="resend">
+            <ng-container *ngTemplateOutlet="statementTemplate; context: metadata.resendSuccess"></ng-container>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="expired">
+        <div class="expired">
+            <div>{{ metadata && metadata.emailExpired && metadata.emailExpired.label }}</div>
+            <button [hidden]="!expired" class="btn btn-light btn-light-bordered" (click)="onResendClick()">
+                {{ metadata && metadata.resend && metadata.resend.label }}
+            </button>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="verificationFailure">
+        <div class="verification-failure">
+            <ng-container *ngTemplateOutlet="statementTemplate; context: metadata.verificationFailure"></ng-container>
+        </div>
+    </ng-container>
+
+    <ng-container *ngIf="metadata && metadata.acceptance && metadata.acceptance.statement">
+        <div class="acceptance">
+            <ng-container *ngTemplateOutlet="statementTemplate; context: metadata.acceptance"></ng-container>
+        </div>
+    </ng-container>
+</div>
+
+<ng-template #statementTemplate let-statement="statement">
+    <ui-statement-component [metadata]="statement"></ui-statement-component>
+</ng-template>

@@ -1,0 +1,10 @@
+@import '../../../../../../../../ui/src/scss/variables';
+
+.display-status {
+    font-weight: 500;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.failed-text {
+    color: $error-text-color;
+}
